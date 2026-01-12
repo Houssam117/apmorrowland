@@ -2,45 +2,40 @@ const cds = require('@sap/cds');
 
 module.exports = cds.service.impl(async function () {
     
-    // We halen de definities van de tabellen op
-    const { Artists, Reviews } = this.entities;
+  
+    const { Artists, Reviews } = cds.entities('my.apmorrowland');
 
-    /**
-     * LOGICA: Telkens wanneer er een Review wordt aangemaakt...
-     */
     this.after('CREATE', 'Reviews', async (results, req) => {
-        // 1. Van welke artiest was deze review?
-        // 'results' is de nieuwe review die net is opgeslagen
+        // Als er geen artiest ID is, stoppen we
+        if (!results.artist_ID) return;
+        
         const artistID = results.artist_ID;
+        const tx = cds.tx(req); // Gebruik de transactie van dit verzoek
 
-        // 2. Haal alle reviews van deze artiest op uit de database
-        const allReviews = await tx.run(
-            SELECT.from(Reviews).where({ artist_ID: artistID })
-        );
+        try {
+          
+            const stats = await tx.run(
+                SELECT.from(Reviews)
+                    .columns('avg(rating) as average', 'count(*) as total')
+                    .where({ artist_ID: artistID })
+            );
 
-        // 3. Bereken het nieuwe gemiddelde
-        let totalScore = 0;
-        const count = allReviews.length;
+            // 2. Check of we resultaat hebben
+            if (stats && stats[0]) {
+                const newAvg = stats[0].average ? parseFloat(stats[0].average).toFixed(1) : 0;
+                const newCount = stats[0].total || 0;
 
-        allReviews.forEach(review => {
-            totalScore += review.rating;
-        });
-
-        const average = count > 0 ? (totalScore / count).toFixed(1) : 0;
-
-        // 4. Update de Artiest tabel met de nieuwe cijfers
-        // We gebruiken 'tx' (transaction) om te zorgen dat dit veilig gebeurt
-        const tx = cds.tx(req);
-        
-        await tx.run(
-            UPDATE(Artists)
-                .set({ 
-                    averageRating: average,
-                    reviewCount: count
-                })
-                .where({ ID: artistID })
-        );
-        
-        console.log(`Updated Artist ${artistID}: New Rating = ${average} (${count} reviews)`);
+                // 3. Update de Artiest in de database
+                await tx.run(
+                    UPDATE(Artists)
+                        .set({ averageRating: newAvg, reviewCount: newCount })
+                        .where({ ID: artistID })
+                );
+                
+                console.log(`>> Succes: Artist geupdate naar ${newAvg} sterren (${newCount} reviews).`);
+            }
+        } catch (error) {
+            console.error(">> Fout bij updaten rating:", error.message);
+        }
     });
 });
