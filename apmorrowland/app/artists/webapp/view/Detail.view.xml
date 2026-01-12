@@ -1,0 +1,49 @@
+<mvc:View
+    controllerName="ns.artists.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <Page id="detailPage" title="Artist Details" showNavButton="true" navButtonPress=".onNavBack">
+        <content>
+            <ObjectHeader id="_IDGenObjectHeader"
+                responsive="true"
+                fullScreenOptimized="true"
+                icon="{imageUrl}"
+                intro="{genre}"
+                title="{name}"
+                number="{averageRating}"
+                numberUnit="Stars">
+                <attributes>
+                    <ObjectAttribute id="_IDGenObjectAttribute" title="Country" text="{country}"/>
+                    <ObjectAttribute id="_IDGenObjectAttribute1" title="Label" text="{label}"/>
+                </attributes>
+                <statuses>
+                    <ObjectStatus id="_IDGenObjectStatus" text="{status}" state="Success"/>
+                </statuses>
+            </ObjectHeader>
+
+            <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter id="_IDGenIconTabFilter1" text="Biografie" icon="sap-icon://hint">
+                        <Text id="_IDGenText8" text="{biography}" class="sapUiSmallMargin"/>
+                    </IconTabFilter>
+                    
+                    <IconTabFilter id="_IDGenIconTabFilter2" text="Reviews ({reviewCount})" icon="sap-icon://discussion">
+                        <List id="_IDGenList" items="{reviews}" noDataText="Nog geen reviews.">
+                            <items>
+                                <FeedListItem id="_IDGenFeedListItem"
+                                    sender="{visitorName}"
+                                    icon="sap-icon://person-placeholder"
+                                    info="Rating: {rating}/5"
+                                    timestamp="{createdAt}"
+                                    text="{comment}"
+                                    convertLinksToAnchorTags="All"/>
+                            </items>
+                        </List>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

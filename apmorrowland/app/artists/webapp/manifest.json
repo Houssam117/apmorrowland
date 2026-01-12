@@ -79,7 +79,7 @@
       "async": true,
       "id": "app"
     },
-    "routing": {
+   "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
@@ -94,6 +94,11 @@
           "name": "RouteArtists",
           "pattern": "",
           "target": ["TargetArtists"]
+        },
+        {
+          "name": "RouteDetail",
+          "pattern": "artist/{artistPath}",
+          "target": ["TargetDetail"]
         }
       ],
       "targets": {
@@ -103,6 +108,13 @@
           "clearControlAggregation": false,
           "viewId": "Artists",
           "viewName": "Artists"
+        },
+        "TargetDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Detail",
+          "viewName": "Detail"
         }
       }
     }
