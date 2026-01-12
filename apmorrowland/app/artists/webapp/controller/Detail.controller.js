@@ -50,6 +50,14 @@ sap.ui.define([
             });
         },
 
+        formatTopRatedVisible: function (sRating) {
+            if (!sRating) {
+                return false;
+            }
+            
+            var fRating = parseFloat(sRating);
+            return fRating > 4.0;
+        },
         onCancelReview: function () {
             this.byId("reviewDialog").close();
         },

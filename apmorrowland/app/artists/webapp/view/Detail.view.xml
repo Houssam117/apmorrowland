@@ -27,11 +27,15 @@
                         state="{= ${label} === 'Headliner' ? 'Warning' : 'Success' }"
                         inverted="true" />
                     
-                    <ObjectStatus id="_IDGenObjectStatus1" 
+                   <ObjectStatus id="_IDGenObjectStatus1" 
                         text="Top Rated" 
                         icon="sap-icon://favorite"
                         state="Success" 
-                        visible="{= ${averageRating} > 4.5 }"/>
+                        visible="{
+                            path: 'averageRating',
+                            targetType: 'any',
+                            formatter: '.formatTopRatedVisible'
+                        }"/>
                 </statuses>
             </ObjectHeader>
 
