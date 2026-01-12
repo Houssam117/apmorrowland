@@ -1,9 +1,8 @@
 <mvc:View
-    controllerName="ns.artists.controller.App"
-    xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:display="sap.ui.webc.fiori"
-    xmlns="sap.m">
-    <App id="app">
-    </App>
+    xmlns="sap.m"
+    displayBlock="true">
+    
+    <App id="app"/>
+
 </mvc:View>

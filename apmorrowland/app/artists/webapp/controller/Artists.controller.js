@@ -12,7 +12,9 @@ sap.ui.define([
             onInit: function () {
             },
 
-            // --- Zoeken & Navigeren ---
+      onNavHome: function () {
+            this.getOwnerComponent().getRouter().navTo("RouteHome");
+        },
 
             onSearch: function (oEvent) {
                 var sQuery = oEvent.getParameter("query");
@@ -26,11 +28,13 @@ sap.ui.define([
                 oBinding.filter(aFilters);
             },
 
-            onPress: function (oEvent) {
+          onPress: function (oEvent) {
                 var oItem = oEvent.getSource();
                 var oRouter = this.getOwnerComponent().getRouter();
+                
                 oRouter.navTo("RouteDetail", {
-                    artistPath: window.encodeURIComponent(oItem.getBindingContext().getPath().substr(1))
+                  
+                    artistID: window.encodeURIComponent(oItem.getBindingContext().getPath().substr(1))
                 });
             },
 

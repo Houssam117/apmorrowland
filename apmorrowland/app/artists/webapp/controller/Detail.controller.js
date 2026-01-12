@@ -12,13 +12,14 @@ sap.ui.define([
             oRouter.getRoute("RouteDetail").attachPatternMatched(this._onObjectMatched, this);
         },
 
-        _onObjectMatched: function (oEvent) {
-            var sPath = window.decodeURIComponent(oEvent.getParameter("arguments").artistPath);
+     _onObjectMatched: function (oEvent) {
+         
+            var sPath = window.decodeURIComponent(oEvent.getParameter("arguments").artistID);
+            
             this.getView().bindElement({
                 path: "/" + sPath
             });
         },
-
         onNavBack: function () {
             var oHistory = History.getInstance();
             var sPreviousHash = oHistory.getPreviousHash();

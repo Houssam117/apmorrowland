@@ -1,0 +1,51 @@
+<mvc:View
+    controllerName="ns.artists.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    displayBlock="true">
+
+    <Page id="_IDGenPage" title="AP Morrowland Dashboard" backgroundDesign="List" showNavButton="false">
+        <content>
+            <VBox id="_IDGenVBox3" class="sapUiLargeMargin">
+                
+                <Title id="_IDGenTitle6" text="Mijn Apps" titleStyle="H2" class="sapUiMediumMarginBottom"/>
+
+                <HBox id="_IDGenHBox" wrap="Wrap" renderType="Bare">
+                    
+                    <GenericTile id="_IDGenGenericTile1"
+                        class="sapUiMediumMarginEnd sapUiMediumMarginBottom"
+                        header="Artist Management"
+                        subheader="Line-up &amp; Reviews"
+                        press=".onNavToArtists">
+                        <TileContent id="_IDGenTileContent">
+                            <ImageContent id="_IDGenImageContent" src="sap-icon://microphone" />
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile id="_IDGenGenericTile2"
+                        class="sapUiMediumMarginEnd sapUiMediumMarginBottom"
+                        header="Order Management"
+                        subheader="Kassa &amp; Sales"
+                        press=".onNavToOrders">
+                        <TileContent id="_IDGenTileContent1">
+                            <ImageContent id="_IDGenImageContent1" src="sap-icon://cart" />
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile id="_IDGenGenericTile3"
+                        class="sapUiMediumMarginEnd sapUiMediumMarginBottom"
+                        header="Planning"
+                        subheader="Binnenkort"
+                        state="Disabled">
+                        <TileContent id="_IDGenTileContent2">
+                            <ImageContent id="_IDGenImageContent2" src="sap-icon://calendar" />
+                        </TileContent>
+                    </GenericTile>
+
+                </HBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

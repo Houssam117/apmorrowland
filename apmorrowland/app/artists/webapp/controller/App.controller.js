@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Controller) {
     "use strict";
 
-    return Controller.extend("ns.artists.controller.App", {
+    return Controller.extend("ns.home.controller.App", {
         onInit: function () {
         }
     });

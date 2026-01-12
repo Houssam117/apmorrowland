@@ -4,6 +4,9 @@
     xmlns="sap.m">
     
     <Page id="page" title="Artist Management">
+    <headerContent>
+            <Button icon="sap-icon://home" tooltip="Terug naar Home" press=".onNavHome" />
+        </headerContent>
         <content>
             <Table 
                 id="artistsTable"

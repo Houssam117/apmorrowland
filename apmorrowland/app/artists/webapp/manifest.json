@@ -1,20 +1,17 @@
 {
-  "_version": "1.59.0",
+  "_version": "1.49.0",
   "sap.app": {
     "id": "ns.artists",
     "type": "application",
-    "i18n": "i18n/i18n.properties",
+    "title": "Morrowland Portal",
     "applicationVersion": {
-      "version": "0.0.1"
+      "version": "1.0.0"
     },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/festival/",
         "type": "OData",
         "settings": {
-          "annotations": [],
           "odataVersion": "4.0"
         }
       }
@@ -23,12 +20,7 @@
   "sap.ui": {
     "technology": "UI5",
     "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
+      "icon": "sap-icon://microphone"
     },
     "deviceTypes": {
       "desktop": true,
@@ -37,23 +29,19 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "rootView": {
+      "viewName": "ns.artists.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
     "dependencies": {
       "minUI5Version": "1.120.0",
       "libs": {
-        "sap.m": {},
         "sap.ui.core": {},
-        "sap.f": {},
-        "sap.suite.ui.generic.template": {},
-        "sap.ui.comp": {},
-        "sap.ui.generic.app": {},
-        "sap.ui.table": {},
-        "sap.ushell": {}
+        "sap.m": {},
+        "sap.f": {}
       }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
     },
     "models": {
       "i18n": {
@@ -73,13 +61,7 @@
         }
       }
     },
-    "rootView": {
-      "viewName": "ns.artists.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "app"
-    },
-   "routing": {
+    "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
@@ -91,30 +73,42 @@
       },
       "routes": [
         {
-          "name": "RouteArtists",
+          "name": "RouteHome",
           "pattern": "",
-          "target": ["TargetArtists"]
+          "target": "TargetHome"
+        },
+        {
+          "name": "RouteArtists",
+          "pattern": "artists",
+          "target": "TargetArtists"
         },
         {
           "name": "RouteDetail",
-          "pattern": "artist/{artistPath}",
-          "target": ["TargetDetail"]
+          "pattern": "artists/{artistID}",
+          "target": "TargetDetail"
+        },
+        {
+          "name": "RouteOrders",
+          "pattern": "orders",
+          "target": "TargetList"
         }
       ],
       "targets": {
+        "TargetHome": {
+          "viewName": "Home",
+          "viewId": "Home"
+        },
         "TargetArtists": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "Artists",
-          "viewName": "Artists"
+          "viewName": "Artists",
+          "viewId": "Artists"
         },
         "TargetDetail": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "Detail",
-          "viewName": "Detail"
+          "viewName": "Detail",
+          "viewId": "Detail"
+        },
+        "TargetList": {
+          "viewName": "List",
+          "viewId": "List"
         }
       }
     }

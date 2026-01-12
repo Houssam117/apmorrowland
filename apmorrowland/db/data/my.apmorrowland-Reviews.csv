@@ -1,4 +1,31 @@
 ID;artist_ID;rating;comment;visitorName
-101;2b85e68c-7b4d-4569-8230-010101010101;5;Amazing set!;Jonas
-102;2b85e68c-7b4d-4569-8230-010101010101;4;Good vibes;Sarah
-103;2b85e68c-7b4d-4569-8230-010101010102;5;Best of the night;Tom
+104;2b85e68c-7b4d-4569-8230-010101010101;5;Absolutely legendary performance;Michael
+105;2b85e68c-7b4d-4569-8230-010101010101;4;Very powerful and clean mixing;Elise
+106;2b85e68c-7b4d-4569-8230-010101010101;5;Best techno set I have ever heard;Lucas
+
+107;2b85e68c-7b4d-4569-8230-010101010102;4;Great melodies and atmosphere;Emma
+108;2b85e68c-7b4d-4569-8230-010101010102;3;Nice set but expected more energy;Kevin
+109;2b85e68c-7b4d-4569-8230-010101010102;5;Crowd was going crazy;Nina
+
+110;2b85e68c-7b4d-4569-8230-010101010103;5;Insane energy from start to finish;Alex
+111;2b85e68c-7b4d-4569-8230-010101010103;4;Perfect festival closing set;Laura
+
+112;2b85e68c-7b4d-4569-8230-010101010104;5;True techno legend on stage;Robert
+113;2b85e68c-7b4d-4569-8230-010101010104;4;Very professional live performance;Sophie
+
+114;2b85e68c-7b4d-4569-8230-010101010105;5;Amazing vibe and track selection;Hannah
+115;2b85e68c-7b4d-4569-8230-010101010105;4;Loved the groove and crowd control;Yassin
+116;2b85e68c-7b4d-4569-8230-010101010102;2;Set felt repetitive and slow;Brian
+117;2b85e68c-7b4d-4569-8230-010101010102;3;Sound quality was disappointing;Lotte
+118;2b85e68c-7b4d-4569-8230-010101010102;2;Expected much more from a big name;Kevin
+
+119;2b85e68c-7b4d-4569-8230-010101010105;3;Nice tracks but lacked energy;Milan
+120;2b85e68c-7b4d-4569-8230-010101010105;2;Crowd was bored halfway through;Sanne
+121;2b85e68c-7b4d-4569-8230-010101010105;3;Too commercial for my taste;Omar
+
+122;2b85e68c-7b4d-4569-8230-010101010108;2;Transitions felt messy;Daniel
+123;2b85e68c-7b4d-4569-8230-010101010108;3;Not bad, but not memorable;Iris
+124;2b85e68c-7b4d-4569-8230-010101010108;2;Expected a deeper emotional journey;Thomas
+
+125;2b85e68c-7b4d-4569-8230-010101010110;3;Interesting style but too chaotic;Eva
+126;2b85e68c-7b4d-4569-8230-010101010110;2;Did not connect with the crowd;Pieter
