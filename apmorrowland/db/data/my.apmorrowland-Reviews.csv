@@ -1,4 +1,4 @@
 ID;artist_ID;rating;comment;visitorName
-101;1;5;Amazing set!;Jonas
-102;1;4;Good vibes;Sarah
-103;2;5;Best of the night;Tom
+101;2b85e68c-7b4d-4569-8230-010101010101;5;Amazing set!;Jonas
+102;2b85e68c-7b4d-4569-8230-010101010101;4;Good vibes;Sarah
+103;2b85e68c-7b4d-4569-8230-010101010102;5;Best of the night;Tom

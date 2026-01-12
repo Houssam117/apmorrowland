@@ -6,10 +6,9 @@
 
     <Page id="detailPage" title="Artist Details" showNavButton="true" navButtonPress=".onNavBack">
         <content>
-            <ObjectHeader id="_IDGenObjectHeader"
+                <ObjectHeader id="_IDGenObjectHeader1"
                 responsive="true"
                 fullScreenOptimized="true"
-                icon="{imageUrl}"
                 intro="{genre}"
                 title="{name}"
                 number="{averageRating}"
@@ -18,10 +17,7 @@
                     <ObjectAttribute id="_IDGenObjectAttribute" title="Country" text="{country}"/>
                     <ObjectAttribute id="_IDGenObjectAttribute1" title="Label" text="{label}"/>
                 </attributes>
-                <statuses>
-                    <ObjectStatus id="_IDGenObjectStatus" text="{status}" state="Success"/>
-                </statuses>
-            </ObjectHeader>
+                </ObjectHeader>
 
             <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
                 <items>

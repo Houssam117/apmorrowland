@@ -7,16 +7,17 @@ using { managed, cuid, Currency } from '@sap/cds/common';
 // -------------------------------------------------------------------------
 
 entity Artists : cuid, managed {
-    name        : String(100) @title: 'Artist Name'; // [cite: 45]
-    genre       : String(50)  @title: 'Genre';       // [cite: 45]
-    country     : String(50)  @title: 'Country';     // [cite: 45]
-    biography   : LargeString @title: 'Biography';   // 
-    // Uitbreiding: URL voor foto/avatar [cite: 65]
-    imageUrl    : String;     
-    // Uitbreiding: Tags zoals "Headliner", "Rising Star" [cite: 66]
-    label       : String(20); 
+    name        : String(100) @title: 'Artist Name';
+    genre       : String(50)  @title: 'Genre';
+    country     : String(50)  @title: 'Country';
+    biography   : LargeString @title: 'Biography';
+    imageUrl    : String      @title: 'Image URL';
+    label       : String(20)  @title: 'Label';
     
-    // Relaties
+    // We maken hiervan echte velden voor stabiliteit
+    averageRating : Decimal(2,1) default 0.0;
+    reviewCount   : Integer default 0;
+
     reviews     : Association to many Reviews on reviews.artist = $self;
     performances: Association to many Performances on performances.artist = $self;
 }

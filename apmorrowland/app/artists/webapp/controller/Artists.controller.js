@@ -24,8 +24,13 @@ sap.ui.define([
                 oBinding.filter(aFilters);
             },
 
-            onPress: function (oEvent) {
-                console.log("Clicked!");
+          onPress: function (oEvent) {
+                var oItem = oEvent.getSource();
+                var oRouter = this.getOwnerComponent().getRouter();
+                
+                oRouter.navTo("RouteDetail", {
+                    artistPath: window.encodeURIComponent(oItem.getBindingContext().getPath().substr(1))
+                });
             }
         });
     });

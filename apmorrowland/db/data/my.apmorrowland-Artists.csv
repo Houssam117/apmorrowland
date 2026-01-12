@@ -1,4 +1,4 @@
-ID;name;genre;country;biography;label
-1;Charlotte de Witte;Techno;Belgium;Queen of techno.;Headliner
-2;Lost Frequencies;Deep House;Belgium;Melodic beats.;Headliner
-3;Amelie Lens;Techno;Belgium;Fast paced industrial techno.;Headliner
+ID;name;genre;country;biography;label;imageUrl
+2b85e68c-7b4d-4569-8230-010101010101;Charlotte de Witte;Techno;Belgium;Queen of techno.;Headliner;
+2b85e68c-7b4d-4569-8230-010101010102;Lost Frequencies;Deep House;Belgium;Melodic beats.;Headliner;
+2b85e68c-7b4d-4569-8230-010101010103;Amelie Lens;Techno;Belgium;Fast paced industrial techno.;Headliner;
