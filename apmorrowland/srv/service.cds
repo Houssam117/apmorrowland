@@ -3,12 +3,10 @@ using my.apmorrowland as my from '../db/schema';
 service FestivalService {
 
     
-    entity Artists as projection on my.Artists {
+  entity Artists as projection on my.Artists {
         *,
         performances,
-        reviews,
-        virtual null as averageRating : Decimal(2,1),
-        virtual null as reviewCount : Integer
+        reviews
     };
 
     entity Reviews as projection on my.Reviews;
