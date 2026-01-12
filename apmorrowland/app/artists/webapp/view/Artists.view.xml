@@ -7,41 +7,71 @@
         <content>
             <Table 
                 id="artistsTable"
-                items="{/Artists}"
-                width="auto">
+                items="{
+                    path: '/Artists',
+                    sorter: {
+                        path: 'name'
+                    }
+                }"
+                width="auto"
+                growing="true"
+                growingThreshold="20"
+                class="sapUiResponsiveMargin">
                 
-             <headerToolbar>
+                <headerToolbar>
+                    <OverflowToolbar id="_IDGenOverflowToolbar">
+                        <Title id="_IDGenTitle1" text="Line-up" level="H2"/>
+                        <ToolbarSpacer id="_IDGenToolbarSpacer"/>
+                        
+                        <Button id="_IDGenButton3" 
+                            icon="sap-icon://add" 
+                            text="Nieuwe Artiest"
+                            type="Emphasized"
+                            press=".onOpenAddArtistDialog"/>
 
-        <OverflowToolbar id="_IDGenOverflowToolbar">
-            <Title id="_IDGenTitle1" text="Line-up" level="H2"/>
-            <ToolbarSpacer id="_IDGenToolbarSpacer"/>
-            
-            <Button id="_IDGenButton3" 
-                icon="sap-icon://add" 
-                text="Nieuwe Artiest"
-                type="Emphasized"
-                press=".onOpenAddArtistDialog"/>
-
-            <SearchField id="_IDGenSearchField" width="30%" search=".onSearch" placeholder="Zoek artiest..."/>
-            <Button id="_IDGenButton4" icon="sap-icon://sort" press=".onSort" tooltip="Sorteer"/>
-            
-        </OverflowToolbar>
-    </headerToolbar>
+                        <SearchField id="_IDGenSearchField" width="30%" search=".onSearch" placeholder="Zoek artiest..."/>
+                        <Button id="_IDGenButton4" icon="sap-icon://sort" press=".onSort" tooltip="Sorteer"/>
+                    </OverflowToolbar>
+                </headerToolbar>
 
                 <columns>
-                    <Column id="_IDGenColumn1"><Text id="_IDGenText" text="Artiest" /></Column>
-                    <Column id="_IDGenColumn2"><Text id="_IDGenText1" text="Genre" /></Column>
-                    <Column id="_IDGenColumn3"><Text id="_IDGenText2" text="Land" /></Column>
-                    <Column id="_IDGenColumn4"><Text id="_IDGenText3" text="Rating" /></Column>
+                    <Column id="_IDGenColumn" width="4rem">
+                        <Text id="_IDGenText" text="" />
+                    </Column>
+                    <Column id="_IDGenColumn1">
+                        <Text id="_IDGenText1" text="Artiest" />
+                    </Column>
+                    <Column id="_IDGenColumn2" minScreenWidth="Tablet" demandPopin="true">
+                        <Text id="_IDGenText2" text="Genre" />
+                    </Column>
+                    <Column id="_IDGenColumn3" minScreenWidth="Tablet" demandPopin="true">
+                        <Text id="_IDGenText3" text="Land" />
+                    </Column>
+                    <Column id="_IDGenColumn4" hAlign="End">
+                        <Text id="_IDGenText4" text="Rating" />
+                    </Column>
                 </columns>
 
                 <items>
                     <ColumnListItem id="_IDGenColumnListItem" type="Navigation" press=".onPress">
                         <cells>
-                            <Text id="_IDGenText4" text="{name}"/>
+                            <Avatar id="_IDGenAvatar" 
+                                src="{imageUrl}" 
+                                displaySize="XS" 
+                                displayShape="Circle"/>
+                                
+                            <ObjectIdentifier id="_IDGenObjectIdentifier1" 
+                                title="{name}" 
+                                text="{label}"/>
+                            
                             <Text id="_IDGenText5" text="{genre}"/>
                             <Text id="_IDGenText6" text="{country}"/>
-                            <Text id="_IDGenText7" text="{averageRating}"/>
+                            
+                            <RatingIndicator id="_IDGenRatingIndicator" 
+                                maxValue="5" 
+                                value="{averageRating}" 
+                                iconSize="16px" 
+                                editable="false"/>
                         </cells>
                     </ColumnListItem>
                 </items>

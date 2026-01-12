@@ -6,17 +6,41 @@
 
     <Page id="detailPage" title="Artist Details" showNavButton="true" navButtonPress=".onNavBack">
         <content>
-            <ObjectHeader id="_IDGenObjectHeader"
+         <ObjectHeader id="_IDGenObjectHeader"
                 responsive="true"
                 fullScreenOptimized="true"
+                icon="{imageUrl}"
+                iconDensityAware="false"
                 intro="{genre}"
                 title="{name}"
                 number="{averageRating}"
                 numberUnit="Stars">
+                
                 <attributes>
-                    <ObjectAttribute id="_IDGenObjectAttribute" title="Country" text="{country}"/>
-                    <ObjectAttribute id="_IDGenObjectAttribute1" title="Label" text="{label}"/>
+                    <ObjectAttribute id="_IDGenObjectAttribute1" title="Country" text="{country}"/>
                 </attributes>
+
+                <statuses>
+                    <ObjectStatus id="_IDGenObjectStatus" 
+                        text="{label}" 
+                        state="{= ${label} === 'Headliner' ? 'Warning' : 'Success' }"
+                        inverted="true" />
+                        
+                    <ObjectStatus id="_IDGenObjectStatus1" text="{= ${averageRating} > 4 ? 'Top Rated' : 'Regular' }" state="None"/>
+                </statuses>
+
+                <headerContainer>
+                    <IconTabBar id="_IDGenIconTabBar" class="sapUiNoContentPadding">
+                        <items>
+                            <IconTabFilter id="_IDGenIconTabFilter2" icon="sap-icon://sound" tooltip="Spotify" design="Horizontal">
+                                <Link id="_IDGenLink" text="Open Spotify" href="{spotifyUrl}" target="_blank"/>
+                            </IconTabFilter>
+                            <IconTabFilter id="_IDGenIconTabFilter3" icon="sap-icon://camera" tooltip="Instagram" design="Horizontal">
+                                <Link id="_IDGenLink1" text="Open Instagram" href="{instagramUrl}" target="_blank"/>
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </headerContainer>
             </ObjectHeader>
 
             <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">

@@ -11,13 +11,14 @@ entity Artists : cuid, managed {
     genre       : String(50)  @title: 'Genre';
     country     : String(50)  @title: 'Country';
     biography   : LargeString @title: 'Biography';
-    imageUrl    : String      @title: 'Image URL';
-    label       : String(20)  @title: 'Label';
+    imageUrl    : String      @title: 'Image URL';     
+    label       : String(20)  @title: 'Label';        
     
-    // We maken hiervan echte velden voor stabiliteit
+    spotifyUrl  : String      @title: 'Spotify Link';
+    instagramUrl: String      @title: 'Instagram Link';
+
     averageRating : Decimal(2,1) default 0.0;
     reviewCount   : Integer default 0;
-
     reviews     : Association to many Reviews on reviews.artist = $self;
     performances: Association to many Performances on performances.artist = $self;
 }

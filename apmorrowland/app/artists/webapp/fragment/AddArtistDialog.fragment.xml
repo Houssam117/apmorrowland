@@ -3,19 +3,20 @@
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form">
+    
     <Dialog
         id="addArtistDialog"
-        title="Nieuwe Artiest Toevoegen">
+        title="Nieuwe Artiest &amp; Planning"
+        contentWidth="500px">
         <content>
             <f:SimpleForm id="_IDGenSimpleForm"
                 editable="true"
                 layout="ResponsiveGridLayout"
-                labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
-                adjustLabelSpan="false"
-                emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
-                columnsXL="1" columnsL="1" columnsM="1"
-                singleContainerFullSize="false">
+                labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+                columnsXL="1" columnsL="1" columnsM="1">
                 <f:content>
+                    <core:Title id="_IDGenTitle" text="Artiest Info" />
+                    
                     <Label id="_IDGenLabel4" text="Naam" required="true"/>
                     <Input id="inputArtistName" placeholder="bv. Martin Garrix"/>
 
@@ -39,15 +40,59 @@
                     </Select>
 
                     <Label id="_IDGenLabel8" text="Biografie"/>
-                    <TextArea id="inputBio" rows="3"/>
+                    <TextArea id="inputBio" rows="2"/>
+
+                    <Label id="_IDGenLabel9" text="Foto URL"/>
+                    <Input id="inputImageUrl" placeholder="https://..."/>
+
+                    <Label id="_IDGenLabel10" text="Spotify URL"/>
+                    <Input id="inputSpotify" placeholder="http://spotify.com/..."/>
+
+                    <Label id="_IDGenLabel11" text="Instagram URL"/>
+                    <Input id="inputInstagram" placeholder="https://instagram.com/..."/>
+
+                    <core:Title id="_IDGenTitle2" text="Planning &amp; Line-up" />
+
+                    <Label id="_IDGenLabel12" text="Festival Dag" required="true"/>
+                    <Select id="inputDay">
+                        <core:Item id="_IDGenItem8" key="Friday" text="Vrijdag"/>
+                        <core:Item id="_IDGenItem9" key="Saturday" text="Zaterdag"/>
+                        <core:Item id="_IDGenItem10" key="Sunday" text="Zondag"/>
+                    </Select>
+
+                    <Label id="_IDGenLabel13" text="Stage" required="true"/>
+                    <l:HorizontalLayout id="_IDGenHorizontalLayout">
+                        <Select 
+                            id="inputStage" 
+                            items="{/Stages}"
+                            width="240px"
+                            forceSelection="false"
+                            class="sapUiSmallMarginEnd">
+                            <core:Item id="_IDGenItem11" key="{ID}" text="{name}" />
+                        </Select>
+                        
+                        <Button id="_IDGenButton5" 
+                            icon="sap-icon://add" 
+                            type="Transparent"
+                            text="Nieuw"
+                            press=".onAddStage"
+                            tooltip="Voeg een nieuw podium toe"/>
+                    </l:HorizontalLayout>
+
+                    <Label id="_IDGenLabel14" text="Starttijd" required="true"/>
+                    <TimePicker id="inputStartTime" value="20:00" valueFormat="HH:mm" displayFormat="HH:mm"/>
+
+                    <Label id="_IDGenLabel15" text="Eindtijd" required="true"/>
+                    <TimePicker id="inputEndTime" value="21:00" valueFormat="HH:mm" displayFormat="HH:mm"/>
+
                 </f:content>
             </f:SimpleForm>
         </content>
         <beginButton>
-            <Button id="_IDGenButton5" text="Opslaan" type="Emphasized" press=".onSaveArtist"/>
+            <Button id="_IDGenButton6" text="Opslaan &amp; Plannen" type="Emphasized" press=".onSaveArtist"/>
         </beginButton>
         <endButton>
-            <Button id="_IDGenButton6" text="Annuleren" press=".onCancelArtist"/>
+            <Button id="_IDGenButton7" text="Annuleren" press=".onCancelArtist"/>
         </endButton>
     </Dialog>
 </core:FragmentDefinition>

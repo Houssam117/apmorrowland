@@ -1,4 +1,4 @@
-ID;name;genre;country;biography;label;imageUrl
-2b85e68c-7b4d-4569-8230-010101010101;Charlotte de Witte;Techno;Belgium;Queen of techno.;Headliner;
-2b85e68c-7b4d-4569-8230-010101010102;Lost Frequencies;Deep House;Belgium;Melodic beats.;Headliner;
-2b85e68c-7b4d-4569-8230-010101010103;Amelie Lens;Techno;Belgium;Fast paced industrial techno.;Headliner;
+ID;name;genre;country;biography;label;imageUrl;spotifyUrl;instagramUrl
+2b85e68c-7b4d-4569-8230-010101010101;Charlotte de Witte;Techno;Belgium;Queen of techno. Known for her dark and stripped-back brand of techno.;Headliner;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Charlotte_de_Witte_Open_Beatz_2024_03.jpg/800px-Charlotte_de_Witte_Open_Beatz_2024_03.jpg;https://open.spotify.com;https://instagram.com
+2b85e68c-7b4d-4569-8230-010101010102;Lost Frequencies;Deep House;Belgium;Melodic beats that make the whole world dance.;Rising Star;https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Lost_Frequencies_2019.jpg/800px-Lost_Frequencies_2019.jpg;https://open.spotify.com;https://instagram.com
+2b85e68c-7b4d-4569-8230-010101010103;Amelie Lens;Techno;Belgium;Fast paced industrial techno with a huge fanbase.;Headliner;https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Amelie_Lens_2018.jpg/800px-Amelie_Lens_2018.jpg;https://open.spotify.com;https://instagram.com

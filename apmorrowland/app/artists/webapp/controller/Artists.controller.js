@@ -12,6 +12,8 @@ sap.ui.define([
             onInit: function () {
             },
 
+            // --- Zoeken & Navigeren ---
+
             onSearch: function (oEvent) {
                 var sQuery = oEvent.getParameter("query");
                 var aFilters = [];
@@ -32,7 +34,20 @@ sap.ui.define([
                 });
             },
 
-            //  Add Artist Logic ---
+            onSort: function () {
+                var oList = this.byId("artistsTable");
+                var oBinding = oList.getBinding("items");
+                var aSorters = oBinding.getSorter();
+                var bDescending = false;
+                
+                // Toggle sort order
+                if (aSorters && aSorters.length > 0) {
+                    bDescending = !aSorters[0].bDescending;
+                }
+                oBinding.sort(new sap.ui.model.Sorter("averageRating", bDescending)); // Sorteer op Rating
+            },
+
+            // --- DIALOGS: Artiest & Stage ---
 
             onOpenAddArtistDialog: function () {
                 var oView = this.getView();
@@ -56,43 +71,136 @@ sap.ui.define([
             },
 
             onSaveArtist: function () {
-                // 1. Waarden ophalen
+                var oView = this.getView();
+                
+                // 1. Data ophalen uit inputs (Basis)
                 var sName = this.byId("inputArtistName").getValue();
                 var sGenre = this.byId("inputGenre").getSelectedKey();
                 var sCountry = this.byId("inputCountry").getValue();
                 var sLabel = this.byId("inputLabel").getSelectedKey();
                 var sBio = this.byId("inputBio").getValue();
 
-                if (!sName) {
-                    MessageToast.show("Naam is verplicht!");
+                // 1b. Data ophalen (Socials & Foto)
+                var sImageUrl = this.byId("inputImageUrl").getValue();
+                var sSpotify = this.byId("inputSpotify").getValue();
+                var sInstagram = this.byId("inputInstagram").getValue();
+
+                // 1c. Data ophalen (Planning)
+                var sDay = this.byId("inputDay").getSelectedKey();
+                var sStageID = this.byId("inputStage").getSelectedKey();
+                // Hier ging het mis: we moeten de datums ophalen!
+                var oStartTime = this.byId("inputStartTime").getDateValue(); 
+                var oEndTime = this.byId("inputEndTime").getDateValue();
+
+                // Validatie
+                if (!sName || !sStageID || !oStartTime || !oEndTime) {
+                    MessageToast.show("Vul minstens Naam, Stage en Tijden in.");
                     return;
                 }
 
-                var oBinding = this.byId("artistsTable").getBinding("items");
+                // Datum Hack: Tijd goed zetten op een vaste datum (zodat het 'echte' timestamps zijn)
+                // In een echt scenario pak je de datum van de gekozen dag.
+                var now = new Date();
+                oStartTime.setFullYear(2025); oStartTime.setMonth(6); oStartTime.setDate(25); 
+                oEndTime.setFullYear(2025); oEndTime.setMonth(6); oEndTime.setDate(25);
 
-                var oContext = oBinding.create({
+                // 2. Stap 1: Artiest aanmaken
+                var oListBinding = this.byId("artistsTable").getBinding("items");
+                var oArtistContext = oListBinding.create({
                     name: sName,
                     genre: sGenre,
                     country: sCountry,
                     label: sLabel,
                     biography: sBio,
+                    imageUrl: sImageUrl,
+                    spotifyUrl: sSpotify,
+                    instagramUrl: sInstagram,
+                    // Standaardwaarden
                     averageRating: 0,
                     reviewCount: 0
                 });
 
-               
+                // 3. Stap 2: Wachten tot artiest is opgeslagen, dan performance maken
+                oArtistContext.created().then(function () {
+                    
+                    // Nu maken we de performance aan via een nieuwe binding op het model
+                    var oPerformanceBinding = oView.getModel().bindList("/Performances");
+                    
+                    var oPerfContext = oPerformanceBinding.create({
+                        day: sDay,
+                        startTime: oStartTime.toISOString(),
+                        endTime: oEndTime.toISOString(), // Hier gebruiken we de variabele
+                        artist_ID: oArtistContext.getProperty("ID"),
+                        stage_ID: sStageID
+                    });
+
+                    // Als ook de performance klaar is:
+                    oPerfContext.created().then(function() {
+                        MessageToast.show("Artiest " + sName + " toegevoegd!");
+                        this.byId("addArtistDialog").close();
+                        
+                        // Velden wissen (netjes opruimen)
+                        this.byId("inputArtistName").setValue("");
+                        this.byId("inputBio").setValue("");
+                        this.byId("inputImageUrl").setValue("");
+                    }.bind(this));
+
+                }.bind(this)).catch(function (oError) {
+                    MessageToast.show("Fout: " + oError.message);
+                });
+            },
+
+            // --- Stage Toevoegen (Popup) ---
+
+            onAddStage: function () {
+                var that = this;
                 
-                oContext.created().then(function () {
-                    MessageToast.show("Artiest " + sName + " toegevoegd!");
-                }, function (oError) {
-                    MessageToast.show("Fout bij opslaan: " + oError.message);
+                if (!this.oStageDialog) {
+                    this.oStageDialog = new sap.m.Dialog({
+                        title: "Nieuw Podium",
+                        contentWidth: "300px",
+                        content: [
+                            new sap.m.Label({ text: "Naam podium", labelFor: "newStageInput" }),
+                            new sap.m.Input("newStageInput", { placeholder: "bv. The Rave Cave" })
+                        ],
+                        beginButton: new sap.m.Button({
+                            text: "Toevoegen",
+                            type: "Emphasized",
+                            press: function () {
+                                var sName = sap.ui.getCore().byId("newStageInput").getValue();
+                                if (sName) {
+                                    that._saveNewStage(sName);
+                                }
+                                that.oStageDialog.close();
+                            }
+                        }),
+                        endButton: new sap.m.Button({
+                            text: "Annuleren",
+                            press: function () {
+                                that.oStageDialog.close();
+                            }
+                        })
+                    });
+                    this.getView().addDependent(this.oStageDialog);
+                }
+                
+                var oInput = sap.ui.getCore().byId("newStageInput");
+                if(oInput) oInput.setValue("");
+                
+                this.oStageDialog.open();
+            },
+
+            _saveNewStage: function (sStageName) {
+                var oModel = this.getView().getModel();
+                var oListBinding = oModel.bindList("/Stages");
+
+                var oContext = oListBinding.create({
+                    name: sStageName
                 });
 
-                // Reset velden
-                this.byId("inputArtistName").setValue("");
-                this.byId("inputCountry").setValue("");
-                this.byId("inputBio").setValue("");
-                this.byId("addArtistDialog").close();
+                oContext.created().then(function () {
+                    sap.m.MessageToast.show("Podium '" + sStageName + "' toegevoegd!");
+                });
             }
         });
     });
