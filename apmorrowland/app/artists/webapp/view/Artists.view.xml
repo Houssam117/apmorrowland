@@ -11,6 +11,7 @@
                 width="auto">
                 
              <headerToolbar>
+
         <OverflowToolbar id="_IDGenOverflowToolbar">
             <Title id="_IDGenTitle1" text="Line-up" level="H2"/>
             <ToolbarSpacer id="_IDGenToolbarSpacer"/>
@@ -23,6 +24,7 @@
 
             <SearchField id="_IDGenSearchField" width="30%" search=".onSearch" placeholder="Zoek artiest..."/>
             <Button id="_IDGenButton4" icon="sap-icon://sort" press=".onSort" tooltip="Sorteer"/>
+            
         </OverflowToolbar>
     </headerToolbar>
 
