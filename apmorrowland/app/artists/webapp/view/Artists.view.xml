@@ -1,6 +1,41 @@
-<mvc:View controllerName="artists.controller.Artists"
+<mvc:View
+    controllerName="ns.artists.controller.Artists"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    
+    <Page id="page" title="Artist Management">
+        <content>
+            <Table 
+                id="artistsTable"
+                items="{/Artists}"
+                width="auto">
+                
+                <headerToolbar>
+                    <OverflowToolbar id="_IDGenOverflowToolbar">
+                        <Title id="_IDGenTitle" text="Line-up"/>
+                        <ToolbarSpacer id="_IDGenToolbarSpacer"/>
+                        <SearchField id="_IDGenSearchField" width="50%" search=".onSearch"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column id="_IDGenColumn1"><Text id="_IDGenText" text="Artiest" /></Column>
+                    <Column id="_IDGenColumn2"><Text id="_IDGenText1" text="Genre" /></Column>
+                    <Column id="_IDGenColumn3"><Text id="_IDGenText2" text="Land" /></Column>
+                    <Column id="_IDGenColumn4"><Text id="_IDGenText3" text="Rating" /></Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem" type="Navigation" press=".onPress">
+                        <cells>
+                            <Text id="_IDGenText4" text="{name}"/>
+                            <Text id="_IDGenText5" text="{genre}"/>
+                            <Text id="_IDGenText6" text="{country}"/>
+                            <Text id="_IDGenText7" text="{averageRating}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
     </Page>
 </mvc:View>

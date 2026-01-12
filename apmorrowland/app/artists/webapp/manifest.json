@@ -1,7 +1,7 @@
 {
-  "_version": "1.76.0",
+  "_version": "1.59.0",
   "sap.app": {
-    "id": "artists",
+    "id": "ns.artists",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -9,12 +9,6 @@
     },
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:basic",
-      "version": "1.20.0",
-      "toolsId": "ecebc8a6-98a5-4259-9c29-81dc3d60c19f"
-    },
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/festival/",
@@ -45,10 +39,16 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.143.2",
+      "minUI5Version": "1.120.0",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
       }
     },
     "contentDensities": {
@@ -59,59 +59,52 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "artists.i18n.i18n"
+          "bundleName": "ns.artists.i18n.i18n"
         }
       },
       "": {
         "dataSource": "mainService",
         "preload": true,
         "settings": {
+          "synchronizationMode": "None",
           "operationMode": "Server",
           "autoExpandSelect": true,
           "earlyRequests": true
         }
       }
     },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
-        }
-      ]
+    "rootView": {
+      "viewName": "ns.artists.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
     },
     "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "ns.artists.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "transition": "slide",
-        "type": "View",
-        "viewType": "XML",
-        "path": "artists.view",
-        "async": true,
-        "viewPath": "artists.view"
+        "clearControlAggregation": false
       },
       "routes": [
         {
           "name": "RouteArtists",
-          "pattern": ":?query:",
-          "target": [
-            "TargetArtists"
-          ]
+          "pattern": "",
+          "target": ["TargetArtists"]
         }
       ],
       "targets": {
         "TargetArtists": {
-          "id": "Artists",
-          "name": "Artists"
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Artists",
+          "viewName": "Artists"
         }
       }
-    },
-    "rootView": {
-      "viewName": "artists.view.App",
-      "type": "XML",
-      "id": "App",
-      "async": true
     }
   }
 }
