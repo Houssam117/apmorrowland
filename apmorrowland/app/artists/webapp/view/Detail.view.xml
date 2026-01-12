@@ -2,11 +2,12 @@
     controllerName="ns.artists.controller.Detail"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
 
     <Page id="detailPage" title="Artist Details" showNavButton="true" navButtonPress=".onNavBack">
         <content>
-         <ObjectHeader id="_IDGenObjectHeader"
+            <ObjectHeader id="_IDGenObjectHeader"
                 responsive="true"
                 fullScreenOptimized="true"
                 icon="{imageUrl}"
@@ -17,7 +18,7 @@
                 numberUnit="Stars">
                 
                 <attributes>
-                    <ObjectAttribute id="_IDGenObjectAttribute1" title="Country" text="{country}"/>
+                    <ObjectAttribute id="_IDGenObjectAttribute" title="Country" text="{country}"/>
                 </attributes>
 
                 <statuses>
@@ -25,44 +26,65 @@
                         text="{label}" 
                         state="{= ${label} === 'Headliner' ? 'Warning' : 'Success' }"
                         inverted="true" />
-                        
-                    <ObjectStatus id="_IDGenObjectStatus1" text="{= ${averageRating} > 4 ? 'Top Rated' : 'Regular' }" state="None"/>
+                    
+                    <ObjectStatus id="_IDGenObjectStatus1" 
+                        text="Top Rated" 
+                        icon="sap-icon://favorite"
+                        state="Success" 
+                        visible="{= ${averageRating} > 4.5 }"/>
                 </statuses>
-
-                <headerContainer>
-                    <IconTabBar id="_IDGenIconTabBar" class="sapUiNoContentPadding">
-                        <items>
-                            <IconTabFilter id="_IDGenIconTabFilter2" icon="sap-icon://sound" tooltip="Spotify" design="Horizontal">
-                                <Link id="_IDGenLink" text="Open Spotify" href="{spotifyUrl}" target="_blank"/>
-                            </IconTabFilter>
-                            <IconTabFilter id="_IDGenIconTabFilter3" icon="sap-icon://camera" tooltip="Instagram" design="Horizontal">
-                                <Link id="_IDGenLink1" text="Open Instagram" href="{instagramUrl}" target="_blank"/>
-                            </IconTabFilter>
-                        </items>
-                    </IconTabBar>
-                </headerContainer>
             </ObjectHeader>
 
-            <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+            <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" expanded="true">
                 <items>
-                    <IconTabFilter id="_IDGenIconTabFilter" text="Biografie" icon="sap-icon://hint">
-                        <Text id="_IDGenText8" text="{biography}" class="sapUiSmallMargin"/>
+                    <IconTabFilter id="_IDGenIconTabFilter" text="Profiel" icon="sap-icon://person-card">
+                        <VBox id="_IDGenVBox" class="sapUiSmallMargin">
+                            
+                      <Title id="_IDGenTitle3" text="Social Media" level="H4" class="sapUiTinyMarginBottom"/>
+                            
+                            <HBox id="_IDGenHBox1" class="sapUiSmallMarginBottom" wrap="Wrap">
+                                <HBox id="_IDGenHBox2" alignItems="Center" class="sapUiMediumMarginEnd">
+                                    <Image id="_IDGenImage" 
+                                        src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" 
+                                        width="24px" 
+                                        height="24px" 
+                                        class="sapUiTinyMarginEnd"/>
+                                    <Link id="_IDGenLink" text="Luister op Spotify" href="{spotifyUrl}" target="_blank"/>
+                                </HBox>
+
+                                <HBox id="_IDGenHBox4" alignItems="Center">
+                                    <Image id="_IDGenImage1" 
+                                        src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" 
+                                        width="24px" 
+                                        height="24px" 
+                                        class="sapUiTinyMarginEnd"/>
+                                    <Link id="_IDGenLink1" text="Volg op Instagram" href="{instagramUrl}" target="_blank"/>
+                                </HBox>
+                            </HBox>
+
+                            <Title id="_IDGenTitle4" text="Biografie" level="H4" class="sapUiTinyMarginBottom"/>
+                            <Text id="_IDGenText7" text="{biography}" class="sapUiSmallMarginBottom"/>
+                            
+                        </VBox>
                     </IconTabFilter>
                     
                     <IconTabFilter id="_IDGenIconTabFilter1" text="Reviews ({reviewCount})" icon="sap-icon://discussion">
-                        <VBox id="_IDGenVBox">
-                            <Button id="_IDGenButton2" 
-                                text="Schrijf Review" 
-                                icon="sap-icon://add" 
-                                press=".onOpenReviewDialog" 
-                                class="sapUiSmallMarginBottom"/>
+                        <VBox id="_IDGenVBox2" class="sapUiSmallMargin">
+                            
+                            <HBox id="_IDGenHBox3" justifyContent="End" class="sapUiSmallMarginBottom">
+                                <Button id="_IDGenButton2" 
+                                    text="Schrijf Review" 
+                                    icon="sap-icon://add" 
+                                    type="Emphasized"
+                                    press=".onOpenReviewDialog"/>
+                            </HBox>
 
-                            <List id="reviewsList" items="{reviews}" noDataText="Nog geen reviews.">
+                            <List id="reviewsList" items="{reviews}" noDataText="Nog geen reviews. Wees de eerste!">
                                 <items>
                                     <FeedListItem id="_IDGenFeedListItem1"
                                         sender="{visitorName}"
                                         icon="sap-icon://person-placeholder"
-                                        info="Rating: {rating}/5"
+                                        info="Score: {rating}/5"
                                         timestamp="{createdAt}"
                                         text="{comment}"
                                         convertLinksToAnchorTags="All"/>
