@@ -1,0 +1,53 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog
+        id="addArtistDialog"
+        title="Nieuwe Artiest Toevoegen">
+        <content>
+            <f:SimpleForm id="_IDGenSimpleForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+                columnsXL="1" columnsL="1" columnsM="1"
+                singleContainerFullSize="false">
+                <f:content>
+                    <Label id="_IDGenLabel4" text="Naam" required="true"/>
+                    <Input id="inputArtistName" placeholder="bv. Martin Garrix"/>
+
+                    <Label id="_IDGenLabel5" text="Genre"/>
+                    <Select id="inputGenre">
+                        <core:Item id="_IDGenItem" key="Techno" text="Techno"/>
+                        <core:Item id="_IDGenItem1" key="House" text="House"/>
+                        <core:Item id="_IDGenItem2" key="DrumAndBass" text="Drum &amp; Bass"/>
+                        <core:Item id="_IDGenItem3" key="Pop" text="Pop"/>
+                        <core:Item id="_IDGenItem4" key="Hardstyle" text="Hardstyle"/>
+                    </Select>
+
+                    <Label id="_IDGenLabel6" text="Land"/>
+                    <Input id="inputCountry" placeholder="bv. Netherlands"/>
+
+                    <Label id="_IDGenLabel7" text="Label"/>
+                    <Select id="inputLabel">
+                        <core:Item id="_IDGenItem5" key="Headliner" text="Headliner"/>
+                        <core:Item id="_IDGenItem6" key="Rising Star" text="Rising Star"/>
+                        <core:Item id="_IDGenItem7" key="Local Hero" text="Local Hero"/>
+                    </Select>
+
+                    <Label id="_IDGenLabel8" text="Biografie"/>
+                    <TextArea id="inputBio" rows="3"/>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button id="_IDGenButton5" text="Opslaan" type="Emphasized" press=".onSaveArtist"/>
+        </beginButton>
+        <endButton>
+            <Button id="_IDGenButton6" text="Annuleren" press=".onCancelArtist"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
