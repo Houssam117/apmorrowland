@@ -1,9 +1,13 @@
 ID;name;genre;country;biography;label;imageUrl;spotifyUrl;instagramUrl;averageRating;reviewCount
-2b85e68c-7b4d-4569-8230-010101010103;Amelie Lens;Techno;Belgium;High-energy techno DJ known worldwide.;Headliner;https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Amelie_Lens_2018.jpg/800px-Amelie_Lens_2018.jpg;;;4.8;120
-2b85e68c-7b4d-4569-8230-010101010104;Paul Kalkbrenner;Techno;Germany;Live techno pioneer and producer.;Legend;https://upload.wikimedia.org/wikipedia/commons/2/27/Paul_Kalkbrenner_2014.jpg;;;4.9;340
-2b85e68c-7b4d-4569-8230-010101010105;Peggy Gou;House;South Korea;Global house icon with unique style.;Headliner;https://upload.wikimedia.org/wikipedia/commons/3/3f/Peggy_Gou_at_Coachella_2019.jpg;;;4.7;210
-2b85e68c-7b4d-4569-8230-010101010106;Adam Beyer;Techno;Sweden;Founder of Drumcode and techno pioneer.;Legend;https://upload.wikimedia.org/wikipedia/commons/1/15/Adam_Beyer.jpg;;;4.6;180
-2b85e68c-7b4d-4569-8230-010101010107;Solomun;House;Bosnia;Melodic and deep house master.;Headliner;https://upload.wikimedia.org/wikipedia/commons/c/c8/Solomun_2017.jpg;;;4.8;250
-2b85e68c-7b4d-4569-8230-010101010108;Tale Of Us;Melodic Techno;Italy;Emotional and cinematic techno duo.;Headliner;https://upload.wikimedia.org/wikipedia/commons/5/52/Tale_Of_Us.jpg;;;4.9;190
-2b85e68c-7b4d-4569-8230-010101010109;Boris Brejcha;High-Tech Minimal;Germany;Creator of high-tech minimal sound.;Headliner;https://upload.wikimedia.org/wikipedia/commons/7/7e/Boris_Brejcha_2019.jpg;;;4.7;220
-2b85e68c-7b4d-4569-8230-010101010110;Nina Kraviz;Techno;Russia;Eclectic and experimental techno artist.;Headliner;https://upload.wikimedia.org/wikipedia/commons/a/a2/Nina_Kraviz_2016.jpg;;;4.5;160
+a-001;Amelie Lens;Techno;Belgium;The queen of high-energy techno.;Headliner;;;;4.8;120
+a-002;Paul Kalkbrenner;Techno;Germany;Live Berlin techno legend.;Legend;;;;4.9;340
+a-003;Peggy Gou;House;South Korea;Global icon mixing fashion and beats.;Headliner;;;;4.7;210
+a-004;Charlotte de Witte;Techno;Belgium;Dark and stripping techno.;Headliner;;;;4.8;300
+a-005;Martin Garrix;EDM;Netherlands;World's number one DJ.;Headliner;;;;4.6;500
+a-006;Armin van Buuren;Trance;Netherlands;A State of Trance founder.;Legend;;;;4.8;450
+a-007;Lost Frequencies;Pop/House;Belgium;Melodic beats and vocals.;Headliner;;;;4.7;280
+a-008;Netsky;Drum & Bass;Belgium;Liquid DnB pioneer.;Headliner;;;;4.8;190
+a-009;Carl Cox;Techno;UK;Oh yes, oh yes!;Legend;;;;5.0;600
+a-010;Kölsch;Melodic Techno;Denmark;Emotional synthesizer master.;Headliner;;;;4.6;150
+a-011;Dimitri Vegas & Like Mike;EDM;Belgium;Crowd control kings.;Headliner;;;;4.5;400
+a-012;Fisher;Tech House;Australia;Losing it!;Headliner;;;;4.6;220

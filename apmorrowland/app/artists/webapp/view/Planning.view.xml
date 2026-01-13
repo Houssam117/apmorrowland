@@ -53,24 +53,27 @@
                     <PlanningCalendarRow
                         title="{name}"
                         icon="sap-icon://sound-loud"
-                        appointments="{performances}">
-                        
+                        appointments="{
+                            path: 'performances',
+                            templateShareable: true
+                        }">
                         <appointments>
-                                <unified:CalendarAppointment
-                                    startDate="{
-                                        path: 'startTime',
-                                        type: 'sap.ui.model.odata.type.DateTimeOffset'
-                                    }"
-                                    endDate="{
-                                        path: 'endTime',
-                                        type: 'sap.ui.model.odata.type.DateTimeOffset'
-                                    }"
-                                    title="{artist/name}"
-                                    text="{artist/genre}"
-                                    icon="sap-icon://customer"
-                                    type="{= ${day} === 'Friday' ? 'Type01' : 'Type06' }">
-                                </unified:CalendarAppointment>
-                            </appointments>
+                            <unified:CalendarAppointment
+                                startDate="{
+                                    path: 'startTime',
+                                    formatter: '.formatDate'
+                                }"
+                                endDate="{
+                                    path: 'endTime',
+                                    formatter: '.formatDate'
+                                }"
+                                title="{artist/name}"
+                                text="{artist/genre}"
+                                icon="sap-icon://customer"
+                                type="{= ${day} === 'Friday' ? 'Type01' : 'Type06' }">
+                            </unified:CalendarAppointment>
+                        </appointments>
+
                     </PlanningCalendarRow>
                 </rows>
 
