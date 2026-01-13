@@ -11,9 +11,11 @@ sap.ui.define([
     return Controller.extend("ns.artists.controller.Planning", {
 
         onInit: function () {
+            // BELANGRIJK: Startdatum op 24 Juli 2026 zetten (jouw festival data)
             var oStateModel = new JSONModel({
                 startDate: new Date("2026-07-24T08:00:00") 
             });
+            // We noemen dit model "settings" zodat het de database data NIET weggooit
             this.getView().setModel(oStateModel, "settings");
         },
 
@@ -23,12 +25,12 @@ sap.ui.define([
 
         onAppointmentSelect: function (oEvent) {
             var oAppointment = oEvent.getParameter("appointment");
-            
             if (!oAppointment) { return; }
             
             var oCtx = oAppointment.getBindingContext();
             if (!oCtx) { return; }
 
+            // Data ophalen voor de popup
             var sArtist = oCtx.getProperty("artist/name") || "Onbekend";
             var sGenre = oCtx.getProperty("artist/genre") || "-";
             var oStart = oCtx.getProperty("startTime");
@@ -37,9 +39,10 @@ sap.ui.define([
             var sStartStr = oStart ? new Date(oStart).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : "";
             var sEndStr = oEnd ? new Date(oEnd).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : "";
 
+            // Popover maken als die er nog niet is
             if (!this._oPopover) {
                 this._oPopover = new Popover({
-                    title: "Performance Details",
+                    title: "Performance",
                     placement: "Auto",
                     contentWidth: "250px",
                     content: new VBox({
@@ -47,10 +50,8 @@ sap.ui.define([
                         items: [
                             new Label({ text: "Artiest:", design: "Bold" }),
                             new Text({ text: "{artistName}" }),
-                            
                             new Label({ text: "Genre:", design: "Bold", class: "sapUiTinyMarginTop" }),
                             new Text({ text: "{genre}" }),
-                            
                             new Label({ text: "Tijd:", design: "Bold", class: "sapUiTinyMarginTop" }),
                             new Text({ text: "{start} - {end}" })
                         ]
@@ -59,6 +60,7 @@ sap.ui.define([
                 this.getView().addDependent(this._oPopover);
             }
 
+            // Data binden en openen
             var oModel = new JSONModel({
                 artistName: sArtist,
                 genre: sGenre,
@@ -66,7 +68,6 @@ sap.ui.define([
                 end: sEndStr
             });
             this._oPopover.setModel(oModel);
-
             this._oPopover.openBy(oAppointment);
         }
     });

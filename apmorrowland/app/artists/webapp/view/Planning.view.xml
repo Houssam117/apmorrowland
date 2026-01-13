@@ -8,7 +8,7 @@
         <content>
             <PlanningCalendar
                 id="planningCalendar"
-                startDate="{settings>/startDate}" 
+                startDate="{settings>/startDate}"
                 rows="{
                     path: '/Stages',
                     parameters: {
@@ -19,18 +19,34 @@
                 viewKey="DayView">
 
                 <toolbarContent>
-                    <Title text="Festival Planning Juli 2026" titleStyle="H3"/>
+                    <Title text="Festival Planning" titleStyle="H3"/>
                 </toolbarContent>
 
                 <views>
                     <PlanningCalendarView
                         key="DayView"
                         intervalType="Hour"
-                        description="Dagoverzicht"
+                        description="Dag"
                         intervalsS="12"
                         intervalsM="12"
                         intervalsL="12"
                         showSubIntervals="true" />
+
+                    <PlanningCalendarView
+                        key="WeekView"
+                        intervalType="Day"
+                        description="Week"
+                        intervalsS="7"
+                        intervalsM="7"
+                        intervalsL="7" />
+
+                    <PlanningCalendarView
+                        key="MonthView"
+                        intervalType="Day"
+                        description="Maand"
+                        intervalsS="31"
+                        intervalsM="31"
+                        intervalsL="31" />
                 </views>
 
                 <rows>
@@ -40,16 +56,21 @@
                         appointments="{performances}">
                         
                         <appointments>
-                            <unified:CalendarAppointment
-                                startDate="{startTime}"
-                                endDate="{endTime}"
-                                title="{artist/name}"
-                                text="{artist/genre}"
-                                icon="sap-icon://customer"
-                                type="{= ${day} === 'Friday' ? 'Type01' : 'Type02' }">
-                            </unified:CalendarAppointment>
-                        </appointments>
-
+                                <unified:CalendarAppointment
+                                    startDate="{
+                                        path: 'startTime',
+                                        type: 'sap.ui.model.odata.type.DateTimeOffset'
+                                    }"
+                                    endDate="{
+                                        path: 'endTime',
+                                        type: 'sap.ui.model.odata.type.DateTimeOffset'
+                                    }"
+                                    title="{artist/name}"
+                                    text="{artist/genre}"
+                                    icon="sap-icon://customer"
+                                    type="{= ${day} === 'Friday' ? 'Type01' : 'Type06' }">
+                                </unified:CalendarAppointment>
+                            </appointments>
                     </PlanningCalendarRow>
                 </rows>
 
