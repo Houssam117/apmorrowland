@@ -8,7 +8,7 @@
         <content>
             <PlanningCalendar
                 id="planningCalendar"
-                startDate="{path: '/startDate'}" 
+                startDate="{settings>/startDate}" 
                 rows="{
                     path: '/Stages',
                     parameters: {

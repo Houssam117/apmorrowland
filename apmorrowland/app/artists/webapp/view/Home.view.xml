@@ -34,16 +34,18 @@
                         </TileContent>
                     </GenericTile>
 
+
                     <GenericTile id="_IDGenGenericTile3"
                         class="sapUiMediumMarginEnd sapUiMediumMarginBottom"
                         header="Planning"
-                        subheader="Binnenkort"
-                        state="Disabled">
+                      
+                          press=".onNavToPlanning">
                         <TileContent id="_IDGenTileContent2">
                             <ImageContent id="_IDGenImageContent2" src="sap-icon://calendar" />
                         </TileContent>
                     </GenericTile>
-
+         
+     
                 </HBox>
             </VBox>
         </content>

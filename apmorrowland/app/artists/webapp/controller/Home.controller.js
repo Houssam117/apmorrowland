@@ -12,6 +12,10 @@ sap.ui.define([
         onNavToOrders: function () {
             this.getOwnerComponent().getRouter().navTo("RouteOrders");
         }
+      ,
+        onNavToPlanning: function () {
+            this.getOwnerComponent().getRouter().navTo("RoutePlanning");
+        }
     });
     
 });
