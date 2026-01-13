@@ -49,19 +49,14 @@ onFilter: function () {
             oBinding.filter(aFilters);
         },
         
-        onSort: function () {
+     onSort: function () {
             var oTable = this.byId("ordersTable");
             var oBinding = oTable.getBinding("items");
-            var aSorters = oBinding.getSorter();
-            var bDescending = false;
 
-            if (aSorters && aSorters.length > 0) {
-                bDescending = !aSorters[0].bDescending;
-            }
+            this._bDescending = !this._bDescending;
 
-            oBinding.sort(new Sorter("orderDate", bDescending));
+            oBinding.sort(new Sorter("orderDate", this._bDescending));
         },
-
         onCreateOrder: function () {
              sap.m.MessageToast.show("Nieuwe order wizard komt hier!");
         }
