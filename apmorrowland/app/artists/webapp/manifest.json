@@ -96,6 +96,11 @@
           "name": "RouteOrderDetail",
           "pattern": "orders/{orderID}",
           "target": "TargetOrderDetail"
+        },
+        {
+          "name": "RoutePlanning",
+          "pattern": "planning",
+          "target": "TargetPlanning"
         }
       ],
       "targets": {
@@ -114,6 +119,10 @@
         "TargetDetail": {
           "viewName": "Detail",
           "viewId": "Detail"
+        },
+        "TargetPlanning": {
+          "viewName": "Planning",
+          "viewId": "Planning"
         },
         "TargetList": {
           "viewName": "List",

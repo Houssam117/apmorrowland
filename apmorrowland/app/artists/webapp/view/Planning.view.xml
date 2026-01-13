@@ -1,0 +1,59 @@
+<mvc:View
+    controllerName="ns.artists.controller.Planning"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:unified="sap.ui.unified">
+
+    <Page title="Line-up &amp; Planning" showNavButton="true" navButtonPress=".onNavHome">
+        <content>
+            <PlanningCalendar
+                id="planningCalendar"
+                startDate="{path: '/startDate'}" 
+                rows="{
+                    path: '/Stages',
+                    parameters: {
+                        $expand: 'performances($expand=artist)' 
+                    }
+                }"
+                appointmentSelect=".onAppointmentSelect"
+                viewKey="DayView">
+
+                <toolbarContent>
+                    <Title text="Festival Planning Juli 2026" titleStyle="H3"/>
+                </toolbarContent>
+
+                <views>
+                    <PlanningCalendarView
+                        key="DayView"
+                        intervalType="Hour"
+                        description="Dagoverzicht"
+                        intervalsS="12"
+                        intervalsM="12"
+                        intervalsL="12"
+                        showSubIntervals="true" />
+                </views>
+
+                <rows>
+                    <PlanningCalendarRow
+                        title="{name}"
+                        icon="sap-icon://sound-loud"
+                        appointments="{performances}">
+                        
+                        <appointments>
+                            <unified:CalendarAppointment
+                                startDate="{startTime}"
+                                endDate="{endTime}"
+                                title="{artist/name}"
+                                text="{artist/genre}"
+                                icon="sap-icon://customer"
+                                type="{= ${day} === 'Friday' ? 'Type01' : 'Type02' }">
+                            </unified:CalendarAppointment>
+                        </appointments>
+
+                    </PlanningCalendarRow>
+                </rows>
+
+            </PlanningCalendar>
+        </content>
+    </Page>
+</mvc:View>
