@@ -67,10 +67,16 @@
                 </items>
             </Table>
         </content>
-
         <footer>
             <OverflowToolbar>
+                <Button 
+                    icon="sap-icon://pdf-attachment" 
+                    text="Download Bon" 
+                    type="Emphasized" 
+                    press=".onExportPDF"/>
+                
                 <ToolbarSpacer />
+                
                 <Title level="H3" text="Totaalbedrag:" />
                 <Title level="H3" class="sapUiTinyMarginBegin sapUiMediumMarginEnd" text="{
                     path: 'totalAmount', 
@@ -79,5 +85,6 @@
                 } EUR" />
             </OverflowToolbar>
         </footer>
+        
     </Page>
 </mvc:View>
