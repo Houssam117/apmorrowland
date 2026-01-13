@@ -101,12 +101,21 @@
           "name": "RoutePlanning",
           "pattern": "planning",
           "target": "TargetPlanning"
+        },
+        {
+          "name": "RouteLeaderboard",
+          "pattern": "leaderboard",
+          "target": "TargetLeaderboard"
         }
       ],
       "targets": {
         "TargetHome": {
           "viewName": "Home",
           "viewId": "Home"
+        },
+        "TargetLeaderboard": {
+          "viewName": "Leaderboard",
+          "viewId": "Leaderboard"
         },
         "TargetOrderDetail": {
           "viewName": "OrderDetail",

@@ -45,7 +45,15 @@
                         </TileContent>
                     </GenericTile>
          
-     
+                     <GenericTile 
+                        class="sapUiTinyMarginBegin sapUiTinyMarginTop" 
+                        header="Leaderboard" 
+                        subheader="Top Rated Artists" 
+                        press=".onNavToLeaderboard">
+                        <TileContent>
+                            <ImageContent src="sap-icon://competitor" />
+                        </TileContent>
+                    </GenericTile>
                 </HBox>
             </VBox>
         </content>

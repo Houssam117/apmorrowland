@@ -15,7 +15,10 @@ sap.ui.define([
       ,
         onNavToPlanning: function () {
             this.getOwnerComponent().getRouter().navTo("RoutePlanning");
-        }
+        },
+        onNavToLeaderboard: function () {
+            this.getOwnerComponent().getRouter().navTo("RouteLeaderboard");
+        },
     });
     
 });

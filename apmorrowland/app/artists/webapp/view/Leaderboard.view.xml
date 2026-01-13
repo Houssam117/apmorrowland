@@ -1,0 +1,86 @@
+<mvc:View
+    controllerName="ns.artists.controller.Leaderboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+
+    <Page title="Artist Leaderboard" showNavButton="true" navButtonPress=".onNavHome">
+        <content>
+            
+            <Table
+                id="leaderboardTable"
+                items="{
+                    path: '/Artists',
+                    sorter: {
+                        path: 'averageRating',
+                        descending: true
+                    }
+                }"
+                width="auto"
+                class="sapUiResponsiveMargin"
+                growing="true"
+                growingThreshold="10">
+                
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Ranking based on Fan Reviews" level="H2"/>
+                    </Toolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column width="4rem">
+                        <Text text="Act" />
+                    </Column>
+                    <Column>
+                        <Text text="Naam" />
+                    </Column>
+
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Genre" />
+                    </Column>
+
+                    <Column hAlign="Center">
+                        <Text text="Score" />
+                    </Column>
+
+                    <Column hAlign="End">
+                        <Text text="Reviews" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem type="Inactive">
+                        <cells>
+                            <Avatar src="{imageUrl}" displaySize="XS" />
+                            
+                            <VBox>
+                                <Title text="{name}" class="sapUiTinyMarginBottom" />
+                                <tnt:InfoLabel 
+                                    text="TOP RATED" 
+                                    colorScheme="8" 
+                                    visible="{= ${averageRating} >= 4.8 }" />
+                            </VBox>
+
+                            <Text text="{genre}" />
+
+                            <VBox alignItems="Center">
+                                <RatingIndicator 
+                                    value="{averageRating}" 
+                                    iconSize="16px" 
+                                    maxValue="5" 
+                                    editable="false" />
+                                <Text text="{averageRating} / 5.0" class="sapUiTinyMarginTop" />
+                            </VBox>
+
+                            <ObjectNumber 
+                                number="{reviewCount}" 
+                                state="Success" 
+                                unit="reviews" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+        </content>
+    </Page>
+</mvc:View>
