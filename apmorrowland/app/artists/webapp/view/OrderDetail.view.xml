@@ -1,0 +1,40 @@
+<mvc:View
+    controllerName="ns.artists.controller.OrderDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form">
+
+    <Page title="Order Details" showNavButton="true" navButtonPress=".onNavBack">
+        <content>
+            <ObjectHeader
+                title="{customerName}"
+                number="{
+                    path: 'totalAmount', 
+                    type: 'sap.ui.model.type.Float', 
+                    formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                }"
+                numberUnit="EUR"
+                intro="Ordernummer: {ID}">
+                <statuses>
+                    <ObjectStatus
+                        text="{status}"
+                        state="{= ${status} === 'Paid' ? 'Success' : 'Warning' }"
+                        icon="{= ${status} === 'Paid' ? 'sap-icon://accept' : 'sap-icon://pending' }" />
+                </statuses>
+                <attributes>
+                    <ObjectAttribute title="Besteldatum" text="{orderDate}" />
+                </attributes>
+            </ObjectHeader>
+
+            <form:SimpleForm title="Klantgegevens" layout="ResponsiveGridLayout" editable="false">
+                <form:content>
+                    <Label text="Naam" />
+                    <Text text="{customerName}" />
+                    <Label text="Email" />
+                    <Text text="{email}" />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

@@ -91,12 +91,21 @@
           "name": "RouteOrders",
           "pattern": "orders",
           "target": "TargetList"
+        },
+        {
+          "name": "RouteOrderDetail",
+          "pattern": "orders/{orderID}",
+          "target": "TargetOrderDetail"
         }
       ],
       "targets": {
         "TargetHome": {
           "viewName": "Home",
           "viewId": "Home"
+        },
+        "TargetOrderDetail": {
+          "viewName": "OrderDetail",
+          "viewId": "OrderDetail"
         },
         "TargetArtists": {
           "viewName": "Artists",
