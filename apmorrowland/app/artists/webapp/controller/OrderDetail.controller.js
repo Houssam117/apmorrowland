@@ -7,7 +7,6 @@ sap.ui.define([
     return Controller.extend("ns.artists.controller.OrderDetail", {
         
         onInit: function () {
-            // Luister naar de router: als "RouteOrderDetail" wordt geraakt...
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.getRoute("RouteOrderDetail").attachPatternMatched(this._onObjectMatched, this);
         },
@@ -16,7 +15,10 @@ sap.ui.define([
             var sOrderID = window.decodeURIComponent(oEvent.getParameter("arguments").orderID);
             
             this.getView().bindElement({
-                path: "/Orders('" + sOrderID + "')" 
+                path: "/Orders('" + sOrderID + "')", 
+                parameters: {
+                    "$expand": "items"
+                }
             });
         },
 

@@ -1,0 +1,135 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form">
+    
+    <Dialog title="Nieuwe Order Aanmaken" contentWidth="800px" contentHeight="600px">
+        <content>
+            <Wizard id="CreateOrderWizard" showNextButton="true">
+                
+              <WizardStep id="stepCustomer" title="Klantgegevens" validated="false">
+                    <MessageStrip text="Kies een bestaande klant of maak een nieuwe aan." class="sapUiSmallMarginBottom"/>
+                    
+                    <form:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                        
+                        <Label text="Modus"/>
+                        <SegmentedButton selectedKey="{newOrder>/customerMode}" selectionChange="onCustomerModeChange">
+                            <items>
+                                <SegmentedButtonItem key="Existing" text="Kies uit lijst" icon="sap-icon://customer-and-supplier"/>
+                                <SegmentedButtonItem key="New" text="Nieuwe Klant" icon="sap-icon://add-contact"/>
+                            </items>
+                        </SegmentedButton>
+
+                        <Label text="Zoek Klant" visible="{= ${newOrder>/customerMode} === 'Existing' }"/>
+                        <ComboBox
+                            visible="{= ${newOrder>/customerMode} === 'Existing' }"
+                            items="{
+                                path: '/Customers', 
+                                templateShareable: true
+                            }"
+                            selectionChange="onCustomerSelect"
+                            placeholder="Selecteer een klant..."
+                            width="100%">
+                            <core:Item key="{email}" text="{name} ({email})" />
+                        </ComboBox>
+
+                        <Label text="Naam" visible="{= ${newOrder>/customerMode} === 'New' }" required="true"/>
+                        <Input 
+                            value="{newOrder>/customerName}" 
+                            visible="{= ${newOrder>/customerMode} === 'New' }"
+                            liveChange="validateCustomerStep" 
+                            placeholder="bv. Jan Janssen"/>
+                        
+                        <Label text="Email" visible="{= ${newOrder>/customerMode} === 'New' }" required="true"/>
+                        <Input 
+                            value="{newOrder>/email}" 
+                            visible="{= ${newOrder>/customerMode} === 'New' }"
+                            liveChange="validateCustomerStep" 
+                            placeholder="jan@email.com"/>
+
+                        <Label text="Geselecteerd"/>
+                        <Text text="{newOrder>/customerName} - {newOrder>/email}" 
+                              visible="{= ${newOrder>/customerName} !== '' }" />
+
+                    </form:SimpleForm>
+                </WizardStep>
+
+                <WizardStep id="stepType" title="Order Type" validated="true">
+                    <MessageStrip text="Kies het type bestelling. Dit bepaalt welke producten beschikbaar zijn." class="sapUiSmallMarginBottom" type="Information"/>
+                    <SegmentedButton selectedKey="{newOrder>/orderType}" width="100%">
+                        <items>
+                            <SegmentedButtonItem key="Ticket" icon="sap-icon://tag" text="Tickets" />
+                            <SegmentedButtonItem key="Merch" icon="sap-icon://product" text="Merchandise" />
+                            <SegmentedButtonItem key="Food" icon="sap-icon://meal" text="Food &amp; Drinks" />
+                        </items>
+                    </SegmentedButton>
+                </WizardStep>
+
+                <WizardStep id="stepItems" title="Items Toevoegen" validated="false" activate="onActivateItemStep">
+                    
+                    <Table id="tempItemTable" items="{newOrder>/items}" noDataText="Nog geen items toegevoegd.">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="Winkelmandje"/>
+                                <ToolbarSpacer/>
+                                <Button icon="sap-icon://add" text="Item Toevoegen" press="onTempItemAdd"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        
+                        <columns>
+                            <Column>
+                                <Text text="Product"/>
+                            </Column>
+                            
+                            <Column width="6rem">
+                                <Text text="Aantal"/>
+                            </Column>
+                            
+                            <Column width="10rem" hAlign="End">
+                                <Text text="Prijs"/>
+                            </Column>
+                            
+                            <Column width="4rem"></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <ComboBox 
+                                        items="{newOrder>/productOptions}"
+                                        selectedKey="{newOrder>productID}"
+                                        selectionChange="onProductChange"
+                                        placeholder="Kies een product..."
+                                        width="100%">
+                                        <core:Item key="{newOrder>ID}" text="{newOrder>name}" />
+                                    </ComboBox>
+
+                                    <StepInput value="{newOrder>quantity}" min="1" change="validateItemStep"/>
+                                    
+                                    <Input 
+                                        value="{newOrder>price}" 
+                                        type="Number" 
+                                        editable="false" 
+                                        description="EUR"
+                                        textAlign="End"/>
+                                        
+                                    <Button icon="sap-icon://delete" type="Transparent" press="onTempItemDelete"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    
+                    <HBox justifyContent="End" class="sapUiSmallMarginTop">
+                        <Title text="Totaal: {newOrder>/totalAmount} EUR" level="H3"/>
+                    </HBox>
+                </WizardStep>
+
+            </Wizard>
+        </content>
+        
+        <buttons>
+            <Button text="Opslaan" type="Emphasized" press="onWizardSubmit" enabled="false" id="btnSubmitOrder"/>
+            <Button text="Annuleren" press="onWizardCancel"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

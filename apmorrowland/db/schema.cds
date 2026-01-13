@@ -47,7 +47,17 @@ entity Orders : cuid, managed {
 
     items       : Composition of many OrderItems on items.order = $self;
 }
-
+entity Products {
+    key ID : String;            
+    name   : String;
+    type   : String enum { Ticket; Merch; Food };
+    price  : Decimal(10,2);
+}
+// --- KLANTEN LIJST ---
+entity Customers : cuid {
+    name  : String;
+    email : String;
+}
 entity OrderItems : cuid {
     itemName    : String  @title: 'Item Name'; // 
     quantity    : Integer @title: 'Quantity';  // 

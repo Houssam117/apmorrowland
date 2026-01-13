@@ -3,38 +3,81 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:f="sap.f"
-    xmlns:form="sap.ui.layout.form">
+    xmlns:layout="sap.ui.layout">
 
     <Page title="Order Details" showNavButton="true" navButtonPress=".onNavBack">
         <content>
             <ObjectHeader
                 title="{customerName}"
+                intro="Ordernummer: {ID}"
                 number="{
                     path: 'totalAmount', 
                     type: 'sap.ui.model.type.Float', 
                     formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
                 }"
-                numberUnit="EUR"
-                intro="Ordernummer: {ID}">
+                numberUnit="EUR">
+                
                 <statuses>
                     <ObjectStatus
+                        title="Status"
                         text="{status}"
-                        state="{= ${status} === 'Paid' ? 'Success' : 'Warning' }"
-                        icon="{= ${status} === 'Paid' ? 'sap-icon://accept' : 'sap-icon://pending' }" />
+                        state="{= ${status} === 'Paid' ? 'Success' : (${status} === 'Cancelled' ? 'Error' : 'Warning') }"
+                        icon="{= ${status} === 'Paid' ? 'sap-icon://accept' : (${status} === 'Cancelled' ? 'sap-icon://decline' : 'sap-icon://pending') }" />
                 </statuses>
+
                 <attributes>
+                    <ObjectAttribute title="Type" text="{orderType}" />
                     <ObjectAttribute title="Besteldatum" text="{orderDate}" />
+                    <ObjectAttribute title="Email" text="{email}" />
                 </attributes>
             </ObjectHeader>
 
-            <form:SimpleForm title="Klantgegevens" layout="ResponsiveGridLayout" editable="false">
-                <form:content>
-                    <Label text="Naam" />
-                    <Text text="{customerName}" />
-                    <Label text="Email" />
-                    <Text text="{email}" />
-                </form:content>
-            </form:SimpleForm>
+            <Table 
+                headerText="Bestelde Items"
+                items="{items}" 
+                class="sapUiSmallMargin">
+                
+                <columns>
+                    <Column><Text text="Item Naam" /></Column>
+                    <Column hAlign="Center"><Text text="Aantal" /></Column>
+                    <Column hAlign="End"><Text text="Prijs" /></Column>
+                    <Column hAlign="End"><Text text="Subtotaal" /></Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier title="{itemName}" />
+                            
+                            <Text text="{quantity} x" />
+                            
+                            <Text text="{
+                                path: 'price', 
+                                type: 'sap.ui.model.type.Float', 
+                                formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                            } EUR" />
+
+                            <Text text="{
+                                path: 'subTotal',
+                                type: 'sap.ui.model.type.Float', 
+                                formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                            } EUR" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
         </content>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Title level="H3" text="Totaalbedrag:" />
+                <Title level="H3" class="sapUiTinyMarginBegin sapUiMediumMarginEnd" text="{
+                    path: 'totalAmount', 
+                    type: 'sap.ui.model.type.Float', 
+                    formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                } EUR" />
+            </OverflowToolbar>
+        </footer>
     </Page>
 </mvc:View>

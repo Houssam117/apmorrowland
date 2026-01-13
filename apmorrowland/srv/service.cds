@@ -15,7 +15,8 @@ service FestivalService {
         *,
         items
     };
-
+    entity Customers as projection on my.Customers;
+    entity Products as projection on my.Products;
     entity OrderItems as projection on my.OrderItems;
 
     entity Stages as projection on my.Stages;

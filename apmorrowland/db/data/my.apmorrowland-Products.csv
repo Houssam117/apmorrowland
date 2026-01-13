@@ -1,0 +1,12 @@
+ID;name;type;price
+p-001;Full Madness Pass;Ticket;249.99
+p-002;Day Pass Friday;Ticket;110.00
+p-003;Day Pass Saturday;Ticket;110.00
+p-004;VIP Full Madness;Ticket;500.00
+p-005;DreamVille Tent;Ticket;150.00
+p-006;Official T-Shirt;Merch;35.00
+p-007;Hoodie Black;Merch;60.00
+p-008;Tomorrowland Flag;Merch;25.00
+p-009;Food Pearls (10);Food;15.00
+p-010;Beer Voucher (5);Food;20.00
+p-011;Water Bottle;Food;5.00

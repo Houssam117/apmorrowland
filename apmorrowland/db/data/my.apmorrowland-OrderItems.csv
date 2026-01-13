@@ -1,0 +1,6 @@
+ID;order_ID;itemName;quantity;price;subTotal
+item-001;c4a760a8-dbcf-4497-9c3a-101010101001;Full Madness Pass;2;249.99;499.98
+item-002;c4a760a8-dbcf-4497-9c3a-101010101001;DreamVille Tent;1;150.00;150.00
+item-003;c4a760a8-dbcf-4497-9c3a-101010101002;Hoodie Black (M);2;60.00;120.00
+item-004;c4a760a8-dbcf-4497-9c3a-101010101002;Cap;1;35.00;35.00
+item-005;c4a760a8-dbcf-4497-9c3a-101010101003;Food Pearls;5;11.00;55.00
