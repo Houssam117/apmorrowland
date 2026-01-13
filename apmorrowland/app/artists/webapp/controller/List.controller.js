@@ -9,24 +9,20 @@ sap.ui.define([
         onInit: function () {
         },
 
-        
-        onSelectionChange: function (oEvent) {
-            var oList = oEvent.getSource();
-            var oItem = oList.getSelectedItem();
+    onPress: function (oEvent) {
+            var oItem = oEvent.getSource();
+            var oBindingContext = oItem.getBindingContext();
             
-            if (oItem) {
-                var oBindingContext = oItem.getBindingContext();
-                var sPath = oBindingContext.getPath().substr(1); // haal '/' weg
-                
-                var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("RouteDetail", {
-                    orderPath: window.encodeURIComponent(sPath)
-                });
-            }
+            var sOrderID = oBindingContext.getProperty("ID");
+
+            this.getOwnerComponent().getRouter().navTo("RouteOrderDetail", {
+                orderID: sOrderID
+            });
         },
-onNavHome: function () {
+        onNavHome: function () {
             this.getOwnerComponent().getRouter().navTo("RouteHome");
         },
+        
         onSort: function () {
             var oTable = this.byId("ordersTable");
             var oBinding = oTable.getBinding("items");
