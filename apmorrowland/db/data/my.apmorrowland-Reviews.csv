@@ -1,8 +1,31 @@
 ID;artist_ID;rating;title;text
-r-001;a-001;5;Geweldig;Wat een energie!
-r-002;a-001;5;Queen;Amelie stelt nooit teleur.
-r-003;a-002;5;Legende;Sky and Sand live was magisch.
-r-004;a-002;4;Top;Goede set maar kort.
-r-005;a-005;3;Ok;Beetje te commercieel voor mij.
-r-006;a-005;5;Vuurwerk;De show was echt insane!
-r-007;a-006;5;Trance King;Beste set van de avond.
+r-001;a-001;5;Ongekend!;De energie die Amelie brengt is niet normaal. Beste set van het weekend.
+r-002;a-001;5;Queen;Geen woorden voor, gewoon gaan.
+r-003;a-001;4;Hard;Beetje te hard voor mijn vrienden, maar ik vond het top.
+r-004;a-002;5;Emotioneel;Sky and Sand live horen is een droom die uitkomt.
+r-005;a-002;5;Meesterwerk;Paul weet precies hoe hij de menigte moet bespelen.
+r-006;a-003;3;Te druk;Kon de tent niet in komen, veel te vol. Muziek was wel oké.
+r-007;a-003;4;Gouuu;It girl! Leuke sfeer, maar korte set.
+r-008;a-004;5;KNTXT;Charlotte stelt nooit teleur. Wat een bass!
+r-009;a-004;5;Techno power;De lichten en de muziek waren perfect op elkaar afgestemd.
+r-010;a-005;2;Te commercieel;Hij praat te veel door de microfoon. "Put your hands up" kennen we nu wel.
+r-011;a-005;5;Mainstage Madness;Vuurwerk, lasers, hits. Dit is waarvoor ik naar Tomorrowland kom!
+r-012;a-005;4;Prima feestje;Leuk voor een keertje, maar muzikaal niet heel spannend.
+r-013;a-006;5;Trance Family;Armin is en blijft de koning. Kippenvel momentjes.
+r-014;a-006;5;Legende;Respect voor deze man, draait al zo lang aan de top.
+r-015;a-008;1;Teleurstellend;Draaide niet eens live, stond alleen maar te springen.
+r-016;a-008;4;Feestje;De sfeer was wel echt goud, iedereen ging los.
+r-017;a-009;5;Oh Yes Oh Yes;Carl Cox in de Daybreak session is magie.
+r-018;a-009;5;Vakman;Je ziet dat hij geniet, en dat slaat over op het publiek.
+r-019;a-010;3;Oud;Vroeger was zijn trance beter, dit nieuwe spul is niks voor mij.
+r-020;a-011;2;Microfoon show;Stop met praten en draai platen!
+r-021;a-011;5;Sloopkogel;Alles kapot! Left right left right!
+r-022;a-012;5;Karren maar;Niet normaal hoe lang hij doorgaat. Acid koning.
+r-023;a-013;5;Drum and Bass;Eindelijk goede DnB op de mainstage. Netsky maakt ons trots.
+r-024;a-014;3;Matig;Hij draaide alleen maar zijn eigen top 40 hits.
+r-025;a-015;5;Uniek;Die sound van Boris hoor je nergens anders. Geweldig met dat masker.
+r-026;a-015;4;Mysterieus;Goede opbouw van de set, lekkere minimal.
+r-027;a-004;4;Beuker;Lekker doorstampen, geen genade.
+r-028;a-007;5;Zomers;Heerlijk met een biertje in de zon.
+r-029;a-007;4;Meezingers;Are you with me? Ja hoor!
+r-030;a-001;5;Nog een keer;Volgend jaar weer vooraan bij Amelie.
