@@ -1,4 +1,16 @@
-ID;customerName;totalAmount;status;orderDate
-90000000-0000-0000-0000-000000000001;Jonas De Smet;150.00;Paid;2025-06-15
-90000000-0000-0000-0000-000000000002;Sarah Peeters;45.50;Pending;2025-06-15
-90000000-0000-0000-0000-000000000003;Tom Mertens;210.00;Paid;2025-06-16
+ID;customerName;orderDate;totalAmount;status;email
+c4a760a8-dbcf-4497-9c3a-101010101001;Jonas De Smet;2026-01-12;149.99;Paid;jonas.ds@gmail.com
+c4a760a8-dbcf-4497-9c3a-101010101002;Sophie Maes;2026-01-10;299.50;Pending;sophie.m@outlook.com
+c4a760a8-dbcf-4497-9c3a-101010101003;Mark Peeters;2026-01-08;55.00;Paid;mark.p@telenet.be
+c4a760a8-dbcf-4497-9c3a-101010101004;Elise Dubois;2025-12-24;450.00;Cancelled;elise.d@hotmail.com
+c4a760a8-dbcf-4497-9c3a-101010101005;Tom Van Damme;2026-01-11;25.00;Paid;tom.vd@gmail.com
+c4a760a8-dbcf-4497-9c3a-101010101006;Sarah Verstraeten;2026-02-01;120.00;Pending;sarah.v@yahoo.com
+c4a760a8-dbcf-4497-9c3a-101010101007;Kevin De Vries;2025-12-30;1200.00;Paid;kevin.dv@gmail.com
+c4a760a8-dbcf-4497-9c3a-101010101008;Emma Wouters;2026-01-05;85.50;Paid;emma.w@student.ap.be
+c4a760a8-dbcf-4497-9c3a-101010101009;Lucas Mertens;2026-01-09;15.00;Cancelled;lucas.m@gmail.com
+c4a760a8-dbcf-4497-9c3a-101010101010;Julie Jacobs;2026-01-13;210.75;Pending;julie.j@outlook.com
+c4a760a8-dbcf-4497-9c3a-101010101011;Bram Goossens;2025-11-15;60.00;Paid;bram.g@telenet.be
+c4a760a8-dbcf-4497-9c3a-101010101012;Lara Thys;2026-01-02;99.99;Paid;lara.t@hotmail.com
+c4a760a8-dbcf-4497-9c3a-101010101013;Sander Vermeulen;2026-01-12;350.00;Pending;sander.v@gmail.com
+c4a760a8-dbcf-4497-9c3a-101010101014;Nina Claes;2025-12-10;12.50;Cancelled;nina.c@yahoo.com
+c4a760a8-dbcf-4497-9c3a-101010101015;Maxime Dupont;2026-01-07;500.00;Paid;maxime.d@gmail.com

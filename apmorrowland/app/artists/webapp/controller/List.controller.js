@@ -1,40 +1,69 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
     "sap/ui/model/Sorter"
-], function (Controller, Sorter) {
+], function (Controller, Filter, FilterOperator, Sorter) {
     "use strict";
 
     return Controller.extend("ns.artists.controller.List", {
-        
-        onInit: function () {
+
+        onNavHome: function () {
+            this.getOwnerComponent().getRouter().navTo("RouteHome");
         },
 
-    onPress: function (oEvent) {
+        onPress: function (oEvent) {
             var oItem = oEvent.getSource();
-            var oBindingContext = oItem.getBindingContext();
-            
-            var sOrderID = oBindingContext.getProperty("ID");
-
+            var sOrderID = oItem.getBindingContext().getProperty("ID");
             this.getOwnerComponent().getRouter().navTo("RouteOrderDetail", {
                 orderID: sOrderID
             });
         },
-        onNavHome: function () {
-            this.getOwnerComponent().getRouter().navTo("RouteHome");
+onFilter: function () {
+            var aFilters = [];
+
+          
+            var oSearchField = this.byId("searchField");
+            if (oSearchField) {
+                var sQuery = oSearchField.getValue();
+                if (sQuery) {
+                    aFilters.push(new Filter({
+                        path: "customerName",
+                        operator: FilterOperator.Contains,
+                        value1: sQuery,
+                        caseSensitive: false  
+                    }));
+                }
+            }
+
+            var oStatusSelect = this.byId("statusFilter");
+            if (oStatusSelect) {
+                var sStatus = oStatusSelect.getSelectedKey();
+                if (sStatus) {
+                    aFilters.push(new Filter("status", FilterOperator.EQ, sStatus));
+                }
+            }
+
+            var oTable = this.byId("ordersTable");
+            var oBinding = oTable.getBinding("items");
+            oBinding.filter(aFilters);
         },
         
         onSort: function () {
             var oTable = this.byId("ordersTable");
             var oBinding = oTable.getBinding("items");
             var aSorters = oBinding.getSorter();
-            var bDesc = (aSorters.length > 0) ? !aSorters[0].bDescending : true;
-            
-            oBinding.sort(new Sorter("totalAmount", bDesc));
+            var bDescending = false;
+
+            if (aSorters && aSorters.length > 0) {
+                bDescending = !aSorters[0].bDescending;
+            }
+
+            oBinding.sort(new Sorter("orderDate", bDescending));
         },
 
         onCreateOrder: function () {
-            // Hier komt straks de Wizard!
-            sap.m.MessageToast.show("Wizard start binnenkort...");
+             sap.m.MessageToast.show("Nieuwe order wizard komt hier!");
         }
     });
 });
