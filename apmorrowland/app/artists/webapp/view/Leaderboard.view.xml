@@ -7,10 +7,10 @@
     <Page title="Artist Leaderboard" showNavButton="true" navButtonPress=".onNavHome">
         <content>
             
-            <Table
+           <Table
                 id="leaderboardTable"
                 items="{
-                    path: '/Artists',
+                    path: '/ArtistsLeaderboard', 
                     sorter: {
                         path: 'averageRating',
                         descending: true

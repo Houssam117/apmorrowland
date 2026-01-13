@@ -24,17 +24,24 @@ entity Artists : cuid, managed {
 }
 
 entity Reviews : cuid, managed {
-    rating      : Integer @title: 'Rating (1-5)';      // [cite: 54]
-    comment     : String  @title: 'Comment';           // [cite: 54]
-    visitorName : String  @title: 'Visitor Name';      // 
-    
-    artist      : Association to Artists;
+    title   : String;  // <--- Zorg dat deze regel er staat!
+    text    : String;
+    rating  : Integer;
+    artist  : Association to Artists;
 }
 
 // -------------------------------------------------------------------------
 // 2.2 Ticket & Merch Order Management Entities
 // -------------------------------------------------------------------------
-
+view ArtistsAnalyzed as select from Artists {
+    *, // Pak alle gewone velden (naam, land, etc.)
+    
+    // Bereken het aantal reviews
+    (select count(ID) from Reviews where artist.ID = Artists.ID) as reviewCount : Integer,
+    
+    // Bereken het gemiddelde (afgerond op 1 decimaal)
+    (select round(avg(rating), 1) from Reviews where artist.ID = Artists.ID) as averageRating : Decimal(2,1)
+};
 entity Orders : cuid, managed {
     orderDate   : DateTime @cds.on.insert: $now; 
     customerName: String   @title: 'Customer Name'; 

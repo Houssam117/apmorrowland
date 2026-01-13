@@ -1,13 +1,7 @@
-ID;name;genre;country;biography;label;imageUrl;spotifyUrl;instagramUrl;averageRating;reviewCount
-a-001;Amelie Lens;Techno;Belgium;The queen of high-energy techno.;Headliner;;;;4.8;120
-a-002;Paul Kalkbrenner;Techno;Germany;Live Berlin techno legend.;Legend;;;;4.9;340
-a-003;Peggy Gou;House;South Korea;Global icon mixing fashion and beats.;Headliner;;;;4.7;210
-a-004;Charlotte de Witte;Techno;Belgium;Dark and stripping techno.;Headliner;;;;4.8;300
-a-005;Martin Garrix;EDM;Netherlands;World's number one DJ.;Headliner;;;;4.6;500
-a-006;Armin van Buuren;Trance;Netherlands;A State of Trance founder.;Legend;;;;4.8;450
-a-007;Lost Frequencies;Pop/House;Belgium;Melodic beats and vocals.;Headliner;;;;4.7;280
-a-008;Netsky;Drum & Bass;Belgium;Liquid DnB pioneer.;Headliner;;;;4.8;190
-a-009;Carl Cox;Techno;UK;Oh yes, oh yes!;Legend;;;;5.0;600
-a-010;Kölsch;Melodic Techno;Denmark;Emotional synthesizer master.;Headliner;;;;4.6;150
-a-011;Dimitri Vegas & Like Mike;EDM;Belgium;Crowd control kings.;Headliner;;;;4.5;400
-a-012;Fisher;Tech House;Australia;Losing it!;Headliner;;;;4.6;220
+ID;name;genre;country;biography;label;imageUrl;spotifyUrl;instagramUrl
+a-001;Amelie Lens;Techno;Belgium;The queen of high-energy techno.;Headliner;;;
+a-002;Paul Kalkbrenner;Techno;Germany;Live Berlin techno legend.;Legend;;;
+a-003;Peggy Gou;House;South Korea;Global icon mixing fashion and beats.;Headliner;;;
+a-004;Charlotte de Witte;Techno;Belgium;Dark and stripping techno.;Headliner;;;
+a-005;Martin Garrix;EDM;Netherlands;World's number one DJ.;Headliner;;;
+a-006;Armin van Buuren;Trance;Netherlands;A State of Trance founder.;Legend;;;
