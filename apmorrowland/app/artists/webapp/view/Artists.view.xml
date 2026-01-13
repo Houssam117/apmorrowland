@@ -11,7 +11,7 @@
             <Table 
                 id="artistsTable"
                 items="{
-                    path: '/Artists',
+                    path: '/ArtistsLeaderboard',  
                     sorter: {
                         path: 'name'
                     }

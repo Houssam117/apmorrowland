@@ -6,14 +6,14 @@
         title="Schrijf een Review">
         <content>
             <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
-                <Label id="_IDGenLabel" text="Jouw Naam" labelFor="inputName"/>
-                <Input id="inputName" placeholder="bv. Jonas"/>
+               <Label text="Titel" />
+        <Input id="reviewTitleInput" placeholder="Korte samenvatting..." />
 
-                <Label id="_IDGenLabel1" text="Score" labelFor="inputRating" class="sapUiSmallMarginTop"/>
-                <RatingIndicator id="inputRating" maxValue="5" class="sapUiSmallMarginBottom"/>
+        <Label text="Beoordeling" />
+        <RatingIndicator id="reviewRatingInput" maxValue="5" />
 
-                <Label id="_IDGenLabel2" text="Jouw Mening" labelFor="inputComment"/>
-                <TextArea id="inputComment" rows="4" width="100%" placeholder="Vertel ons wat je ervan vond..."/>
+        <Label text="Jouw ervaring" />
+        <TextArea id="reviewTextInput" rows="4" />
             </VBox>
         </content>
         <beginButton>

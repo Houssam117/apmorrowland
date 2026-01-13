@@ -6,33 +6,30 @@ using { managed, cuid, Currency } from '@sap/cds/common';
 // 2.1 Artist Management Entities
 // -------------------------------------------------------------------------
 
-entity Artists : cuid, managed {
-    name        : String(100) @title: 'Artist Name';
-    genre       : String(50)  @title: 'Genre';
-    country     : String(50)  @title: 'Country';
-    biography   : LargeString @title: 'Biography';
-    imageUrl    : String      @title: 'Image URL';     
-    label       : String(20)  @title: 'Label';        
+entity Artists : managed {
+    key ID        : String; // FIX: String zodat 'a-001' uit CSV werkt
+    name          : String;
+    genre         : String;
+    country       : String;
+    biography     : String;
+    label         : String;
+    imageUrl      : String;
+    spotifyUrl    : String;
+    instagramUrl  : String;
     
-    spotifyUrl  : String      @title: 'Spotify Link';
-    instagramUrl: String      @title: 'Instagram Link';
-
-    averageRating : Decimal(2,1) default 0.0;
-    reviewCount   : Integer default 0;
-    reviews     : Association to many Reviews on reviews.artist = $self;
-    performances: Association to many Performances on performances.artist = $self;
+    performances  : Association to many Performances on performances.artist = $self;
+    reviews       : Association to many Reviews on reviews.artist = $self;
 }
 
-entity Reviews : cuid, managed {
-    title   : String;  // <--- Zorg dat deze regel er staat!
+entity Reviews : managed {
+    key ID  : String; // FIX: String voor CSV data (r-001)
+    title   : String;  
     text    : String;
     rating  : Integer;
     artist  : Association to Artists;
 }
 
-// -------------------------------------------------------------------------
-// 2.2 Ticket & Merch Order Management Entities
-// -------------------------------------------------------------------------
+// SLIMME VIEW VOOR LEADERBOARD
 view ArtistsAnalyzed as select from Artists {
     *, // Pak alle gewone velden (naam, land, etc.)
     
@@ -42,10 +39,14 @@ view ArtistsAnalyzed as select from Artists {
     // Bereken het gemiddelde (afgerond op 1 decimaal)
     (select round(avg(rating), 1) from Reviews where artist.ID = Artists.ID) as averageRating : Decimal(2,1)
 };
+
+// -------------------------------------------------------------------------
+// 2.2 Ticket & Merch Order Management Entities
+// -------------------------------------------------------------------------
+
 entity Orders : cuid, managed {
     orderDate   : DateTime @cds.on.insert: $now; 
     customerName: String   @title: 'Customer Name'; 
-
     email       : String   @title: 'Email';
     orderType   : String enum { Ticket; Merch; Food; } ; 
     status      : String enum { Open; Paid; Cancelled; } default 'Open'; 
@@ -54,39 +55,44 @@ entity Orders : cuid, managed {
 
     items       : Composition of many OrderItems on items.order = $self;
 }
+
+entity OrderItems : cuid {
+    itemName    : String  @title: 'Item Name'; 
+    quantity    : Integer @title: 'Quantity';  
+    price       : Decimal(10,2) @title: 'Price per Unit'; 
+    subTotal    : Decimal(10,2) @title: 'Subtotal'; 
+    
+    order       : Association to Orders;
+}
+
 entity Products {
-    key ID : String;            
+    key ID : String; // FIX: String voor CSV data (p-001)            
     name   : String;
     type   : String enum { Ticket; Merch; Food };
     price  : Decimal(10,2);
 }
-// --- KLANTEN LIJST ---
-entity Customers : cuid {
-    name  : String;
-    email : String;
-}
-entity OrderItems : cuid {
-    itemName    : String  @title: 'Item Name'; // 
-    quantity    : Integer @title: 'Quantity';  // 
-    price       : Decimal(10,2) @title: 'Price per Unit'; // 
-    subTotal    : Decimal(10,2) @title: 'Subtotal'; // 
-    
-    order       : Association to Orders;
+
+entity Customers {
+    key ID : String; // FIX: String gemaakt (was cuid) om CSV conflicten te voorkomen
+    name   : String;
+    email  : String;
 }
 
 // -------------------------------------------------------------------------
 // 2.3 Line-up & Planning Entities
 // -------------------------------------------------------------------------
 
-entity Stages : cuid {
-    name        : String(50); // E.g. Mainstage, Freedom Stage
-    performances: Association to many Performances on performances.stage = $self;
+entity Stages {
+    key ID : String; // FIX: String voor CSV data (s-001)
+    name         : String(50); // E.g. Mainstage, Freedom Stage
+    performances : Association to many Performances on performances.stage = $self;
 }
 
-entity Performances : cuid {
-    startTime   : DateTime; // [cite: 123]
-    endTime     : DateTime; // [cite: 123]
-    day         : String enum { Friday; Saturday; Sunday; }; // Festivaldagen
+entity Performances {
+    key ID : String; // FIX: String voor CSV data (perf-001)
+    startTime   : DateTime;
+    endTime     : DateTime;
+    day         : String enum { Friday; Saturday; Sunday; }; 
     
     artist      : Association to Artists;
     stage       : Association to Stages;

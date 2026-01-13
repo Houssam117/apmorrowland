@@ -83,17 +83,17 @@
                                     press=".onOpenReviewDialog"/>
                             </HBox>
 
-                            <List id="reviewsList" items="{reviews}" noDataText="Nog geen reviews. Wees de eerste!">
-                                <items>
-                                    <FeedListItem id="_IDGenFeedListItem1"
-                                        sender="{visitorName}"
-                                        icon="sap-icon://person-placeholder"
-                                        info="Score: {rating}/5"
-                                        timestamp="{createdAt}"
-                                        text="{comment}"
-                                        convertLinksToAnchorTags="All"/>
-                                </items>
-                            </List>
+                          <List id="reviewsList" items="{reviews}" noDataText="Nog geen reviews.">
+                        <items>
+                            <FeedListItem 
+                                sender="{title}"     
+                                icon="sap-icon://person-placeholder"
+                                info="Score: {rating}/5"
+                                timestamp="{createdAt}"
+                                text="{text}"         
+                                convertLinksToAnchorTags="All"/>
+                        </items>
+                    </List>
                         </VBox>
                     </IconTabFilter>
                 </items>

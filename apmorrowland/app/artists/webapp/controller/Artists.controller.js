@@ -28,15 +28,19 @@ sap.ui.define([
                 oBinding.filter(aFilters);
             },
 
-          onPress: function (oEvent) {
-                var oItem = oEvent.getSource();
-                var oRouter = this.getOwnerComponent().getRouter();
-                
-                oRouter.navTo("RouteDetail", {
-                  
-                    artistID: window.encodeURIComponent(oItem.getBindingContext().getPath().substr(1))
-                });
-            },
+        onPress: function (oEvent) {
+            var oItem = oEvent.getSource();
+            var oCtx = oItem.getBindingContext();
+            
+          
+            var sID = oCtx.getProperty("ID");
+
+            // Navigeer
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteDetail", {
+                artistID: sID
+            });
+        },
 
             onSort: function () {
                 var oList = this.byId("artistsTable");
@@ -51,7 +55,7 @@ sap.ui.define([
                 oBinding.sort(new sap.ui.model.Sorter("averageRating", bDescending)); // Sorteer op Rating
             },
 
-            // --- DIALOGS: Artiest & Stage ---
+       
 
             onOpenAddArtistDialog: function () {
                 var oView = this.getView();
@@ -77,38 +81,31 @@ sap.ui.define([
             onSaveArtist: function () {
                 var oView = this.getView();
                 
-                // 1. Data ophalen uit inputs (Basis)
                 var sName = this.byId("inputArtistName").getValue();
                 var sGenre = this.byId("inputGenre").getSelectedKey();
                 var sCountry = this.byId("inputCountry").getValue();
                 var sLabel = this.byId("inputLabel").getSelectedKey();
                 var sBio = this.byId("inputBio").getValue();
 
-                // 1b. Data ophalen (Socials & Foto)
                 var sImageUrl = this.byId("inputImageUrl").getValue();
                 var sSpotify = this.byId("inputSpotify").getValue();
                 var sInstagram = this.byId("inputInstagram").getValue();
 
-                // 1c. Data ophalen (Planning)
                 var sDay = this.byId("inputDay").getSelectedKey();
                 var sStageID = this.byId("inputStage").getSelectedKey();
-                // Hier ging het mis: we moeten de datums ophalen!
                 var oStartTime = this.byId("inputStartTime").getDateValue(); 
                 var oEndTime = this.byId("inputEndTime").getDateValue();
 
-                // Validatie
                 if (!sName || !sStageID || !oStartTime || !oEndTime) {
                     MessageToast.show("Vul minstens Naam, Stage en Tijden in.");
                     return;
                 }
 
-                // Datum Hack: Tijd goed zetten op een vaste datum (zodat het 'echte' timestamps zijn)
-                // In een echt scenario pak je de datum van de gekozen dag.
+                
                 var now = new Date();
                 oStartTime.setFullYear(2025); oStartTime.setMonth(6); oStartTime.setDate(25); 
                 oEndTime.setFullYear(2025); oEndTime.setMonth(6); oEndTime.setDate(25);
 
-                // 2. Stap 1: Artiest aanmaken
                 var oListBinding = this.byId("artistsTable").getBinding("items");
                 var oArtistContext = oListBinding.create({
                     name: sName,
@@ -124,10 +121,8 @@ sap.ui.define([
                     reviewCount: 0
                 });
 
-                // 3. Stap 2: Wachten tot artiest is opgeslagen, dan performance maken
                 oArtistContext.created().then(function () {
                     
-                    // Nu maken we de performance aan via een nieuwe binding op het model
                     var oPerformanceBinding = oView.getModel().bindList("/Performances");
                     
                     var oPerfContext = oPerformanceBinding.create({
@@ -138,12 +133,10 @@ sap.ui.define([
                         stage_ID: sStageID
                     });
 
-                    // Als ook de performance klaar is:
                     oPerfContext.created().then(function() {
                         MessageToast.show("Artiest " + sName + " toegevoegd!");
                         this.byId("addArtistDialog").close();
                         
-                        // Velden wissen (netjes opruimen)
                         this.byId("inputArtistName").setValue("");
                         this.byId("inputBio").setValue("");
                         this.byId("inputImageUrl").setValue("");
@@ -154,7 +147,6 @@ sap.ui.define([
                 });
             },
 
-            // --- Stage Toevoegen (Popup) ---
 
             onAddStage: function () {
                 var that = this;

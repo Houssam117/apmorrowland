@@ -12,12 +12,29 @@ sap.ui.define([
             oRouter.getRoute("RouteDetail").attachPatternMatched(this._onObjectMatched, this);
         },
 
-     _onObjectMatched: function (oEvent) {
+_onObjectMatched: function (oEvent) {
+            var oArgs = oEvent.getParameter("arguments");
+            var sArtistID = oArgs.artistID;
+
          
-            var sPath = window.decodeURIComponent(oEvent.getParameter("arguments").artistID);
+            if (sArtistID && sArtistID.includes("(")) {
+                sArtistID = sArtistID.split("(")[1].replace(")", "").replace("'", "").replace("'", "");
+            }
+
+            console.log("Schone Artist ID:", sArtistID); // C console (moet a-005 zijn)
+
+            if (!sArtistID) {
+                return;
+            }
             
+         
+            var sPath = "/ArtistsLeaderboard('" + sArtistID + "')";
+
             this.getView().bindElement({
-                path: "/" + sPath
+                path: sPath,
+                parameters: {
+                    $expand: "reviews"
+                }
             });
         },
         onNavBack: function () {
@@ -62,32 +79,45 @@ sap.ui.define([
         onCancelReview: function () {
             this.byId("reviewDialog").close();
         },
+onSaveReview: function () {
+           
+            var oTitleInput = this.byId("reviewTitleInput");
+            var oTextInput = this.byId("reviewTextInput");
+            var oRatingInput = this.byId("reviewRatingInput");
 
-        onSaveReview: function () {
-            // 1. Haal de waarden op uit de input velden
-            var sName = this.byId("inputName").getValue();
-            var iRating = this.byId("inputRating").getValue();
-            var sComment = this.byId("inputComment").getValue();
-
-            if (!sName) {
-                MessageToast.show("Vul je naam in.");
+            if (!oTitleInput || !oTextInput || !oRatingInput) {
+                sap.m.MessageToast.show("Er ging iets mis met het ophalen van de velden.");
                 return;
             }
 
-            var oListBinding = this.byId("reviewsList").getBinding("items");
+            var sTitle = oTitleInput.getValue();
+            var sText = oTextInput.getValue();
+            var iRating = oRatingInput.getValue();
 
-            var oContext = oListBinding.create({
-                visitorName: sName,
+            var oContext = this.getView().getBindingContext();
+            var sArtistID = oContext ? oContext.getProperty("ID") : null;
+
+            if (!sTitle || !sText || iRating === 0) {
+                sap.m.MessageToast.show("Vul alle velden in en geef sterren!");
+                return;
+            }
+
+            var oModel = this.getView().getModel();
+            var oListBinding = oModel.bindList("/Reviews");
+
+            oListBinding.create({
+                title: sTitle,
+                text: sText,
                 rating: iRating,
-                comment: sComment,
+                artist_ID: sArtistID
             });
 
-            this.byId("inputName").setValue("");
-            this.byId("inputComment").setValue("");
-            this.byId("inputRating").setValue(0);
-            this.byId("reviewDialog").close();
-            
-            MessageToast.show("Review geplaatst!");
-        }
+            sap.m.MessageToast.show("Review geplaatst!");
+            this.onCancelReview(); // Sluit de dialoog
+
+            oTitleInput.setValue("");
+            oTextInput.setValue("");
+            oRatingInput.setValue(0);
+        },
     });
 });
