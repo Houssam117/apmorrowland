@@ -30,7 +30,20 @@
                     </Select>
 
                     <Label id="_IDGenLabel6" text="Land"/>
-                    <Input id="inputCountry" placeholder="bv. Netherlands"/>
+                  <Label text="Land"/>
+                    <ComboBox id="inputCountry" placeholder="Kies land...">
+                        <core:Item key="Belgium" text="Belgium"/>
+                        <core:Item key="Netherlands" text="Netherlands"/>
+                        <core:Item key="Germany" text="Germany"/>
+                        <core:Item key="France" text="France"/>
+                        <core:Item key="UK" text="UK"/>
+                        <core:Item key="USA" text="USA"/>
+                        <core:Item key="South Korea" text="South Korea"/>
+                        <core:Item key="Australia" text="Australia"/>
+                        <core:Item key="Italy" text="Italy"/>
+                        <core:Item key="Spain" text="Spain"/>
+                        <core:Item key="Brazil" text="Brazil"/>
+                    </ComboBox>
 
                     <Label id="_IDGenLabel7" text="Label"/>
                     <Select id="inputLabel">

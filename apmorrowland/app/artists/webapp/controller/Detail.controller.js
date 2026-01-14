@@ -80,20 +80,18 @@ _onObjectMatched: function (oEvent) {
             this.byId("reviewDialog").close();
         },
 onSaveReview: function () {
-           
+            
             var oTitleInput = this.byId("reviewTitleInput");
             var oTextInput = this.byId("reviewTextInput");
             var oRatingInput = this.byId("reviewRatingInput");
 
-            if (!oTitleInput || !oTextInput || !oRatingInput) {
-                sap.m.MessageToast.show("Er ging iets mis met het ophalen van de velden.");
-                return;
-            }
+            if (!oTitleInput || !oTextInput || !oRatingInput) return;
 
             var sTitle = oTitleInput.getValue();
             var sText = oTextInput.getValue();
             var iRating = oRatingInput.getValue();
 
+           
             var oContext = this.getView().getBindingContext();
             var sArtistID = oContext ? oContext.getProperty("ID") : null;
 
@@ -105,7 +103,11 @@ onSaveReview: function () {
             var oModel = this.getView().getModel();
             var oListBinding = oModel.bindList("/Reviews");
 
+            var sReviewID = "r-" + new Date().getTime(); 
+
+         
             oListBinding.create({
+                ID: sReviewID,       
                 title: sTitle,
                 text: sText,
                 rating: iRating,
@@ -113,11 +115,17 @@ onSaveReview: function () {
             });
 
             sap.m.MessageToast.show("Review geplaatst!");
-            this.onCancelReview(); // Sluit de dialoog
+            this.onCancelReview();
 
+          
             oTitleInput.setValue("");
             oTextInput.setValue("");
             oRatingInput.setValue(0);
+            
+           
+            if (this.getView().getBindingContext()) {
+                this.getView().getBindingContext().refresh();
+            }
         },
     });
 });
