@@ -55,10 +55,14 @@
                             
                             <VBox>
                                 <Title text="{name}" class="sapUiTinyMarginBottom" />
-                                <tnt:InfoLabel 
+                               <tnt:InfoLabel 
                                     text="TOP RATED" 
                                     colorScheme="8" 
-                                    visible="{= ${averageRating} >= 4.8 }" />
+                                    visible="{
+                                        path: 'averageRating',
+                                        targetType: 'any',
+                                        formatter: '.formatTopRatedVisible'
+                                    }" />
                             </VBox>
 
                             <Text text="{genre}" />
