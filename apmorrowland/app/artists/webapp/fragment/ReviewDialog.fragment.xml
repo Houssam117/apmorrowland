@@ -5,6 +5,10 @@
         id="reviewDialog"
         title="Schrijf een Review">
         <content>
+
+        <Label text="Jouw Naam (Optioneel)" />
+                <Input id="reviewNameInput" placeholder="Laat leeg voor 'Anoniem'" />
+                
             <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
                <Label text="Titel" />
         <Input id="reviewTitleInput" placeholder="Korte samenvatting..." />

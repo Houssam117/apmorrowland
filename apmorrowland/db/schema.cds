@@ -25,6 +25,7 @@ entity Reviews : managed {
     key ID  : String; // FIX: String voor CSV data (r-001)
     title   : String;  
     text    : String;
+    visitorName : String;
     rating  : Integer;
     artist  : Association to Artists;
 }

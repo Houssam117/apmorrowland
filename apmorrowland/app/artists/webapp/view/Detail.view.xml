@@ -85,13 +85,12 @@
 
                           <List id="reviewsList" items="{reviews}" noDataText="Nog geen reviews.">
                         <items>
-                            <FeedListItem 
-                                sender="{title}"     
+                          <FeedListItem 
+                                sender="{visitorName}"
                                 icon="sap-icon://person-placeholder"
-                                info="Score: {rating}/5"
+                                info="Score: {rating}/5  •  {title}"
                                 timestamp="{createdAt}"
-                                text="{text}"         
-                                convertLinksToAnchorTags="All"/>
+                                text="{text}" />
                         </items>
                     </List>
                         </VBox>

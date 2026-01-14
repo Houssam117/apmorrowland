@@ -79,35 +79,37 @@ _onObjectMatched: function (oEvent) {
         onCancelReview: function () {
             this.byId("reviewDialog").close();
         },
-onSaveReview: function () {
-            
+       onSaveReview: function () {
+            var oNameInput = this.byId("reviewNameInput");
             var oTitleInput = this.byId("reviewTitleInput");
             var oTextInput = this.byId("reviewTextInput");
             var oRatingInput = this.byId("reviewRatingInput");
 
             if (!oTitleInput || !oTextInput || !oRatingInput) return;
 
+            var sRawName = oNameInput.getValue();
             var sTitle = oTitleInput.getValue();
             var sText = oTextInput.getValue();
             var iRating = oRatingInput.getValue();
 
-           
-            var oContext = this.getView().getBindingContext();
-            var sArtistID = oContext ? oContext.getProperty("ID") : null;
+            var sVisitorName = sRawName ? sRawName : "Anoniem";
 
+            // Validatie
             if (!sTitle || !sText || iRating === 0) {
-                sap.m.MessageToast.show("Vul alle velden in en geef sterren!");
+                sap.m.MessageToast.show("Vul titel, tekst en sterren in!");
                 return;
             }
 
+            var oContext = this.getView().getBindingContext();
+            var sArtistID = oContext ? oContext.getProperty("ID") : null;
+
             var oModel = this.getView().getModel();
             var oListBinding = oModel.bindList("/Reviews");
-
             var sReviewID = "r-" + new Date().getTime(); 
 
-         
             oListBinding.create({
-                ID: sReviewID,       
+                ID: sReviewID,
+                visitorName: sVisitorName,
                 title: sTitle,
                 text: sText,
                 rating: iRating,
@@ -115,14 +117,16 @@ onSaveReview: function () {
             });
 
             sap.m.MessageToast.show("Review geplaatst!");
-            this.onCancelReview();
+            this.onCancelReview(); // Sluit popup
 
-          
+            var oEventBus = this.getOwnerComponent().getEventBus();
+            oEventBus.publish("reviews", "reviewAdded");
+
+            oNameInput.setValue("");
             oTitleInput.setValue("");
             oTextInput.setValue("");
             oRatingInput.setValue(0);
             
-           
             if (this.getView().getBindingContext()) {
                 this.getView().getBindingContext().refresh();
             }
