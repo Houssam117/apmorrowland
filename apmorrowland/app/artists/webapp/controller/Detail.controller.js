@@ -16,20 +16,24 @@ sap.ui.define([
             var oArgs = oEvent.getParameter("arguments");
             var sArtistID = oArgs.artistID;
 
-            // Veiligheidscheck: ID opschonen als er rommel omheen zit
+            
             if (sArtistID && sArtistID.includes("(")) {
-                sArtistID = sArtistID.split("(")[1].replace(")", "").replace("'", "").replace("'", "");
+                sArtistID = sArtistID.split("(")[1].replace(")", "").replace(/'/g, "");
             }
 
-            if (!sArtistID) { return; }
+            console.log("Schone Artist ID:", sArtistID); // MOET nu 'a-005' zijn
+
+            if (!sArtistID) {
+                return;
+            }
             
-            // Bind aan de artiest en haal reviews EN performances (met stage naam) op
+         
             var sPath = "/ArtistsLeaderboard('" + sArtistID + "')";
 
             this.getView().bindElement({
                 path: sPath,
                 parameters: {
-                    $expand: "reviews,performances($expand=stage)" // <--- HIER IS DE UPDATE
+                    $expand: "reviews,performances($expand=stage)"
                 }
             });
         },
@@ -41,17 +45,16 @@ sap.ui.define([
                 window.history.go(-1);
             } else {
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("RouteArtists", {}, true);
+                oRouter.navTo("RouteHome", {}, true);
             }
         },
 
-        // --- REVIEW DIALOG ---
         onOpenReviewDialog: function () {
             var oView = this.getView();
             if (!this.pDialog) {
                 this.pDialog = Fragment.load({
                     id: oView.getId(),
-                    name: "ns.artists.fragment.ReviewDialog", // Check of dit pad klopt met jouw mapstructuur!
+                    name: "ns.artists.fragment.ReviewDialog",
                     controller: this
                 }).then(function (oDialog) {
                     oView.addDependent(oDialog);
@@ -78,7 +81,7 @@ sap.ui.define([
             var sTitle = oTitleInput.getValue();
             var sText = oTextInput.getValue();
             var iRating = oRatingInput.getValue();
-            var sVisitorName = oNameInput && oNameInput.getValue() ? oNameInput.getValue() : "Anoniem";
+            var sVisitorName = (oNameInput && oNameInput.getValue()) ? oNameInput.getValue() : "Anoniem";
 
             if (!sTitle || !sText || iRating === 0) {
                 sap.m.MessageToast.show("Vul titel, tekst en sterren in!");
@@ -104,11 +107,9 @@ sap.ui.define([
             sap.m.MessageToast.show("Review geplaatst!");
             this.onCancelReview();
 
-            // Verstuur signaal naar de lijst om te updaten
             var oEventBus = this.getOwnerComponent().getEventBus();
             oEventBus.publish("reviews", "reviewAdded");
 
-            // Velden wissen
             oTitleInput.setValue("");
             oTextInput.setValue("");
             if(oNameInput) oNameInput.setValue("");
@@ -119,7 +120,6 @@ sap.ui.define([
             }
         },
 
-        // --- FORMATTERS ---
         formatTopRatedVisible: function (sRating) {
             if (!sRating) { return false; }
             var fRating = parseFloat(sRating);

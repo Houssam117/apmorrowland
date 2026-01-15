@@ -1,154 +1,393 @@
-ID;artist_ID;rating;title;text;visitorName
-r-001;a-001;5;Ongekend!;De energie die Amelie brengt is niet normaal. Beste set van het weekend.;Jonas
-r-002;a-001;5;Queen;Geen woorden voor, gewoon gaan.;Sarah
-r-003;a-001;4;Hard;Beetje te hard voor mijn vrienden, maar ik vond het top.;Anoniem
-r-004;a-002;5;Emotioneel;Sky and Sand live horen is een droom die uitkomt.;Tom
-r-005;a-002;5;Meesterwerk;Paul weet precies hoe hij de menigte moet bespelen.;Anoniem
-r-006;a-003;3;Te druk;Kon de tent niet in komen, veel te vol. Muziek was wel oké.;Elise
-r-007;a-003;4;Gouuu;It girl! Leuke sfeer, maar korte set.;Sophie
-r-008;a-004;5;KNTXT;Charlotte stelt nooit teleur. Wat een bass!;Mark
-r-009;a-004;5;Techno power;De lichten en de muziek waren perfect op elkaar afgestemd.;Anoniem
-r-010;a-005;2;Te commercieel;Hij praat te veel door de microfoon. "Put your hands up" kennen we nu wel.;Kevin
-r-011;a-005;5;Mainstage Madness;Vuurwerk, lasers, hits. Dit is waarvoor ik naar Tomorrowland kom!;Emma
-r-012;a-005;4;Prima feestje;Leuk voor een keertje, maar muzikaal niet heel spannend.;Lars
-r-013;a-006;5;Trance Family;Armin is en blijft de koning. Kippenvel momentjes.;Sander
-r-014;a-006;5;Legende;Respect voor deze man, draait al zo lang aan de top.;Anoniem
-r-015;a-008;1;Teleurstellend;Draaide niet eens live, stond alleen maar te springen.;Bram
-r-016;a-008;4;Feestje;De sfeer was wel echt goud, iedereen ging los.;Julie
-r-017;a-009;5;Oh Yes Oh Yes;Carl Cox in de Daybreak session is magie.;Maxime
-r-018;a-009;5;Vakman;Je ziet dat hij geniet, en dat slaat over op het publiek.;Anoniem
-r-019;a-010;3;Oud;Vroeger was zijn trance beter, dit nieuwe spul is niks voor mij.;Lucas
-r-020;a-011;2;Microfoon show;Stop met praten en draai platen!;Nina
-r-021;a-011;5;Sloopkogel;Alles kapot! Left right left right!;Daan
-r-022;a-012;5;Karren maar;Niet normaal hoe lang hij doorgaat. Acid koning.;Reinout
-r-023;a-013;5;Drum and Bass;Eindelijk goede DnB op de mainstage. Netsky maakt ons trots.;Lise
-r-024;a-014;3;Matig;Hij draaide alleen maar zijn eigen top 40 hits.;Thomas
-r-025;a-015;5;Uniek;Die sound van Boris hoor je nergens anders. Geweldig met dat masker.;Eva
-r-026;a-015;4;Mysterieus;Goede opbouw van de set, lekkere minimal.;Anoniem
-r-027;a-004;4;Beuker;Lekker doorstampen, geen genade.;Wouter
-r-028;a-007;5;Zomers;Heerlijk met een biertje in de zon.;Charlotte
-r-029;a-007;4;Meezingers;Are you with me? Ja hoor!;Anoniem
-r-030;a-001;5;Nog een keer;Volgend jaar weer vooraan bij Amelie.;Pieter
-r-031;a-002;3;Wachten;Duurde lang voor hij begon, maar de muziek was goed.;Fleur
-r-032;a-005;5;Energie;De hele mainstage sprong tegelijk!;Jasper
-r-033;a-009;5;Koning;Carl Cox is de enige echte koning van de techno.;Anoniem
-r-034;a-012;4;Hard;Lekker hard, maar mag nog wel iets harder!;Stijn
-r-035;a-010;5;Melodieus;Prachtige opbouw en sfeer.;Anoniem
-r-036;a-001;4;Strak;Technisch perfect, maar iets minder verrassend dan vorig jaar.;Lennert
-r-037;a-001;3;Intens;Voor mij iets te monotoon na een uur.;Anoniem
-r-038;a-001;5;Rammen;Geen seconde stilgestaan, pure energie.;Kim
+ID;artist_ID;rating;title;text;visitorName;createdAt
+r-001;a-001;5;Ongekend;Pure energie, geen seconde stilgestaan.;Jonas;2025-06-01T22:30:00Z
+r-002;a-001;5;Queen;Zij blijft de absolute techno koningin.;Sarah;2025-06-02T23:00:00Z
+r-003;a-001;4;Hard;Soms iets te snel maar wel sterk.;Anoniem;2025-06-03T01:00:00Z
+r-004;a-001;3;Vermoeiend;Na een uur was ik leeg.;Kevin;2025-06-04T22:00:00Z
+r-005;a-001;5;Exhale;Beste stage van het weekend.;Lise;2025-06-05T23:45:00Z
+r-006;a-001;4;Donker;Goede industriële vibe.;Mark;2025-06-06T00:30:00Z
+r-007;a-001;5;Topvorm;Alles klopte, geluid en energie.;Eva;2025-06-07T01:00:00Z
+r-008;a-001;2;Te snel;Voor mij was dit gewoon te hard.;Lucas;2025-06-08T22:15:00Z
+r-009;a-001;5;Monster set;Niet normaal hoe strak dit was.;Tom;2025-06-09T23:00:00Z
+r-010;a-001;4;Sterk;Zeker een van de betere sets.;Julie;2025-06-10T00:45:00Z
+r-011;a-001;5;Bizar;Iedereen ging los.;Pieter;2025-06-11T01:30:00Z
+r-012;a-001;3;Oké;Goed maar niet haar beste.;Fleur;2025-06-12T22:00:00Z
+r-013;a-001;5;Magisch;Volgend jaar weer.;Jonas;2025-06-13T23:59:00Z
+r-014;a-001;4;Beuker;Geen genade achter de decks.;Wouter;2025-06-14T01:10:00Z
+r-015;a-001;5;Perfect;Alles zat juist.;Sarah;2025-06-15T02:00:00Z
+r-016;a-001;1;Te extreem;Dit was gewoon niet leuk.;Bram;2025-06-16T21:30:00Z
+r-017;a-001;4;Goed;Sterke set maar verwachtte iets meer.;Elise;2025-06-17T22:45:00Z
+r-018;a-001;5;Top;Technisch perfect.;Mark;2025-06-18T23:15:00Z
+r-019;a-001;4;Donker;Goede sfeer in de tent.;Anoniem;2025-06-19T00:00:00Z
+r-020;a-001;5;Beest;Wat een machine.;Kevin;2025-06-20T01:00:00Z
 
-r-039;a-002;4;Live gevoel;Heel vet met visuals, maar geluid stond soms te zacht.;Brecht
-r-040;a-002;2;Saai;Te traag opgebouwd, verloor mijn aandacht.;Anoniem
-r-041;a-002;5;Cinema;Alsof je in een film zat, prachtige set.;Noor
+r-021;a-002;5;Emotioneel;Sky and Sand live was kippenvel.;Tom;2025-06-01T21:00:00Z
+r-022;a-002;5;Meester;Live spelen blijft uniek.;Sarah;2025-06-02T22:00:00Z
+r-023;a-002;4;Sfeervol;Perfect moment van de avond.;Julie;2025-06-03T23:00:00Z
+r-024;a-002;3;Rustig;Iets te mellow voor mij.;Lucas;2025-06-04T21:30:00Z
+r-025;a-002;5;Legende;Dit vergeet je nooit.;Jonas;2025-06-05T22:30:00Z
+r-026;a-002;4;Sterk;Heel mooie opbouw.;Eva;2025-06-06T23:30:00Z
+r-027;a-002;2;Te traag;Ik miste energie.;Bram;2025-06-07T21:00:00Z
+r-028;a-002;5;Magisch;Pure emotie.;Lise;2025-06-08T22:45:00Z
+r-029;a-002;4;Live vibes;Respect voor live performance.;Mark;2025-06-09T23:15:00Z
+r-030;a-002;5;Klassieker;Altijd goed.;Anoniem;2025-06-10T00:30:00Z
 
-r-042;a-003;2;Overhyped;Snap de hype niet echt, bleef wachten op een climax.;Robin
-r-043;a-003;4;Dansbaar;Leuke vibes, makkelijk om op te bewegen.;Anoniem
-r-044;a-003;5;Hit na hit;Iedereen kende de nummers, super sfeer.;Yara
+r-031;a-003;4;Stijlvol;Goede vibe en outfits.;Sophie;2025-06-01T20:00:00Z
+r-032;a-003;3;Te druk;Tent overvol.;Elise;2025-06-02T21:00:00Z
+r-033;a-003;5;Gou-mania;Iedereen ging los.;Julie;2025-06-03T22:00:00Z
+r-034;a-003;2;Chaos;Niet mijn ding.;Bram;2025-06-04T23:00:00Z
+r-035;a-003;4;Leuk;Goede house vibes.;Tom;2025-06-05T00:00:00Z
+r-036;a-003;3;Oké;Muziek was prima.;Lucas;2025-06-06T21:30:00Z
+r-037;a-003;5;Top;Heel dansbaar.;Eva;2025-06-07T22:15:00Z
+r-038;a-003;4;Vibe;Fijne sfeer.;Sarah;2025-06-08T23:00:00Z
+r-039;a-003;3;Gemiddeld;Had meer verwacht.;Mark;2025-06-09T23:45:00Z
+r-040;a-003;5;Feest;Goede afsluiter.;Jonas;2025-06-10T00:30:00Z
+r-041;a-004;5;KNTXT;Zoals altijd keihard en strak.;Jonas;2025-06-11T22:00:00Z
+r-042;a-004;5;Industrieel;Rauw en donker, perfect.;Sarah;2025-06-11T22:15:00Z
+r-043;a-004;4;Beuker;Geen genade achter de decks.;Wouter;2025-06-11T22:30:00Z
+r-044;a-004;3;Eentonig;Na een uur leek alles hetzelfde.;Lucas;2025-06-11T22:45:00Z
+r-045;a-004;5;Topvorm;Charlotte stelt nooit teleur.;Emma;2025-06-11T23:00:00Z
+r-046;a-004;4;Donker;Goede flow en spanning.;Mark;2025-06-11T23:15:00Z
+r-047;a-004;5;Monster set;Publiek volledig mee.;Kevin;2025-06-11T23:30:00Z
+r-048;a-004;2;Te hard;Voor mij net iets te extreem.;Bram;2025-06-11T23:45:00Z
+r-049;a-004;5;Perfect;Alles klopte, licht en sound.;Eva;2025-06-12T00:00:00Z
+r-050;a-004;4;Sterk;Zeer solide set.;Anoniem;2025-06-12T00:15:00Z
 
-r-045;a-004;5;Donker;Zo hoort techno te klinken, duister en hard.;Matthias
-r-046;a-004;3;Eentonig;Na een tijdje klonk alles hetzelfde.;Anoniem
-r-047;a-004;4;Power;Charlotte blijft een zekerheid.;Elke
+r-051;a-005;5;Mainstage;Volledig spektakel.;Jonas;2025-06-12T22:00:00Z
+r-052;a-005;5;Hits;Alle bekende tracks.;Sarah;2025-06-12T22:10:00Z
+r-053;a-005;4;Show;Veel vuurwerk en energie.;Tom;2025-06-12T22:20:00Z
+r-054;a-005;3;Commercieel;Meer show dan muziek.;Lucas;2025-06-12T22:30:00Z
+r-055;a-005;2;Microfoon;Te veel geroep tussendoor.;Kevin;2025-06-12T22:40:00Z
+r-056;a-005;5;Feest;Mainstage ging los.;Emma;2025-06-12T22:50:00Z
+r-057;a-005;4;Energie;Iedereen sprong.;Mark;2025-06-12T23:00:00Z
+r-058;a-005;3;Oké;Leuk maar niet speciaal.;Fleur;2025-06-12T23:10:00Z
+r-059;a-005;5;Finale;Perfect einde van de dag.;Eva;2025-06-12T23:20:00Z
+r-060;a-005;4;Prima;Sterke performance.;Anoniem;2025-06-12T23:30:00Z
 
-r-048;a-005;1;Cringe;Te veel geschreeuw, voelde als een circus.;Arne
-r-049;a-005;3;Show;Meer show dan muziek, maar wel leuk om te zien.;Anoniem
-r-050;a-005;5;Knallen;Mainstage volledig plat, missie geslaagd.;Zoë
+r-061;a-006;5;Trance Family;Kippenvel van begin tot eind.;Sander;2025-06-13T20:00:00Z
+r-062;a-006;5;Legende;Armin blijft uniek.;Sarah;2025-06-13T20:15:00Z
+r-063;a-006;4;Melodisch;Prachtige opbouw.;Julie;2025-06-13T20:30:00Z
+r-064;a-006;3;Lang;Set mocht korter.;Lucas;2025-06-13T20:45:00Z
+r-065;a-006;5;ASOT;Trance heaven.;Jonas;2025-06-13T21:00:00Z
+r-066;a-006;4;Sterk;Zeer professioneel.;Mark;2025-06-13T21:15:00Z
+r-067;a-006;2;Saai;Niet mijn genre.;Bram;2025-06-13T21:30:00Z
+r-068;a-006;5;Magisch;Publiek helemaal mee.;Eva;2025-06-13T21:45:00Z
+r-069;a-006;4;Goede vibe;Leuke sfeer.;Anoniem;2025-06-13T22:00:00Z
+r-070;a-006;5;Top;Altijd kwaliteit.;Kevin;2025-06-13T22:15:00Z
 
-r-051;a-006;5;Classic;Dit is waarom trance nooit zal sterven.;Michiel
-r-052;a-006;4;Warm;Heel warme sfeer, veel emoties.;Anoniem
-r-053;a-006;2;Gedateerd;Klonk voor mij wat ouderwets.;Sven
+r-071;a-007;5;Zomers;Perfect voor de namiddag.;Charlotte;2025-06-14T16:00:00Z
+r-072;a-007;4;Meezingers;Iedereen zong mee.;Sarah;2025-06-14T16:15:00Z
+r-073;a-007;3;Rustig;Beetje veilig.;Lucas;2025-06-14T16:30:00Z
+r-074;a-007;5;Feel good;Blije vibes overal.;Eva;2025-06-14T16:45:00Z
+r-075;a-007;4;Leuk;Zeker geslaagd.;Mark;2025-06-14T17:00:00Z
 
-r-054;a-007;5;Feelgood;Perfecte zomermuziek, iedereen zong mee.;Laura
-r-055;a-007;3;Oké;Leuk, maar niets speciaals live.;Anoniem
-r-056;a-007;4;Chill;Ideaal moment om even te ontspannen.;Niels
+r-076;a-008;2;Chaos;Stond meer te springen dan te draaien.;Bram;2025-06-14T22:00:00Z
+r-077;a-008;4;Feest;Sfeer was top.;Julie;2025-06-14T22:15:00Z
+r-078;a-008;3;Rommel;Muziek soms rommelig.;Lucas;2025-06-14T22:30:00Z
+r-079;a-008;1;Teleurstelling;Had hier meer van verwacht.;Kevin;2025-06-14T22:45:00Z
+r-080;a-008;4;Los;Publiek ging wel hard.;Sarah;2025-06-14T23:00:00Z
 
-r-057;a-008;1;Teleurstelling;Stond meer selfies te nemen dan te draaien.;Koen
-r-058;a-008;3;Feest;Niet top, maar wel ambiance.;Anoniem
-r-059;a-008;4;Los;Publiek maakte de set beter dan hij was.;Femke
+r-081;a-009;5;Oh Yes;Carl Cox blijft een held.;Maxime;2025-06-15T12:00:00Z
+r-082;a-009;5;Vakman;Je ziet dat hij geniet.;Eva;2025-06-15T12:15:00Z
+r-083;a-009;4;Groove;Heerlijke flow.;Mark;2025-06-15T12:30:00Z
+r-084;a-009;5;Legendarisch;Absolute klasse.;Jonas;2025-06-15T12:45:00Z
+r-085;a-009;3;Lang;Set duurde iets te lang.;Lucas;2025-06-15T13:00:00Z
 
-r-060;a-009;5;Pure klasse;Geen hype, alleen vakmanschap.;Olivier
-r-061;a-009;4;Groove;Blijft moeiteloos iedereen laten dansen.;Anoniem
-r-062;a-009;3;Lang;Had iets korter gemogen.;Hugo
+r-086;a-010;3;Oud;Vroeger beter.;Lucas;2025-06-15T21:00:00Z
+r-087;a-010;5;Melodieus;Goede opbouw.;Eva;2025-06-15T21:15:00Z
+r-088;a-010;4;Feest;Goede energie.;Mark;2025-06-15T21:30:00Z
+r-089;a-010;2;Pop;Te radiovriendelijk.;Bram;2025-06-15T21:45:00Z
+r-090;a-010;5;Klassieker;Altijd genieten.;Jonas;2025-06-15T22:00:00Z
 
-r-063;a-010;2;Minder;Mis de oude sound echt.;Anoniem
-r-064;a-010;4;Netjes;Goede set, maar geen uitschieter.;Ine
-r-065;a-010;5;Emotie;Kippenvel bij meerdere momenten.;Ruben
+r-091;a-011;5;Afterlife;Pure emotie.;Sarah;2025-06-16T23:00:00Z
+r-092;a-011;4;Sfeer;Mooie visuals.;Julie;2025-06-16T23:15:00Z
+r-093;a-011;3;Traject;Soms wat traag.;Lucas;2025-06-16T23:30:00Z
+r-094;a-011;2;Microfoon;Te veel gepraat.;Kevin;2025-06-16T23:45:00Z
+r-095;a-011;5;Magisch;Publiek helemaal mee.;Eva;2025-06-17T00:00:00Z
 
-r-066;a-011;1;Irritant;Elke drop verpest door geschreeuw.;Anoniem
-r-067;a-011;3;Hard;Veel energie, weinig finesse.;Jeroen
-r-068;a-011;5;Chaos;Volledig los gegaan, wat een pit.;Sam
+r-096;a-012;5;Karren maar;Niet normaal hoe lang hij doorgaat.;Reinout;2025-06-17T02:00:00Z
+r-097;a-012;4;Hard;Acid vibes.;Mark;2025-06-17T02:15:00Z
+r-098;a-012;3;Lang;Iets te lang voor mij.;Lucas;2025-06-17T02:30:00Z
+r-099;a-012;5;Live;Respect voor live set.;Eva;2025-06-17T02:45:00Z
+r-100;a-012;4;Sterk;Goede afsluiter.;Jonas;2025-06-17T03:00:00Z
 
-r-069;a-012;5;Rauw;Echte underground vibes.;An
-r-070;a-012;4;Doorbijten;Geen compromis, gewoon blijven gaan.;Anoniem
-r-071;a-012;2;Te niche;Niet mijn ding, te experimenteel.;Maarten
+r-101;a-001;5;Energie;Amelie was ongelofelijk energiek.;Jonas;2025-07-01T20:00:00Z
+r-102;a-001;4;Top;Goede vibe, soms te hard.;Sarah;2025-07-01T20:15:00Z
+r-103;a-001;5;Perfect;Alles klopte van licht tot sound.;Tom;2025-07-01T20:30:00Z
+r-104;a-001;3;Te hard;Kon het niet zo goed volgen.;Lucas;2025-07-01T20:45:00Z
+r-105;a-001;4;Sterk;Ze hield het publiek helemaal vast.;Emma;2025-07-01T21:00:00Z
+r-106;a-002;5;Legende;Paul blijft een icoon.;Mark;2025-07-02T22:00:00Z
+r-107;a-002;4;Emotioneel;Prachtige live ervaring.;Eva;2025-07-02T22:15:00Z
+r-108;a-002;3;Saai;Niet mijn ding vandaag.;Bram;2025-07-02T22:30:00Z
+r-109;a-002;5;Magisch;Alleen maar kippenvel.;Julie;2025-07-02T22:45:00Z
+r-110;a-002;4;Topset;Muzikaal uitstekend.;Jonas;2025-07-02T23:00:00Z
+r-111;a-003;5;Gou-mania;Peggy verovert de wereld.;Sarah;2025-07-03T18:00:00Z
+r-112;a-003;4;Stijlvol;Goede vibes, mooie visuals.;Tom;2025-07-03T18:15:00Z
+r-113;a-003;3;Te kort;Had meer verwacht.;Lucas;2025-07-03T18:30:00Z
+r-114;a-003;5;Top;Zeker een headliner.;Emma;2025-07-03T18:45:00Z
+r-115;a-003;4;Cool;Heerlijke set.;Mark;2025-07-03T19:00:00Z
+r-116;a-004;5;Beuker;Charlotte staat altijd sterk.;Jonas;2025-07-04T20:00:00Z
+r-117;a-004;4;Hard;Geweldige energie.;Sarah;2025-07-04T20:15:00Z
+r-118;a-004;3;Eentonig;Na een uur werd het repetitief.;Lucas;2025-07-04T20:30:00Z
+r-119;a-004;5;Perfect;Alles klopte.;Emma;2025-07-04T20:45:00Z
+r-120;a-004;2;Teleur;Had hogere verwachtingen.;Bram;2025-07-04T21:00:00Z
+r-121;a-005;5;Mainstage;Martin is onverwoestbaar.;Julie;2025-07-05T22:00:00Z
+r-122;a-005;4;Hits;Iedereen kende de nummers.;Jonas;2025-07-05T22:15:00Z
+r-123;a-005;3;Commercieel;Voor mij te veel show.;Lucas;2025-07-05T22:30:00Z
+r-124;a-005;5;Energie;Heerlijk festivalgevoel.;Emma;2025-07-05T22:45:00Z
+r-125;a-005;2;Niet top;Muziek was niet mijn ding.;Bram;2025-07-05T23:00:00Z
+r-126;a-006;5;Trance;Armin blijft de koning.;Sarah;2025-07-06T21:00:00Z
+r-127;a-006;4;Sterk;Kippenvel momenten.;Tom;2025-07-06T21:15:00Z
+r-128;a-006;3;Lang;Set duurde te lang.;Lucas;2025-07-06T21:30:00Z
+r-129;a-006;5;Magisch;Volledig meegezogen.;Emma;2025-07-06T21:45:00Z
+r-130;a-006;4;Topset;Zeer professioneel.;Mark;2025-07-06T22:00:00Z
+r-131;a-007;5;Feel Good;Lost Frequencies is zomers.;Jonas;2025-07-07T16:00:00Z
+r-132;a-007;4;Leuk;Goede meezingers.;Sarah;2025-07-07T16:15:00Z
+r-133;a-007;3;Rustig;Beetje voorspelbaar.;Lucas;2025-07-07T16:30:00Z
+r-134;a-007;5;Top;Iedereen zong mee.;Emma;2025-07-07T16:45:00Z
+r-135;a-007;4;Cool;Zeker geslaagd.;Mark;2025-07-07T17:00:00Z
+r-136;a-008;2;Chaos;Fisher draaide rommelig.;Bram;2025-07-08T22:00:00Z
+r-137;a-008;3;Rommel;Kon niet volgen.;Lucas;2025-07-08T22:15:00Z
+r-138;a-008;4;Feest;Sfeer was top.;Julie;2025-07-08T22:30:00Z
+r-139;a-008;1;Teleur;Had meer verwacht.;Kevin;2025-07-08T22:45:00Z
+r-140;a-008;4;Los;Publiek ging hard.;Sarah;2025-07-08T23:00:00Z
+r-141;a-009;5;Oh Yes;Carl Cox blijft legendarisch.;Maxime;2025-07-09T12:00:00Z
+r-142;a-009;5;Vakman;Alles klopt.;Eva;2025-07-09T12:15:00Z
+r-143;a-009;4;Groove;Heerlijke flow.;Mark;2025-07-09T12:30:00Z
+r-144;a-009;3;Lang;Set duurde iets te lang.;Lucas;2025-07-09T12:45:00Z
+r-145;a-009;5;Legende;Publiek meegezogen.;Jonas;2025-07-09T13:00:00Z
+r-146;a-010;3;Pop;Tiësto was te radiovriendelijk.;Bram;2025-07-10T21:00:00Z
+r-147;a-010;5;Melodieus;Goede opbouw.;Eva;2025-07-10T21:15:00Z
+r-148;a-010;4;Energie;Goede sfeer.;Mark;2025-07-10T21:30:00Z
+r-149;a-010;2;Oud;Niet mijn stijl.;Lucas;2025-07-10T21:45:00Z
+r-150;a-010;5;Klassieker;Altijd genieten.;Jonas;2025-07-10T22:00:00Z
+r-151;a-011;5;Afterlife;Pure emotie.;Sarah;2025-07-11T23:00:00Z
+r-152;a-011;4;Sfeer;Mooie visuals.;Julie;2025-07-11T23:15:00Z
+r-153;a-011;3;Traject;Soms traag.;Lucas;2025-07-11T23:30:00Z
+r-154;a-011;2;Microfoon;Te veel gepraat.;Kevin;2025-07-11T23:45:00Z
+r-155;a-011;5;Magisch;Publiek meegezogen.;Eva;2025-07-12T00:00:00Z
+r-156;a-012;5;Karren maar;Reinier draait fantastisch.;Reinout;2025-07-12T02:00:00Z
+r-157;a-012;4;Hard;Acid vibes.;Mark;2025-07-12T02:15:00Z
+r-158;a-012;3;Lang;Iets te lang.;Lucas;2025-07-12T02:30:00Z
+r-159;a-012;5;Live;Top performance.;Eva;2025-07-12T02:45:00Z
+r-160;a-012;4;Sterk;Goede afsluiter.;Jonas;2025-07-12T03:00:00Z
+r-161;a-013;5;Drum & Bass;Netsky rockt.;Lise;2025-07-13T21:00:00Z
+r-162;a-013;4;Topset;Heerlijke energie.;Mark;2025-07-13T21:15:00Z
+r-163;a-013;3;Soms saai;Niet altijd spannend.;Lucas;2025-07-13T21:30:00Z
+r-164;a-013;5;Perfect;Publiek helemaal mee.;Emma;2025-07-13T21:45:00Z
+r-165;a-013;4;Lekker;Goede flow.;Jonas;2025-07-13T22:00:00Z
+r-166;a-014;5;Hits;David Guetta op zijn best.;Sarah;2025-07-14T20:00:00Z
+r-167;a-014;4;Top;Prima vibe.;Tom;2025-07-14T20:15:00Z
+r-168;a-014;3;Niet leuk;Te veel commercieel.;Lucas;2025-07-14T20:30:00Z
+r-169;a-014;2;Saai;Verwachte meer.;Bram;2025-07-14T20:45:00Z
+r-170;a-014;5;Spectaculair;Prachtige show.;Emma;2025-07-14T21:00:00Z
+r-171;a-015;5;Uniek;Boris Brejcha blijft mysterieus.;Eva;2025-07-15T23:00:00Z
+r-172;a-015;4;Mysterieus;Goede opbouw.;Anoniem;2025-07-15T23:15:00Z
+r-173;a-015;3;Klein;Set iets te kort.;Lucas;2025-07-15T23:30:00Z
+r-174;a-015;5;Masker;Perfecte minimal set.;Jonas;2025-07-15T23:45:00Z
+r-175;a-015;4;Sterk;Top sound.;Mark;2025-07-16T00:00:00Z
 
-r-072;a-013;5;Trots;Belgische DnB op wereldniveau.;Sofie
-r-073;a-013;4;Snel;Veel tempo, goede energie.;Anoniem
-r-074;a-013;3;Druk;Geluid soms wat rommelig.;Bram
 
-r-075;a-014;2;Voorspelbaar;Elke track had dezelfde structuur.;Anoniem
-r-076;a-014;4;Meezingbaar;Publiek deed alles mee.;Julie
-r-077;a-014;3;Gemiddeld;Niet slecht, niet memorabel.;Karel
 
-r-078;a-015;5;Masker;Visueel én muzikaal top.;Lien
-r-079;a-015;4;Minimal;Sterke spanningsopbouw.;Anoniem
-r-080;a-015;2;Traag;Voor mij te weinig drive.;Wesley
-r-081;a-001;5;Beest;Wat een drive, geen moment rust.;Tibo
-r-082;a-001;4;Sterk;Heel strak gedraaid, top vorm.;Anoniem
-r-083;a-001;2;Te veel;Na een uur was ik echt moe.;Rik
+r-176;a-001;4;Geweldige set;Amelie bracht echt de energie.;Sophie;2025-07-16T10:00:00Z
+r-177;a-001;5;Ongekend;Vooraan bij Amelie, wow!;Pieter;2025-07-16T11:00:00Z
+r-178;a-001;3;Te hard;Niet voor mijn oren.;Kevin;2025-07-16T12:00:00Z
+r-179;a-001;5;Top;Hele tent ging los.;Anoniem;2025-07-16T13:00:00Z
+r-180;a-001;4;Vette show;Fantastische visuals.;Lars;2025-07-16T14:00:00Z
+r-181;a-002;5;Legende;Sky and Sand live is magisch.;Tom;2025-07-17T15:00:00Z
+r-182;a-002;4;Topset;Perfecte opbouw.;Emma;2025-07-17T16:00:00Z
+r-183;a-002;3;Saai;Niet alles mijn stijl.;Jonas;2025-07-17T17:00:00Z
+r-184;a-002;5;Magisch;Publiek helemaal mee.;Sarah;2025-07-17T18:00:00Z
+r-185;a-002;4;Sterk;Kippenvel momenten.;Mark;2025-07-17T19:00:00Z
+r-186;a-003;5;Gouuu;Ze veroverde de tent.;Julie;2025-07-18T20:00:00Z
+r-187;a-003;4;Cool;Goede sfeer.;Kevin;2025-07-18T21:00:00Z
+r-188;a-003;3;Kort;Had graag langer gehad.;Emma;2025-07-18T22:00:00Z
+r-189;a-003;5;Top;Iedereen zong mee.;Tom;2025-07-18T23:00:00Z
+r-190;a-003;4;Stijlvol;Mooie visuals.;Lars;2025-07-19T00:00:00Z
+r-191;a-004;5;Beuker;Charlotte stampte de tent plat.;Sophie;2025-07-19T10:00:00Z
+r-192;a-004;4;Hard;Super energie.;Jonas;2025-07-19T11:00:00Z
+r-193;a-004;3;Eentonig;Na 1 uur werd het repetitief.;Sarah;2025-07-19T12:00:00Z
+r-194;a-004;5;Perfect;Alles klopte.;Mark;2025-07-19T13:00:00Z
+r-195;a-004;2;Teleur;Hogere verwachtingen.;Emma;2025-07-19T14:00:00Z
+r-196;a-005;5;Mainstage Madness;Martin brengt alles mee.;Lucas;2025-07-20T15:00:00Z
+r-197;a-005;4;Hits;Iedereen kende de nummers.;Lars;2025-07-20T16:00:00Z
+r-198;a-005;3;Commercieel;Te veel show.;Julie;2025-07-20T17:00:00Z
+r-199;a-005;5;Energie;Heerlijk feestje.;Jonas;2025-07-20T18:00:00Z
+r-200;a-005;2;Niet top;Niet mijn ding.;Emma;2025-07-20T19:00:00Z
+r-201;a-006;5;Trance koning;Armin blijft briljant.;Kevin;2025-07-21T20:00:00Z
+r-202;a-006;4;Sterk;Goede opbouw.;Sophie;2025-07-21T21:00:00Z
+r-203;a-006;3;Lang;Set duurde te lang.;Jonas;2025-07-21T22:00:00Z
+r-204;a-006;5;Magisch;Volledig meegezogen.;Sarah;2025-07-21T23:00:00Z
+r-205;a-006;4;Topset;Professioneel.;Mark;2025-07-22T00:00:00Z
+r-206;a-007;5;Zomers;Lost Frequencies rockt.;Emma;2025-07-22T10:00:00Z
+r-207;a-007;4;Meezingers;Iedereen zong mee.;Lucas;2025-07-22T11:00:00Z
+r-208;a-007;3;Rustig;Beetje voorspelbaar.;Julie;2025-07-22T12:00:00Z
+r-209;a-007;5;Top;Heerlijk met biertje.;Jonas;2025-07-22T13:00:00Z
+r-210;a-007;4;Cool;Goede vibes.;Sophie;2025-07-22T14:00:00Z
+r-211;a-008;2;Chaos;Fisher draaide rommelig.;Kevin;2025-07-23T15:00:00Z
+r-212;a-008;3;Rommel;Kon niet volgen.;Lars;2025-07-23T16:00:00Z
+r-213;a-008;4;Feest;Sfeer top.;Julie;2025-07-23T17:00:00Z
+r-214;a-008;1;Teleur;Had meer verwacht.;Jonas;2025-07-23T18:00:00Z
+r-215;a-008;4;Los;Publiek ging los.;Emma;2025-07-23T19:00:00Z
+r-216;a-009;5;Oh Yes;Carl Cox blijft legendarisch.;Sarah;2025-07-24T20:00:00Z
+r-217;a-009;5;Vakman;Alles klopt.;Mark;2025-07-24T21:00:00Z
+r-218;a-009;4;Groove;Heerlijke flow.;Jonas;2025-07-24T22:00:00Z
+r-219;a-009;3;Lang;Set iets te lang.;Emma;2025-07-24T23:00:00Z
+r-220;a-009;5;Legende;Publiek meegezogen.;Sophie;2025-07-25T00:00:00Z
+r-221;a-010;3;Pop;Tiësto was te radiovriendelijk.;Lars;2025-07-25T10:00:00Z
+r-222;a-010;5;Melodieus;Goede opbouw.;Julie;2025-07-25T11:00:00Z
+r-223;a-010;4;Energie;Goede sfeer.;Jonas;2025-07-25T12:00:00Z
+r-224;a-010;2;Oud;Niet mijn stijl.;Emma;2025-07-25T13:00:00Z
+r-225;a-010;5;Klassieker;Altijd genieten.;Kevin;2025-07-25T14:00:00Z
+r-226;a-011;5;Afterlife;Pure emotie.;Sophie;2025-07-26T15:00:00Z
+r-227;a-011;4;Sfeer;Mooie visuals.;Lucas;2025-07-26T16:00:00Z
+r-228;a-011;3;Traject;Soms traag.;Jonas;2025-07-26T17:00:00Z
+r-229;a-011;2;Microfoon;Te veel gepraat.;Emma;2025-07-26T18:00:00Z
+r-230;a-011;5;Magisch;Publiek meegezogen.;Julie;2025-07-26T19:00:00Z
+r-231;a-012;5;Karren maar;Reinier draait fantastisch.;Jonas;2025-07-27T20:00:00Z
+r-232;a-012;4;Hard;Acid vibes.;Sarah;2025-07-27T21:00:00Z
+r-233;a-012;3;Lang;Iets te lang.;Mark;2025-07-27T22:00:00Z
+r-234;a-012;5;Live;Top performance.;Emma;2025-07-27T23:00:00Z
+r-235;a-012;4;Sterk;Goede afsluiter.;Julie;2025-07-28T00:00:00Z
+r-236;a-013;5;Drum & Bass;Netsky rockt.;Kevin;2025-07-28T10:00:00Z
+r-237;a-013;4;Topset;Heerlijke energie.;Sophie;2025-07-28T11:00:00Z
+r-238;a-013;3;Soms saai;Niet altijd spannend.;Lucas;2025-07-28T12:00:00Z
+r-239;a-013;5;Perfect;Publiek helemaal mee.;Jonas;2025-07-28T13:00:00Z
+r-240;a-013;4;Lekker;Goede flow.;Emma;2025-07-28T14:00:00Z
+r-241;a-014;5;Hits;David Guetta op zijn best.;Mark;2025-07-29T15:00:00Z
+r-242;a-014;4;Top;Prima vibe.;Kevin;2025-07-29T16:00:00Z
+r-243;a-014;3;Niet leuk;Te veel commercieel.;Julie;2025-07-29T17:00:00Z
+r-244;a-014;2;Saai;Verwachte meer.;Jonas;2025-07-29T18:00:00Z
+r-245;a-014;5;Spectaculair;Prachtige show.;Emma;2025-07-29T19:00:00Z
+r-246;a-015;5;Uniek;Boris Brejcha blijft mysterieus.;Sophie;2025-07-30T20:00:00Z
+r-247;a-015;4;Mysterieus;Goede opbouw.;Lucas;2025-07-30T21:00:00Z
+r-248;a-015;3;Klein;Set iets te kort.;Jonas;2025-07-30T22:00:00Z
+r-249;a-015;5;Masker;Perfecte minimal set.;Emma;2025-07-30T23:00:00Z
+r-250;a-015;4;Sterk;Top sound.;Mark;2025-07-31T00:00:00Z
+r-251;a-001;5;Nog een keer;Volgend jaar weer.;Julie;2025-07-31T10:00:00Z
+r-252;a-002;4;Legende;Geweldige live.;Kevin;2025-07-31T11:00:00Z
+r-253;a-003;3;Kort;Had langer willen luisteren.;Jonas;2025-07-31T12:00:00Z
+r-254;a-004;5;Top;Charlotte blijft sterk.;Emma;2025-07-31T13:00:00Z
+r-255;a-005;5;Mainstage;Geweldig voor iedereen.;Sophie;2025-07-31T14:00:00Z
+r-256;a-006;4;Trance;Prima vibe.;Lucas;2025-07-31T15:00:00Z
+r-257;a-007;5;Zomers;Heerlijk feestje.;Mark;2025-07-31T16:00:00Z
+r-258;a-008;3;Gemiddeld;Kon beter.;Jonas;2025-07-31T17:00:00Z
+r-259;a-009;5;Legende;Carl Cox blijft top.;Emma;2025-07-31T18:00:00Z
+r-260;a-010;4;Energie;Goede sfeer.;Julie;2025-07-31T19:00:00Z
+r-261;a-011;5;Afterlife;Geweldige show.;Kevin;2025-07-31T20:00:00Z
+r-262;a-012;4;Hard;Top acid.;Sophie;2025-07-31T21:00:00Z
+r-263;a-013;5;Perfect;DnB vibes.;Lucas;2025-07-31T22:00:00Z
+r-264;a-014;3;Saai;Niet mijn ding.;Jonas;2025-07-31T23:00:00Z
+r-265;a-015;5;Masker;Onmiskenbaar Boris.;Emma;2025-08-01T00:00:00Z
+r-266;a-001;4;Top;Prima show.;Mark;2025-08-01T10:00:00Z
+r-267;a-002;5;Legende;Ongekend.;Jonas;2025-08-01T11:00:00Z
+r-268;a-003;4;Cool;Heerlijke set.;Sophie;2025-08-01T12:00:00Z
+r-269;a-004;5;Perfect;Alles klopte.;Emma;2025-08-01T13:00:00Z
+r-270;a-005;3;Te commercieel;Kon beter.;Lucas;2025-08-01T14:00:00Z
+r-271;a-006;5;Top;Armin op z'n best.;Mark;2025-08-01T15:00:00Z
+r-272;a-007;4;Leuk;Goede vibes.;Jonas;2025-08-01T16:00:00Z
+r-273;a-008;2;Chaos;Te rommelig.;Julie;2025-08-01T17:00:00Z
+r-274;a-009;5;Oh Yes;Geweldige vibes.;Emma;2025-08-01T18:00:00Z
+r-275;a-010;5;Klassieker;Altijd genieten.;Kevin;2025-08-01T19:00:00Z
+r-276;a-011;4;Sfeer;Goed geregeld.;Sophie;2025-08-01T20:00:00Z
+r-277;a-012;5;Live;Top set.;Lucas;2025-08-01T21:00:00Z
+r-278;a-013;5;Perfect;Publiek mee.;Jonas;2025-08-01T22:00:00Z
+r-279;a-014;4;Top;Goede energie.;Emma;2025-08-01T23:00:00Z
+r-280;a-015;5;Masker;Ongekend.;Mark;2025-08-02T00:00:00Z
+r-281;a-001;4;Geweldig;Prima set.;Julie;2025-08-02T10:00:00Z
+r-282;a-002;5;Legende;Top live.;Kevin;2025-08-02T11:00:00Z
+r-283;a-003;4;Cool;Leuke vibe.;Jonas;2025-08-02T12:00:00Z
+r-284;a-004;5;Perfect;Charlotte sterk.;Emma;2025-08-02T13:00:00Z
+r-285;a-005;3;Commercieel;Niet mijn ding.;Sophie;2025-08-02T14:00:00Z
+r-286;a-006;5;Trance;Heerlijk.;Lucas;2025-08-02T15:00:00Z
+r-287;a-007;4;Leuk;Goede sfeer.;Mark;2025-08-02T16:00:00Z
+r-288;a-008;3;Teleur;Kon beter.;Jonas;2025-08-02T17:00:00Z
+r-289;a-009;5;Legende;Carl Cox top.;Emma;2025-08-02T18:00:00Z
+r-290;a-010;4;Energie;Prima vibe.;Julie;2025-08-02T19:00:00Z
+r-291;a-011;5;Afterlife;Geweldig.;Kevin;2025-08-02T20:00:00Z
+r-292;a-012;4;Hard;Goed.;Sophie;2025-08-02T21:00:00Z
+r-293;a-013;5;Perfect;Top DnB.;Lucas;2025-08-02T22:00:00Z
+r-294;a-014;3;Saai;Niet leuk.;Jonas;2025-08-02T23:00:00Z
+r-295;a-015;5;Masker;Onmiskenbaar.;Emma;2025-08-03T00:00:00Z
+r296;a-001;5;Energieke set;Amelie blijft altijd indruk maken.;Laura;2026-01-12T14:00:00Z
+r297;a-001;4;Top;Heel goed, maar soms iets te hard.;Mika;2026-01-12T15:00:00Z
+r298;a-001;5;Geweldig;Elke track een feest!;Sophie;2026-01-12T16:00:00Z
+r299;a-001;4;Prima vibe;Leuke sfeer, maar iets te veel bass.;Jonas;2026-01-12T17:00:00Z
+r300;a-001;5;Onvergetelijk;Beste optreden ooit.;Emma;2026-01-12T18:00:00Z
+r301;a-001;3;Beetje saai;Had meer variatie verwacht.;Kevin;2026-01-12T19:00:00Z
+r302;a-001;5;Topact;Amelie weet hoe je een menigte laat dansen.;Fleur;2026-01-12T20:00:00Z
+r303;a-001;4;Goed;Zeker genoten, maar niet 100% perfect.;Lars;2026-01-12T21:00:00Z
+r304;a-001;5;Mega;Volgende keer weer vooraan!;Pieter;2026-01-12T22:00:00Z
+r305;a-001;5;Krachtig;Wat een energie en flow.;Anoniem;2026-01-12T23:00:00Z
+r306;a-001;4;Leuk;Goede set, maar korte tracks.;Julie;2026-01-13T00:00:00Z
+r307;a-001;5;Topklasse;Amelie Lens blijft ongeëvenaard.;Mark;2026-01-13T01:00:00Z
+r308;a-001;5;Magisch;Elke keer kippenvel.;Thomas;2026-01-13T02:00:00Z
+r309;a-001;4;Goed maar druk;Soms iets te veel publiek.;Eva;2026-01-13T03:00:00Z
+r310;a-001;5;Geweldig;Dansen van begin tot eind.;Maxime;2026-01-13T04:00:00Z
+r311;a-001;5;Perfect;Geen minpunten, alles top.;Nina;2026-01-13T05:00:00Z
+r312;a-001;4;Goed gevoel;Leuke set maar iets te kort.;Bram;2026-01-13T06:00:00Z
+r313;a-001;5;Ongekend;Beste ervaring ooit.;Charlotte;2026-01-13T07:00:00Z
+r314;a-001;5;Kippenvel;Elke track raakt.;Reinout;2026-01-13T08:00:00Z
+r315;a-001;4;Leuk;Had iets meer techno verwacht.;Iris;2026-01-13T09:00:00Z
+r316;a-001;5;Fantastisch;Vol energie en perfect getimed.;Stijn;2026-01-13T10:00:00Z
+r317;a-001;4;Prima;Leuke vibes, maar niet memorabel.;Anoniem;2026-01-13T11:00:00Z
+r318;a-001;5;Topoptreden;Amelie Lens rocks!;Emma;2026-01-13T12:00:00Z
+r319;a-001;5;Onvergetelijk;Volgend jaar weer!;Jonas;2026-01-13T13:00:00Z
+r320;a-001;4;Goed;Iets te veel herhaling.;Lars;2026-01-13T14:00:00Z
+r321;a-001;5;Geweldig;Iedereen danst mee.;Sophie;2026-01-13T15:00:00Z
+r322;a-001;4;Leuk;Prima sfeer, maar tracks iets te kort.;Pieter;2026-01-13T16:00:00Z
+r323;a-001;5;Fantastisch;Beter dan verwacht.;Fleur;2026-01-13T17:00:00Z
+r324;a-001;5;Topset;Elke keer een feest.;Kevin;2026-01-13T18:00:00Z
+r325;a-001;4;Prima;Goede energie, iets te luid.;Emma;2026-01-13T19:00:00Z
+r326;a-001;5;Ongekend;Amelie Lens blijft een icoon.;Maxime;2026-01-13T20:00:00Z
+r327;a-001;5;Fantastisch;Volgende festival direct weer.;Nina;2026-01-13T21:00:00Z
+r328;a-001;4;Leuk;Voldoende energie, maar iets voorspelbaar.;Bram;2026-01-13T22:00:00Z
+r329;a-001;5;Topklasse;Alles perfect uitgevoerd.;Charlotte;2026-01-13T23:00:00Z
+r330;a-001;5;Geweldig;Dansvloer ontploft.;Reinout;2026-01-14T00:00:00Z
+r331;a-001;4;Goed;Leuke vibe, maar tracks te kort.;Iris;2026-01-14T01:00:00Z
+r332;a-001;5;Onvergetelijk;Elke keer kippenvel.;Stijn;2026-01-14T02:00:00Z
+r333;a-001;5;Fantastisch;Vol energie.;Anoniem;2026-01-14T03:00:00Z
+r334;a-001;4;Prima;Leuke set, maar iets te kort.;Emma;2026-01-14T04:00:00Z
+r335;a-001;5;Top;Volgende keer weer vooraan.;Jonas;2026-01-14T05:00:00Z
+r336;a-001;5;Geweldig;Dansvloer in vuur en vlam.;Lars;2026-01-14T06:00:00Z
+r337;a-001;4;Leuk;Goede sfeer, iets voorspelbaar.;Sophie;2026-01-14T07:00:00Z
+r338;a-001;5;Fantastisch;Beter kan niet.;Pieter;2026-01-14T08:00:00Z
+r339;a-001;5;Topset;Elke track een feest.;Fleur;2026-01-14T09:00:00Z
+r340;a-001;4;Goed;Prima energie, iets te hard.;Kevin;2026-01-14T10:00:00Z
+r341;a-001;5;Onvergetelijk;Amelie Lens rules!;Emma;2026-01-14T11:00:00Z
+r342;a-001;5;Topklasse;Volgende festival direct weer.;Maxime;2026-01-14T12:00:00Z
+r343;a-001;4;Prima;Leuke set, maar korte tracks.;Nina;2026-01-14T13:00:00Z
+r344;a-001;5;Geweldig;Dansvloer ontploft.;Bram;2026-01-14T14:00:00Z
+r345;a-001;5;Fantastisch;Beter dan verwacht.;Charlotte;2026-01-14T15:00:00Z
+r346;a-001;4;Goed;Leuke vibes, maar iets voorspelbaar.;Reinout;2026-01-14T16:00:00Z
+r347;a-001;5;Top;Vol energie en plezier.;Iris;2026-01-14T17:00:00Z
+r348;a-001;5;Onvergetelijk;Iedereen danst mee.;Stijn;2026-01-14T18:00:00Z
+r349;a-001;4;Prima;Goede set, maar iets te kort.;Anoniem;2026-01-14T19:00:00Z
+r350;a-001;5;Fantastisch;Volgende keer weer vooraan.;Emma;2026-01-14T20:00:00Z
 
-r-084;a-002;5;Iconisch;Dit vergeet ik nooit meer.;Luna
-r-085;a-002;3;Oké;Mooie nummers, maar traag.;Anoniem
-r-086;a-002;4;Live magic;Live blijven zijn sets speciaal.;Jelle
+r351;a-002;5;Emotioneel;Paul weet hoe hij de menigte raakt.;Laura;2026-01-12T14:00:00Z
+r352;a-002;4;Top;Mooi maar iets voorspelbaar.;Mika;2026-01-12T15:00:00Z
+r353;a-002;5;Geweldig;Elke track een belevenis.;Sophie;2026-01-12T16:00:00Z
+r354;a-002;4;Prima;Leuke sfeer, maar iets te rustig.;Jonas;2026-01-12T17:00:00Z
+r355;a-002;5;Onvergetelijk;Beste set ooit.;Emma;2026-01-12T18:00:00Z
+r356;a-002;3;Beetje saai;Had meer spanning verwacht.;Kevin;2026-01-12T19:00:00Z
+r357;a-002;5;Topact;Paul weet perfect te timen.;Fleur;2026-01-12T20:00:00Z
+r358;a-002;4;Goed;Zeker genoten, maar niet 100% perfect.;Lars;2026-01-12T21:00:00Z
+r359;a-002;5;Mega;Volgende keer weer vooraan!;Pieter;2026-01-12T22:00:00Z
+r360;a-002;5;Krachtig;Wat een flow.;Anoniem;2026-01-12T23:00:00Z
+r361;a-002;4;Leuk;Iets te lang sommige tracks.;Julie;2026-01-13T00:00:00Z
+r362;a-002;5;Topklasse;Paul is een levende legende.;Mark;2026-01-13T01:00:00Z
+r363;a-002;5;Magisch;Elke set raakt.;Thomas;2026-01-13T02:00:00Z
+r364;a-002;4;Goed;Niet slecht, maar iets voorspelbaar.;Eva;2026-01-13T03:00:00Z
+r365;a-002;5;Geweldig;Elke keer kippenvel.;Maxime;2026-01-13T04:00:00Z
+r366;a-002;5;Perfect;Geen minpunten.;Nina;2026-01-13T05:00:00Z
+r367;a-002;4;Leuk;Goede vibe, maar korte tracks.;Bram;2026-01-13T06:00:00Z
+r368;a-002;5;Onvergetelijk;Vol energie.;Charlotte;2026-01-13T07:00:00Z
+r369;a-002;5;Fantastisch;Top set.;Reinout;2026-01-13T08:00:00Z
+r370;a-002;4;Prima;Leuke sfeer, iets voorspelbaar.;Iris;2026-01-13T09:00:00Z
+r371;a-002;5;Top;Volgende festival weer vooraan.;Stijn;2026-01-13T10:00:00Z
+r372;a-002;5;Onvergetelijk;Iedereen danst mee.;Anoniem;2026-01-13T11:00:00Z
+r373;a-002;4;Goed;Leuke set, maar te kort.;Emma;2026-01-13T12:00:00Z
+r374;a-002;5;Fantastisch;Paul blijft ongeëvenaard.;Jonas;2026-01-13T13:00:00Z
+r375;a-002;5;Topklasse;Vol energie en flow.;Lars;2026-01-13T14:00:00Z
 
-r-087;a-003;1;Chaos;Veel te druk en slecht geregeld.;Mauro
-r-088;a-003;4;Dansen;Hele tent bewoog mee.;Anoniem
-r-089;a-003;5;Zalig;Perfecte festival vibe.;Noémie
 
-r-090;a-004;5;Industrieel;Hard, donker en puur.;Simon
-r-091;a-004;4;Beukwerk;Geen pauzes, volle bak.;Anoniem
-r-092;a-004;2;Vlak;Mis dynamiek in haar sets.;Koen
-
-r-093;a-005;3;Spektakel;Veel show, weinig verrassing.;Anoniem
-r-094;a-005;5;Ontploffing;Mainstage ging letterlijk los.;Axel
-r-095;a-005;1;Overkill;Te luid, te veel gepraat.;Lies
-
-r-096;a-006;5;Klassiekers;Iedereen zong mee.;Bavo
-r-097;a-006;4;Rust;Fijn moment op het festival.;Anoniem
-r-098;a-006;2;Sloom;Kreeg me niet echt mee.;Nico
-
-r-099;a-007;5;Vakantie;Instant zomergevoel.;Fien
-r-100;a-007;3;Radio;Klonk als Spotify playlist.;Anoniem
-r-101;a-007;4;Feelgood;Zorgeloos meezingen.;Maud
-
-r-102;a-008;2;Oppervlakkig;Meer Instagram dan muziek.;Anoniem
-r-103;a-008;4;Ambiance;Publiek maakte alles goed.;Tess
-r-104;a-008;1;Frustrerend;Geen flow in de set.;Dries
-
-r-105;a-009;5;Meester;Dit is hoe techno hoort te zijn.;Quinten
-r-106;a-009;4;Flow;Naadloze overgangen.;Anoniem
-r-107;a-009;3;Langdradig;Had iets korter gemogen.;Paul
-
-r-108;a-010;2;Verouderd;Niet meer van deze tijd.;Anoniem
-r-109;a-010;5;Magisch;Prachtige melodieën.;Eline
-r-110;a-010;4;Sfeervol;Zeer mooie opbouw.;Tom
-
-r-111;a-011;1;Schreeuwerig;Microfoon constant aan.;Anoniem
-r-112;a-011;5;Moshpit;Iedereen ging compleet los.;Bram
-r-113;a-011;3;Hardcore;Veel energie, weinig detail.;Yves
-
-r-114;a-012;5;Underground;Echt voor de liefhebbers.;Anouk
-r-115;a-012;4;Diep;Goede spanning in de set.;Anoniem
-r-116;a-012;2;Vreemd;Niet mijn smaak.;Kenny
-
-r-117;a-013;5;Sneller;Zelden zo hard gedanst.;Lore
-r-118;a-013;3;Rommel;Geluid stond niet goed.;Anoniem
-r-119;a-013;4;Power;Goede drive.;Mathis
-
-r-120;a-014;2;Afgezaagd;Alles al eens gehoord.;Anoniem
-r-121;a-014;5;Meezingen;Iedereen deed mee.;Sara
-r-122;a-014;3;Oké;Prima, maar snel vergeten.;Jonah
-
-r-123;a-015;5;Uniek;Die sound herken je meteen.;Manon
-r-124;a-015;4;Sterk;Goede opbouw en sfeer.;Anoniem
-r-125;a-015;2;Saai;Voor mij te traag.;Robin

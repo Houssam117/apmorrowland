@@ -38,22 +38,23 @@
                     <GenericTile id="_IDGenGenericTile3"
                         class="sapUiMediumMarginEnd sapUiMediumMarginBottom"
                         header="Planning"
-                      
-                          press=".onNavToPlanning">
+                        press=".onNavToPlanning">
                         <TileContent id="_IDGenTileContent2">
                             <ImageContent id="_IDGenImageContent2" src="sap-icon://calendar" />
                         </TileContent>
                     </GenericTile>
          
                      <GenericTile 
-                        class="sapUiTinyMarginBegin sapUiTinyMarginTop" 
+                        class="sapUiMediumMarginEnd sapUiMediumMarginBottom"
                         header="Leaderboard" 
                         subheader="Top Rated Artists" 
                         press=".onNavToLeaderboard">
                         <TileContent>
                             <ImageContent src="sap-icon://competitor" />
                         </TileContent>
+
                     </GenericTile>
+                    
                 </HBox>
             </VBox>
         </content>

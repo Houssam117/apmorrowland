@@ -2,8 +2,8 @@
     controllerName="ns.artists.controller.Leaderboard"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:tnt="sap.tnt"
-    xmlns:mc="sap.suite.ui.microchart">
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt">
 
     <Page title="Artist Leaderboard" showNavButton="true" navButtonPress=".onNavHome">
         <content>
@@ -23,6 +23,26 @@
                     <IconTabFilter key="Trance" text="Trance" icon="sap-icon://radar" />
                 </items>
             </IconTabBar>
+
+       
+            <Panel expandable="true" expanded="false" headerText="Hoe werkt de Hype Meter?" width="auto" class="sapUiResponsiveMargin">
+                <content>
+                    <HBox alignItems="Center" wrap="Wrap">
+                        <HBox alignItems="Center" class="sapUiMediumMarginEnd">
+                            <core:Icon src="sap-icon://trend-up" class="sapUiTinyMarginEnd" color="#107e3e"/>
+                            <Text text="Rising ( 20 reviews)" />
+                        </HBox>
+                        <HBox alignItems="Center" class="sapUiMediumMarginEnd">
+                            <core:Icon src="sap-icon://temperature" class="sapUiTinyMarginEnd" color="#e9730c"/>
+                            <Text text="Hot (20-50 reviews)" />
+                        </HBox>
+                        <HBox alignItems="Center">
+                            <core:Icon src="sap-icon://status-critical" class="sapUiTinyMarginEnd" color="#b00"/>
+                            <Text text="HYPE (> 50 reviews)" />
+                        </HBox>
+                    </HBox>
+                </content>
+            </Panel>
 
             <Table
                 id="leaderboardTable"
@@ -47,26 +67,23 @@
                 <columns>
                     <Column width="5rem"><Text text="Act" /></Column>
                     <Column><Text text="Naam" /></Column>
-
                     <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Genre" /></Column>
-
-                    <Column width="8rem" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Trend" />
+                    
+                  
+                    <Column width="10rem" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Hype Meter" />
                     </Column>
-
+                    
                     <Column hAlign="Center"><Text text="Rating" /></Column>
-
-                    <Column hAlign="End"><Text text="Feedback" /></Column>
                 </columns>
 
                 <items>
-                    <ColumnListItem type="Inactive">
+                    <ColumnListItem type="Navigation" press=".onPress">
                         <cells>
-                            <Avatar src="{imageUrl}" displaySize="M" />
+                            <Avatar src="{imageUrl}" displaySize="XS" />
                             
                             <VBox>
                                 <Title text="{name}" class="sapUiTinyMarginBottom" />
-                                
                                 <tnt:InfoLabel 
                                     text="TOP RATED" 
                                     colorScheme="8" 
@@ -79,16 +96,58 @@
 
                             <Text text="{genre}" />
 
-                     
-                            <mc:DeltaMicroChart 
-                                size="XS" 
-                                value1="{averageRating}" 
-                                value2="{previousRating}" 
-                                title1="{averageRating}" 
-                                title2="{previousRating}" 
-                                displayValue1="{averageRating}" 
-                                deltaDisplayValue="{= ${averageRating} &gt; ${previousRating} ? 'Stijgend' : (${averageRating} &lt; ${previousRating} ? 'Dalend' : 'Stabiel') }" 
-                                color="{= ${averageRating} &gt; ${previousRating} ? 'Good' : (${averageRating} &lt; ${previousRating} ? 'Error' : 'Neutral') }" />
+                       
+                            <HBox alignItems="Center" justifyContent="Center">
+                              
+                                <core:Icon 
+                                    src="sap-icon://status-critical" 
+                                    color="#b00" 
+                                    size="1.5rem" 
+                                    class="sapUiTinyMarginEnd" 
+                                    visible="{
+                                        path: 'reviewCount',
+                                        targetType: 'any',
+                                        formatter: '.formatHypeIconVisible'
+                                    }" />
+                                
+                                <!-- HOT (Oranje Ster) -->
+                                <core:Icon 
+                                    src="sap-icon://temperature" 
+                                    color="#e9730c" 
+                                    size="1.2rem" 
+                                    class="sapUiTinyMarginEnd" 
+                                    visible="{
+                                        path: 'reviewCount',
+                                        targetType: 'any',
+                                        formatter: '.formatHotIconVisible'
+                                    }" />
+
+                                <!-- RISING (Groene Pijl) -->
+                                <core:Icon 
+                                    src="sap-icon://trend-up" 
+                                    color="#107e3e" 
+                                    size="1.2rem" 
+                                    class="sapUiTinyMarginEnd" 
+                                    visible="{
+                                        path: 'reviewCount',
+                                        targetType: 'any',
+                                        formatter: '.formatRisingIconVisible'
+                                    }" />
+
+                                <!-- Tekst label erachter -->
+                                <ObjectStatus 
+                                    text="{
+                                        path: 'reviewCount',
+                                        targetType: 'any',
+                                        formatter: '.formatHypeText'
+                                    }" 
+                                    state="{
+                                        path: 'reviewCount',
+                                        targetType: 'any',
+                                        formatter: '.formatHypeState'
+                                    }" />
+                            </HBox>
+
                             <VBox alignItems="Center">
                                 <RatingIndicator 
                                     value="{averageRating}" 
@@ -98,10 +157,6 @@
                                 <Text text="{averageRating} / 5.0" class="sapUiTinyMarginTop" />
                             </VBox>
 
-                            <ObjectNumber 
-                                number="{reviewCount}" 
-                                state="Success" 
-                                unit="reviews" />
                         </cells>
                     </ColumnListItem>
                 </items>

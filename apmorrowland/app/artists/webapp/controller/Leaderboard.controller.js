@@ -14,20 +14,52 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().navTo("RouteHome");
         },
 
-        // --- 1. FORMATTER VOOR DE BADGE (DE FIX) ---
-        formatTopRatedVisible: function (sRating) {
-            // Veiligheidscheck: is er wel een rating?
-            if (!sRating) {
-                return false;
-            }
-            
-            // Zet om naar een echt getal en check de drempelwaarde (4.0)
-            // Dus 3.5 = false, 4.0 = false, 4.1 = true
-            var fRating = parseFloat(sRating);
-            return fRating > 3.9;
+        onPress: function (oEvent) {
+            var oItem = oEvent.getSource();
+            var oCtx = oItem.getBindingContext();
+            var sID = oCtx.getProperty("ID");
+
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteDetail", {
+                artistID: sID
+            });
         },
 
-        // --- 2. FILTER FUNCTIE VOOR TABS ---
+        formatTopRatedVisible: function (sRating) {
+            if (!sRating) return false;
+            return parseFloat(sRating) > 4.0;
+        },
+
+        
+        formatHypeIconVisible: function(sCount) {
+            var iCount = sCount || 0;
+            return iCount > 50;
+        },
+
+        formatHotIconVisible: function(sCount) {
+            var iCount = sCount || 0;
+            return iCount > 20 && iCount <= 50;
+        },
+
+        formatRisingIconVisible: function(sCount) {
+            var iCount = parseInt(sCount) || 0;
+            return iCount <= 20;
+        },
+
+        formatHypeText: function(sCount) {
+            var iCount = parseInt(sCount) || 0;
+            if (iCount > 50) return "HYPE!";
+            if (iCount > 20) return "Hot";
+            return "Rising";
+        },
+
+        formatHypeState: function(sCount) {
+            var iCount = parseInt(sCount) || 0;
+            if (iCount > 50) return "Error";   // Rood
+            if (iCount > 20) return "Warning"; // Oranje
+            return "Success";                  // Groen
+        },
+
         onFilterGenre: function (oEvent) {
             var sKey = oEvent.getParameter("key");
             var aFilters = [];
