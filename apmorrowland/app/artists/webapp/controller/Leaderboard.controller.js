@@ -1,6 +1,8 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], function (Controller) {
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
+], function (Controller, Filter, FilterOperator) {
     "use strict";
 
     return Controller.extend("ns.artists.controller.Leaderboard", {
@@ -12,14 +14,21 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().navTo("RouteHome");
         },
 
-        formatTopRatedVisible: function (sRating) {
-            if (!sRating) {
-                return false;
+        
+        onFilterGenre: function (oEvent) {
+          
+            var sKey = oEvent.getParameter("key");
+            var aFilters = [];
+
+         
+            if (sKey !== "All") {
+           
+                aFilters.push(new Filter("genre", FilterOperator.Contains, sKey));
             }
-            
-            
-            var fRating = parseFloat(sRating);
-            return fRating > 4.0;
+
+            var oTable = this.byId("leaderboardTable");
+            var oBinding = oTable.getBinding("items");
+            oBinding.filter(aFilters);
         }
     });
 });

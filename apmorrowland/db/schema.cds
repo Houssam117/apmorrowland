@@ -16,7 +16,7 @@ entity Artists : managed {
     imageUrl      : String;
     spotifyUrl    : String;
     instagramUrl  : String;
-    
+    previousRating : Decimal(2,1) default 0.0;
     performances  : Association to many Performances on performances.artist = $self;
     reviews       : Association to many Reviews on reviews.artist = $self;
 }
@@ -32,9 +32,9 @@ entity Reviews : managed {
 
 // SLIMME VIEW VOOR LEADERBOARD
 view ArtistsAnalyzed as select from Artists {
-    *, // Pak alle gewone velden (naam, land, etc.)
-    
-    // Bereken het aantal reviews
+    *,
+     Artists.previousRating as previousRating : Decimal(2,1),
+
     (select count(ID) from Reviews where artist.ID = Artists.ID) as reviewCount : Integer,
     
     // Bereken het gemiddelde (afgerond op 1 decimaal)

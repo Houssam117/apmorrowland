@@ -38,6 +38,8 @@
     "dependencies": {
       "minUI5Version": "1.120.0",
       "libs": {
+        "sap.tnt": {},                
+        "sap.suite.ui.microchart": {} ,
         "sap.ui.core": {},
         "sap.m": {},
         "sap.f": {}
