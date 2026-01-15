@@ -16,17 +16,14 @@
                 title="{name}"
                 number="{averageRating}"
                 numberUnit="Stars">
-                
                 <attributes>
                     <ObjectAttribute id="_IDGenObjectAttribute" title="Country" text="{country}"/>
                 </attributes>
-
                 <statuses>
                     <ObjectStatus id="_IDGenObjectStatus" 
                         text="{label}" 
                         state="{= ${label} === 'Headliner' ? 'Warning' : 'Success' }"
                         inverted="true" />
-                    
                    <ObjectStatus id="_IDGenObjectStatus1" 
                         text="Top Rated" 
                         icon="sap-icon://favorite"
@@ -43,38 +40,56 @@
                 <items>
                     <IconTabFilter id="_IDGenIconTabFilter" text="Profiel" icon="sap-icon://person-card">
                         <VBox id="_IDGenVBox" class="sapUiSmallMargin">
-                            
-                      <Title id="_IDGenTitle3" text="Social Media" level="H4" class="sapUiTinyMarginBottom"/>
-                            
+                            <Title id="_IDGenTitle3" text="Social Media" level="H4" class="sapUiTinyMarginBottom"/>
                             <HBox id="_IDGenHBox1" class="sapUiSmallMarginBottom" wrap="Wrap">
                                 <HBox id="_IDGenHBox2" alignItems="Center" class="sapUiMediumMarginEnd">
                                     <Image id="_IDGenImage" 
                                         src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" 
-                                        width="24px" 
-                                        height="24px" 
-                                        class="sapUiTinyMarginEnd"/>
+                                        width="24px" height="24px" class="sapUiTinyMarginEnd"/>
                                     <Link id="_IDGenLink" text="Luister op Spotify" href="{spotifyUrl}" target="_blank"/>
                                 </HBox>
-
                                 <HBox id="_IDGenHBox4" alignItems="Center">
                                     <Image id="_IDGenImage1" 
                                         src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" 
-                                        width="24px" 
-                                        height="24px" 
-                                        class="sapUiTinyMarginEnd"/>
+                                        width="24px" height="24px" class="sapUiTinyMarginEnd"/>
                                     <Link id="_IDGenLink1" text="Volg op Instagram" href="{instagramUrl}" target="_blank"/>
                                 </HBox>
                             </HBox>
-
                             <Title id="_IDGenTitle4" text="Biografie" level="H4" class="sapUiTinyMarginBottom"/>
                             <Text id="_IDGenText7" text="{biography}" class="sapUiSmallMarginBottom"/>
-                            
                         </VBox>
                     </IconTabFilter>
                     
+                    <IconTabFilter text="Shows" icon="sap-icon://calendar">
+                        <List items="{performances}" noDataText="Geen shows gepland voor deze artiest.">
+                            <items>
+                                <ObjectListItem 
+                                    title="{stage/name}"
+                                    type="Inactive"
+                                    icon="sap-icon://sound-loud">
+                                    <attributes>
+                                        <ObjectAttribute 
+                                            title="Datum" 
+                                            text="{
+                                                path: 'startTime',
+                                                type: 'sap.ui.model.odata.type.DateTimeOffset',
+                                                formatOptions: {
+                                                    pattern: 'EEEE d MMMM yyyy'
+                                                }
+                                            }"/>
+                                    </attributes>
+                                    <firstStatus>
+                                        <ObjectStatus 
+                                            text="{path: 'startTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }} - {path: 'endTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }}" 
+                                            state="None" />
+                                    </firstStatus>
+                                </ObjectListItem>
+                            </items>
+                        </List>
+                    </IconTabFilter>
+
                     <IconTabFilter id="_IDGenIconTabFilter1" text="Reviews ({reviewCount})" icon="sap-icon://discussion">
                         <VBox id="_IDGenVBox2" class="sapUiSmallMargin">
-                            
                             <HBox id="_IDGenHBox3" justifyContent="End" class="sapUiSmallMarginBottom">
                                 <Button id="_IDGenButton2" 
                                     text="Schrijf Review" 
@@ -82,17 +97,17 @@
                                     type="Emphasized"
                                     press=".onOpenReviewDialog"/>
                             </HBox>
-
-                          <List id="reviewsList" items="{reviews}" noDataText="Nog geen reviews.">
-                        <items>
-                          <FeedListItem 
-                                sender="{visitorName}"
-                                icon="sap-icon://person-placeholder"
-                                info="Score: {rating}/5  •  {title}"
-                                timestamp="{createdAt}"
-                                text="{text}" />
-                        </items>
-                    </List>
+                            <List id="reviewsList" items="{reviews}" noDataText="Nog geen reviews. Wees de eerste!">
+                                <items>
+                                    <FeedListItem id="_IDGenFeedListItem1"
+                                        sender="{visitorName}"     
+                                        icon="sap-icon://person-placeholder"
+                                        info="Score: {rating}/5  •  {title}"
+                                        timestamp="{createdAt}"
+                                        text="{text}"         
+                                        convertLinksToAnchorTags="All"/>
+                                </items>
+                            </List>
                         </VBox>
                     </IconTabFilter>
                 </items>
