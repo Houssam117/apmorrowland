@@ -11,14 +11,12 @@ sap.ui.define([
     return Controller.extend("ns.artists.controller.Planning", {
 
         onInit: function () {
-            // Startdatum: 16 Januari 2026 (Winter Editie)
             var oStateModel = new JSONModel({
                 startDate: new Date("2026-01-16T08:00:00")
             });
             this.getView().setModel(oStateModel, "settings");
         },
 
-        // Formatter voor de View (zorgt dat de blokjes verschijnen)
         formatDate: function (sDate) {
             if (!sDate) { return null; }
             return new Date(sDate);
@@ -28,24 +26,20 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().navTo("RouteHome");
         },
 
-
         onAppointmentSelect: function (oEvent) {
             var oAppointment = oEvent.getParameter("appointment");
             if (!oAppointment) { return; }
 
-           
             var sArtist = oAppointment.getTitle() || "Geen artiest gevonden";
             var sGenre = oAppointment.getText() || "Geen genre";
 
-            console.log("Geselecteerde artiest:", sArtist); // <--- Kijk in je F12 console!
+            console.log("Geselecteerde artiest:", sArtist);
 
-            // 2. TIJD OPHALEN (Bulletproof methode)
             var oStart = oAppointment.getStartDate();
             var oEnd = oAppointment.getEndDate();
             var sStartStr = "--:--";
             var sEndStr = "--:--";
 
-            // Simpele handmatige formatting om errors te voorkomen
             if (oStart) {
                 var h = oStart.getHours().toString().padStart(2, '0');
                 var m = oStart.getMinutes().toString().padStart(2, '0');
@@ -57,7 +51,6 @@ sap.ui.define([
                 sEndStr = h + ":" + m;
             }
 
-            
             if (!this._oPopover) {
                 this._oPopover = new Popover({
                     title: "Details",
@@ -66,7 +59,7 @@ sap.ui.define([
                     content: new VBox({
                         items: [
                             new Label({ text: "Artiest:", design: "Bold" }),
-                            new Text({ text: "{popover>/artistName}" }), // Let op: popover> prefix
+                            new Text({ text: "{popover>/artistName}" }),
 
                             new Label({ text: "Genre:", design: "Bold" }).addStyleClass("sapUiTinyMarginTop"),
                             new Text({ text: "{popover>/genre}" }),
@@ -79,7 +72,6 @@ sap.ui.define([
                 this.getView().addDependent(this._oPopover);
             }
 
-          
             var oModel = new JSONModel({
                 artistName: sArtist,
                 genre: sGenre,
@@ -89,7 +81,6 @@ sap.ui.define([
 
             this._oPopover.setModel(oModel, "popover");
 
-        
             this._oPopover.openBy(oAppointment);
         },
 
@@ -105,26 +96,20 @@ sap.ui.define([
                 return;
             }
 
-           
             var oContext = oAppointment.getBindingContext();
 
-          
-            oContext.setProperty("startTime", oStartDate);
-            oContext.setProperty("endTime", oEndDate);
+            oContext.setProperty("startTime", oStartDate.toISOString());
+            oContext.setProperty("endTime", oEndDate.toISOString());
 
-            
             if (oCalendarRow) {
                 var oRowContext = oCalendarRow.getBindingContext();
-            
                 var sStageId = oRowContext.getProperty("ID");
 
                 console.log("Changing stage to:", sStageId);
 
-              
                 oContext.setProperty("stage_ID", sStageId);
             }
 
-            
         },
 
         onAppointmentResize: function (oEvent) {
@@ -137,8 +122,8 @@ sap.ui.define([
             }
 
             var oContext = oAppointment.getBindingContext();
-            oContext.setProperty("startTime", oStartDate);
-            oContext.setProperty("endTime", oEndDate);
+            oContext.setProperty("startTime", oStartDate.toISOString());
+            oContext.setProperty("endTime", oEndDate.toISOString());
         },
 
         onAppointmentCreate: function (oEvent) {
