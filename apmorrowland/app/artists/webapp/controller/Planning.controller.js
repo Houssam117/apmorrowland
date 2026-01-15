@@ -13,13 +13,13 @@ sap.ui.define([
         onInit: function () {
             // Startdatum: 16 Januari 2026 (Winter Editie)
             var oStateModel = new JSONModel({
-                startDate: new Date("2026-01-16T08:00:00") 
+                startDate: new Date("2026-01-16T08:00:00")
             });
             this.getView().setModel(oStateModel, "settings");
         },
 
         // Formatter voor de View (zorgt dat de blokjes verschijnen)
-        formatDate: function(sDate) {
+        formatDate: function (sDate) {
             if (!sDate) { return null; }
             return new Date(sDate);
         },
@@ -28,16 +28,15 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().navTo("RouteHome");
         },
 
-        // HIER ZIT DE FIX
+
         onAppointmentSelect: function (oEvent) {
             var oAppointment = oEvent.getParameter("appointment");
             if (!oAppointment) { return; }
 
-            // 1. DATA OPHALEN (Direct van het scherm)
-            // We gebruiken "||" om zeker te zijn dat er altijd IETS staat
+           
             var sArtist = oAppointment.getTitle() || "Geen artiest gevonden";
             var sGenre = oAppointment.getText() || "Geen genre";
-            
+
             console.log("Geselecteerde artiest:", sArtist); // <--- Kijk in je F12 console!
 
             // 2. TIJD OPHALEN (Bulletproof methode)
@@ -58,7 +57,7 @@ sap.ui.define([
                 sEndStr = h + ":" + m;
             }
 
-            // 3. POPOVER MAKEN (Als die nog niet bestaat)
+            
             if (!this._oPopover) {
                 this._oPopover = new Popover({
                     title: "Details",
@@ -68,10 +67,10 @@ sap.ui.define([
                         items: [
                             new Label({ text: "Artiest:", design: "Bold" }),
                             new Text({ text: "{popover>/artistName}" }), // Let op: popover> prefix
-                            
+
                             new Label({ text: "Genre:", design: "Bold" }).addStyleClass("sapUiTinyMarginTop"),
                             new Text({ text: "{popover>/genre}" }),
-                            
+
                             new Label({ text: "Tijd:", design: "Bold" }).addStyleClass("sapUiTinyMarginTop"),
                             new Text({ text: "{popover>/start} - {popover>/end}" })
                         ]
@@ -80,19 +79,70 @@ sap.ui.define([
                 this.getView().addDependent(this._oPopover);
             }
 
-            // 4. MODEL UPDATEN
-            // We gebruiken een NAAM ("popover") voor het model om conflicten te vermijden
+          
             var oModel = new JSONModel({
                 artistName: sArtist,
                 genre: sGenre,
                 start: sStartStr,
                 end: sEndStr
             });
-            
+
             this._oPopover.setModel(oModel, "popover");
-            
-            // 5. OPENEN
+
+        
             this._oPopover.openBy(oAppointment);
+        },
+
+        onAppointmentDrop: function (oEvent) {
+            var oAppointment = oEvent.getParameter("appointment");
+            var oStartDate = oEvent.getParameter("startDate");
+            var oEndDate = oEvent.getParameter("endDate");
+            var oCalendarRow = oEvent.getParameter("calendarRow");
+
+            console.log("onAppointmentDrop triggered", { oAppointment, oStartDate, oEndDate, oCalendarRow });
+
+            if (!oAppointment || !oStartDate || !oEndDate) {
+                return;
+            }
+
+           
+            var oContext = oAppointment.getBindingContext();
+
+          
+            oContext.setProperty("startTime", oStartDate);
+            oContext.setProperty("endTime", oEndDate);
+
+            
+            if (oCalendarRow) {
+                var oRowContext = oCalendarRow.getBindingContext();
+            
+                var sStageId = oRowContext.getProperty("ID");
+
+                console.log("Changing stage to:", sStageId);
+
+              
+                oContext.setProperty("stage_ID", sStageId);
+            }
+
+            
+        },
+
+        onAppointmentResize: function (oEvent) {
+            var oAppointment = oEvent.getParameter("appointment");
+            var oStartDate = oEvent.getParameter("startDate");
+            var oEndDate = oEvent.getParameter("endDate");
+
+            if (!oAppointment || !oStartDate || !oEndDate) {
+                return;
+            }
+
+            var oContext = oAppointment.getBindingContext();
+            oContext.setProperty("startTime", oStartDate);
+            oContext.setProperty("endTime", oEndDate);
+        },
+
+        onAppointmentCreate: function (oEvent) {
+            console.log("Create triggered");
         }
     });
 });

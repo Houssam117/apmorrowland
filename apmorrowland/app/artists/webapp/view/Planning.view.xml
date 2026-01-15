@@ -53,6 +53,12 @@
                     <PlanningCalendarRow
                         title="{name}"
                         icon="sap-icon://sound-loud"
+                        enableAppointmentsDragAndDrop="true"
+                        enableAppointmentsResize="true"
+                        enableAppointmentsCreate="true"
+                        appointmentDrop=".onAppointmentDrop"
+                        appointmentResize=".onAppointmentResize"
+                        appointmentCreate=".onAppointmentCreate"
                         appointments="{
                             path: 'performances',
                             templateShareable: true
