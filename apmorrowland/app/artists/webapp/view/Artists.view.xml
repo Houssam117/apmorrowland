@@ -4,14 +4,14 @@
     xmlns="sap.m">
     
     <Page id="page" title="Artist Management">
-    <headerContent>
+        <headerContent>
             <Button icon="sap-icon://home" tooltip="Terug naar Home" press=".onNavHome" />
         </headerContent>
         <content>
             <Table 
                 id="artistsTable"
                 items="{
-                    path: '/ArtistsLeaderboard',  
+                    path: '/ArtistsLeaderboard',
                     sorter: {
                         path: 'name'
                     }
@@ -38,7 +38,7 @@
                 </headerToolbar>
 
                 <columns>
-                    <Column id="_IDGenColumn" width="4rem">
+                    <Column id="_IDGenColumn" width="6rem">
                         <Text id="_IDGenText" text="" />
                     </Column>
                     <Column id="_IDGenColumn1">
@@ -60,7 +60,7 @@
                         <cells>
                             <Avatar id="_IDGenAvatar" 
                                 src="{imageUrl}" 
-                                displaySize="XS" 
+                                displaySize="M" 
                                 displayShape="Circle"/>
                                 
                             <ObjectIdentifier id="_IDGenObjectIdentifier1" 

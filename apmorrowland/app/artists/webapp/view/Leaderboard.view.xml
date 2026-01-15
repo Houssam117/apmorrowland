@@ -8,7 +8,6 @@
     <Page title="Artist Leaderboard" showNavButton="true" navButtonPress=".onNavHome">
         <content>
             
-            <!-- 1. GENRE FILTER TABS -->
             <IconTabBar 
                 id="genreFilter" 
                 select=".onFilterGenre"
@@ -25,7 +24,6 @@
                 </items>
             </IconTabBar>
 
-            <!-- 2. DE TABEL -->
             <Table
                 id="leaderboardTable"
                 items="{
@@ -47,34 +45,28 @@
                 </headerToolbar>
 
                 <columns>
-                    <!-- Rank & Naam -->
                     <Column width="5rem"><Text text="Act" /></Column>
                     <Column><Text text="Naam" /></Column>
 
-                    <!-- Genre (verdwijnt op mobiel) -->
                     <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Genre" /></Column>
 
-                    <!-- Trend Grafiek -->
                     <Column width="8rem" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
                         <Text text="Trend" />
                     </Column>
 
-                    <!-- Score -->
                     <Column hAlign="Center"><Text text="Rating" /></Column>
 
-                    <!-- Reviews -->
                     <Column hAlign="End"><Text text="Feedback" /></Column>
                 </columns>
 
                 <items>
                     <ColumnListItem type="Inactive">
                         <cells>
-                            <Avatar src="{imageUrl}" displaySize="XS" />
+                            <Avatar src="{imageUrl}" displaySize="M" />
                             
                             <VBox>
                                 <Title text="{name}" class="sapUiTinyMarginBottom" />
                                 
-                                <!-- Top Rated Badge (via Formatter) -->
                                 <tnt:InfoLabel 
                                     text="TOP RATED" 
                                     colorScheme="8" 
@@ -85,7 +77,6 @@
                                     }" />
                             </VBox>
 
-                            <!-- Genre -->
                             <Text text="{genre}" />
 
                      
@@ -98,7 +89,6 @@
                                 displayValue1="{averageRating}" 
                                 deltaDisplayValue="{= ${averageRating} &gt; ${previousRating} ? 'Stijgend' : (${averageRating} &lt; ${previousRating} ? 'Dalend' : 'Stabiel') }" 
                                 color="{= ${averageRating} &gt; ${previousRating} ? 'Good' : (${averageRating} &lt; ${previousRating} ? 'Error' : 'Neutral') }" />
-                            <!-- Sterren -->
                             <VBox alignItems="Center">
                                 <RatingIndicator 
                                     value="{averageRating}" 
@@ -108,7 +98,6 @@
                                 <Text text="{averageRating} / 5.0" class="sapUiTinyMarginTop" />
                             </VBox>
 
-                            <!-- Aantal Reviews -->
                             <ObjectNumber 
                                 number="{reviewCount}" 
                                 state="Success" 
