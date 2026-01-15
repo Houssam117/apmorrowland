@@ -9,28 +9,27 @@
         title="Nieuwe Artiest &amp; Planning"
         contentWidth="500px">
         <content>
-            <f:SimpleForm id="_IDGenSimpleForm"
+            <f:SimpleForm
                 editable="true"
                 layout="ResponsiveGridLayout"
                 labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
                 columnsXL="1" columnsL="1" columnsM="1">
                 <f:content>
-                    <core:Title id="_IDGenTitle" text="Artiest Info" />
+                    <core:Title text="Artiest Info" />
                     
-                    <Label id="_IDGenLabel4" text="Naam" required="true"/>
+                    <Label text="Naam" required="true"/>
                     <Input id="inputArtistName" placeholder="bv. Martin Garrix"/>
 
-                    <Label id="_IDGenLabel5" text="Genre"/>
+                    <Label text="Genre"/>
                     <Select id="inputGenre">
-                        <core:Item id="_IDGenItem" key="Techno" text="Techno"/>
-                        <core:Item id="_IDGenItem1" key="House" text="House"/>
-                        <core:Item id="_IDGenItem2" key="DrumAndBass" text="Drum &amp; Bass"/>
-                        <core:Item id="_IDGenItem3" key="Pop" text="Pop"/>
-                        <core:Item id="_IDGenItem4" key="Hardstyle" text="Hardstyle"/>
+                        <core:Item key="Techno" text="Techno"/>
+                        <core:Item key="House" text="House"/>
+                        <core:Item key="DrumAndBass" text="Drum &amp; Bass"/>
+                        <core:Item key="Pop" text="Pop"/>
+                        <core:Item key="Hardstyle" text="Hardstyle"/>
                     </Select>
 
-                    <Label id="_IDGenLabel6" text="Land"/>
-                  <Label text="Land"/>
+                    <Label text="Land"/>
                     <ComboBox id="inputCountry" placeholder="Kies land...">
                         <core:Item key="Belgium" text="Belgium"/>
                         <core:Item key="Netherlands" text="Netherlands"/>
@@ -45,46 +44,39 @@
                         <core:Item key="Brazil" text="Brazil"/>
                     </ComboBox>
 
-                    <Label id="_IDGenLabel7" text="Label"/>
+                    <Label text="Label"/>
                     <Select id="inputLabel">
-                        <core:Item id="_IDGenItem5" key="Headliner" text="Headliner"/>
-                        <core:Item id="_IDGenItem6" key="Rising Star" text="Rising Star"/>
-                        <core:Item id="_IDGenItem7" key="Local Hero" text="Local Hero"/>
+                        <core:Item key="Headliner" text="Headliner"/>
+                        <core:Item key="Rising Star" text="Rising Star"/>
+                        <core:Item key="Local Hero" text="Local Hero"/>
                     </Select>
 
-                    <Label id="_IDGenLabel8" text="Biografie"/>
+                    <Label text="Biografie"/>
                     <TextArea id="inputBio" rows="2"/>
 
-                    <Label id="_IDGenLabel9" text="Foto URL"/>
+                    <Label text="Foto URL"/>
                     <Input id="inputImageUrl" placeholder="https://..."/>
 
-                    <Label id="_IDGenLabel10" text="Spotify URL"/>
-                    <Input id="inputSpotify" placeholder="http://spotify.com/..."/>
+                    <Label text="Spotify URL"/>
+                    <Input id="inputSpotify" placeholder="[http://spotify.com/](http://spotify.com/)..."/>
 
-                    <Label id="_IDGenLabel11" text="Instagram URL"/>
-                    <Input id="inputInstagram" placeholder="https://instagram.com/..."/>
+                    <Label text="Instagram URL"/>
+                    <Input id="inputInstagram" placeholder="[https://instagram.com/](https://instagram.com/)..."/>
 
-                    <core:Title id="_IDGenTitle2" text="Planning &amp; Line-up" />
+                    <core:Title text="Planning &amp; Line-up" />
 
-                    <Label id="_IDGenLabel12" text="Festival Dag" required="true"/>
-                    <Select id="inputDay">
-                        <core:Item id="_IDGenItem8" key="Friday" text="Vrijdag"/>
-                        <core:Item id="_IDGenItem9" key="Saturday" text="Zaterdag"/>
-                        <core:Item id="_IDGenItem10" key="Sunday" text="Zondag"/>
-                    </Select>
-
-                    <Label id="_IDGenLabel13" text="Stage" required="true"/>
-                    <l:HorizontalLayout id="_IDGenHorizontalLayout">
+                    <Label text="Stage" required="true"/>
+                    <l:HorizontalLayout>
                         <Select 
                             id="inputStage" 
                             items="{/Stages}"
                             width="240px"
                             forceSelection="false"
                             class="sapUiSmallMarginEnd">
-                            <core:Item id="_IDGenItem11" key="{ID}" text="{name}" />
+                            <core:Item key="{ID}" text="{name}" />
                         </Select>
                         
-                        <Button id="_IDGenButton5" 
+                        <Button 
                             icon="sap-icon://add" 
                             type="Transparent"
                             text="Nieuw"
@@ -92,20 +84,26 @@
                             tooltip="Voeg een nieuw podium toe"/>
                     </l:HorizontalLayout>
 
-                    <Label id="_IDGenLabel14" text="Starttijd" required="true"/>
-                    <TimePicker id="inputStartTime" value="20:00" valueFormat="HH:mm" displayFormat="HH:mm"/>
+                    <Label text="Startmoment" required="true"/>
+                    <DateTimePicker 
+                        id="inputStartTime" 
+                        displayFormat="dd MMM yyyy, HH:mm"
+                        placeholder="Kies datum &amp; tijd"/>
 
-                    <Label id="_IDGenLabel15" text="Eindtijd" required="true"/>
-                    <TimePicker id="inputEndTime" value="21:00" valueFormat="HH:mm" displayFormat="HH:mm"/>
+                    <Label text="Eindmoment" required="true"/>
+                    <DateTimePicker 
+                        id="inputEndTime" 
+                        displayFormat="dd MMM yyyy, HH:mm"
+                        placeholder="Kies datum &amp; tijd"/>
 
                 </f:content>
             </f:SimpleForm>
         </content>
         <beginButton>
-            <Button id="_IDGenButton6" text="Opslaan &amp; Plannen" type="Emphasized" press=".onSaveArtist"/>
+            <Button text="Opslaan &amp; Plannen" type="Emphasized" press=".onSaveArtist"/>
         </beginButton>
         <endButton>
-            <Button id="_IDGenButton7" text="Annuleren" press=".onCancelArtist"/>
+            <Button text="Annuleren" press=".onCancelArtist"/>
         </endButton>
     </Dialog>
 </core:FragmentDefinition>
